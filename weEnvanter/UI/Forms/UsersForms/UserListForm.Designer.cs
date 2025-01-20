@@ -45,8 +45,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl_Users = new DevExpress.XtraGrid.GridControl();
-            this.gridView_Users = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.pLinqServerModeSource1 = new DevExpress.Data.PLinq.PLinqServerModeSource();
+            this.gridView_Users = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colUsername = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPassword = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,8 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Users)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).BeginInit();
             this.SuspendLayout();
             // 
             // popupMenu1
@@ -214,6 +214,11 @@
             this.gridControl_Users.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Users});
             // 
+            // pLinqServerModeSource1
+            // 
+            this.pLinqServerModeSource1.DefaultSorting = "Username ASC";
+            this.pLinqServerModeSource1.ElementType = typeof(weEnvanter.Domain.Entities.User);
+            // 
             // gridView_Users
             // 
             this.gridView_Users.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -235,11 +240,7 @@
             this.gridView_Users.GridControl = this.gridControl_Users;
             this.gridView_Users.Name = "gridView_Users";
             this.gridView_Users.OptionsView.ShowGroupPanel = false;
-            // 
-            // pLinqServerModeSource1
-            // 
-            this.pLinqServerModeSource1.DefaultSorting = "Username ASC";
-            this.pLinqServerModeSource1.ElementType = typeof(weEnvanter.Domain.Entities.User);
+            this.gridView_Users.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Users_RowClick);
             // 
             // colUsername
             // 
@@ -362,8 +363,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Users)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
