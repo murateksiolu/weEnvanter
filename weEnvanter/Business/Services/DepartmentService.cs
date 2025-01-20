@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Data.Repositories.Interfaces;
@@ -164,14 +165,10 @@ namespace weEnvanter.Business.Services
         public async Task<bool> CanBeDeletedAsync(int departmentId)
         {
             var hasEmployees = await HasEmployeesAsync(departmentId);
-            if (hasEmployees)
-                return false;
-
             var hasInventories = await HasInventoriesAsync(departmentId);
-            if (hasInventories)
-                return false;
+            var hasSubDepartments = (await GetByParentDepartmentAsync(departmentId)).Any();
 
-            return true;
+            return !hasEmployees && !hasInventories && !hasSubDepartments;
         }
     }
 } 

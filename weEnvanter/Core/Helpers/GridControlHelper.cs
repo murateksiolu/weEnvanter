@@ -22,5 +22,18 @@ namespace weEnvanter.Core.Helpers
                 });
             }
         }
+        public static void SetGridViewSettings(GridView gridView) 
+        {
+            gridView.OptionsBehavior.Editable = false;
+            gridView.OptionsSelection.EnableAppearanceFocusedCell = false;
+            gridView.FocusRectStyle = DrawFocusRectStyle.RowFullFocus;
+            gridView.OptionsFind.AlwaysVisible = true;
+            gridView.OptionsFind.FindNullPrompt = "Arama yapmak için metin giriniz..";
+            gridView.OptionsFind.Condition = DevExpress.Data.Filtering.FilterCondition.Contains;
+            gridView.OptionsFind.FindDelay = 100;
+            gridView.OptionsFind.SearchInPreview = true;
+            gridView.OptionsFind.FindMode = DevExpress.XtraEditors.FindMode.Always;
+            gridView.OptionsFind.HighlightFindResults = true;
+        }
     }
 }

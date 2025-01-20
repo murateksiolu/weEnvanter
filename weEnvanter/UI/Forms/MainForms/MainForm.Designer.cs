@@ -31,6 +31,7 @@ namespace weEnvanter.UI.Forms.MainForms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bar_UserInfo = new DevExpress.XtraBars.BarStaticItem();
             this.bar_Clock = new DevExpress.XtraBars.BarStaticItem();
@@ -41,7 +42,7 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_EmployeeList = new DevExpress.XtraBars.BarButtonItem();
             this.btn_NewMaintenance = new DevExpress.XtraBars.BarButtonItem();
             this.btn_MaintenanceList = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_Categories = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_InventoryCategories = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Departments = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Reports = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Settings = new DevExpress.XtraBars.BarButtonItem();
@@ -165,7 +166,7 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_EmployeeList,
             this.btn_NewMaintenance,
             this.btn_MaintenanceList,
-            this.btn_Categories,
+            this.btn_InventoryCategories,
             this.btn_Departments,
             this.btn_Reports,
             this.btn_Settings,
@@ -247,16 +248,18 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_MaintenanceList.Id = 10;
             this.btn_MaintenanceList.Name = "btn_MaintenanceList";
             // 
-            // btn_Categories
+            // btn_InventoryCategories
             // 
-            this.btn_Categories.Caption = "Kategoriler";
-            this.btn_Categories.Id = 11;
-            this.btn_Categories.Name = "btn_Categories";
+            this.btn_InventoryCategories.Caption = "Demirbaş Kategorileri";
+            this.btn_InventoryCategories.Id = 11;
+            this.btn_InventoryCategories.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Categories.ImageOptions.SvgImage")));
+            this.btn_InventoryCategories.Name = "btn_InventoryCategories";
             // 
             // btn_Departments
             // 
             this.btn_Departments.Caption = "Departmanlar";
             this.btn_Departments.Id = 12;
+            this.btn_Departments.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Departments.ImageOptions.SvgImage")));
             this.btn_Departments.Name = "btn_Departments";
             // 
             // btn_Reports
@@ -342,7 +345,7 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btn_Categories);
+            this.ribbonPageGroup5.ItemLinks.Add(this.btn_InventoryCategories);
             this.ribbonPageGroup5.ItemLinks.Add(this.btn_Departments);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Tanımlama İşlemleri";
@@ -964,7 +967,7 @@ namespace weEnvanter.UI.Forms.MainForms
         private DevExpress.XtraBars.BarButtonItem btn_EmployeeList;
         private DevExpress.XtraBars.BarButtonItem btn_NewMaintenance;
         private DevExpress.XtraBars.BarButtonItem btn_MaintenanceList;
-        private DevExpress.XtraBars.BarButtonItem btn_Categories;
+        private DevExpress.XtraBars.BarButtonItem btn_InventoryCategories;
         private DevExpress.XtraBars.BarButtonItem btn_Departments;
         private DevExpress.XtraBars.BarButtonItem btn_Reports;
         private DevExpress.XtraBars.BarButtonItem btn_Settings;

@@ -46,7 +46,7 @@ namespace weEnvanter.UI.Forms.Auth
                         DialogResult = DialogResult.OK;
                         Hide();
 
-                        using (var mainForm = new MainForm(_userService))
+                        using (var mainForm = new MainForm())
                         {
                             mainForm.ShowDialog();
                         }

@@ -4,17 +4,23 @@ using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Core.Helpers;
 using weEnvanter.UI.Forms.Auth;
+using weEnvanter.UI.Forms.DepartmentForms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace weEnvanter.UI.Forms.MainForms
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private readonly IUserService _userService;
+        private readonly IDepartmentService _departmentService;
+        private readonly IEmployeeService _employeeService;
 
-        public MainForm(IUserService userService)
+        public MainForm()
         {
             InitializeComponent();
-            _userService = userService;
+            _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
+            _departmentService = Program.ServiceProvider.GetRequiredService<IDepartmentService>();
+            _employeeService = Program.ServiceProvider.GetRequiredService<IEmployeeService>();
             InitializeUserInfo();
             InitializeEvents();
             InitializeDashboard();
@@ -48,7 +54,7 @@ namespace weEnvanter.UI.Forms.MainForms
             btn_MaintenanceList.ItemClick += Btn_MaintenanceList_ItemClick;
 
             // Tanımlamalar
-            btn_Categories.ItemClick += Btn_Categories_ItemClick;
+            btn_InventoryCategories.ItemClick += Btn_Categories_ItemClick;
             btn_Departments.ItemClick += Btn_Departments_ItemClick;
 
             // Ayarlar
@@ -101,7 +107,13 @@ namespace weEnvanter.UI.Forms.MainForms
 
         private void Btn_Departments_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("Departmanlar formu açılacak");
+            using(var form = new DepartmentListForm(_departmentService, _employeeService))
+            {
+                if(form.ShowDialog() == DialogResult.OK)
+                {
+                    // İşlem başarılı
+                }
+            }
         }
 
         private void Btn_Settings_ItemClick(object sender, ItemClickEventArgs e)

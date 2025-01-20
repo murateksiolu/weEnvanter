@@ -32,10 +32,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryListForm));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
+            this.btn_Add = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_RefreshData = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_ExportPDF = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_ExportXLSX = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.bar_Edit = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_Delete = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_EmbezzlementToEmployee = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_RemoveFromEmbezzlement = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_EmbezzlementHistory = new DevExpress.XtraBars.BarButtonItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.pLinqServerModeSource1 = new DevExpress.Data.PLinq.PLinqServerModeSource();
@@ -59,17 +68,8 @@
             this.colModifiedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btn_Add = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_RefreshData = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_ExportPDF = new DevExpress.XtraBars.BarButtonItem();
-            this.btn_ExportXLSX = new DevExpress.XtraBars.BarButtonItem();
             this.xtraSaveFileDialog1 = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bar_Edit = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_Delete = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_EmbezzlementToEmployee = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_RemoveFromEmbezzlement = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_EmbezzlementHistory = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
@@ -116,6 +116,42 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
+            // btn_Add
+            // 
+            this.btn_Add.Caption = "Yeni Demirbaş Ekle";
+            this.btn_Add.Id = 0;
+            this.btn_Add.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Add.ImageOptions.SvgImage")));
+            this.btn_Add.Name = "btn_Add";
+            this.btn_Add.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btn_Add.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Add_ItemClick);
+            // 
+            // btn_RefreshData
+            // 
+            this.btn_RefreshData.Caption = "Verileri Güncelle";
+            this.btn_RefreshData.Id = 1;
+            this.btn_RefreshData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_RefreshData.ImageOptions.SvgImage")));
+            this.btn_RefreshData.Name = "btn_RefreshData";
+            this.btn_RefreshData.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btn_RefreshData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_RefreshData_ItemClick);
+            // 
+            // btn_ExportPDF
+            // 
+            this.btn_ExportPDF.Caption = "PDF\'e Aktar";
+            this.btn_ExportPDF.Id = 2;
+            this.btn_ExportPDF.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_ExportPDF.ImageOptions.SvgImage")));
+            this.btn_ExportPDF.Name = "btn_ExportPDF";
+            this.btn_ExportPDF.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btn_ExportPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ExportPDF_ItemClick);
+            // 
+            // btn_ExportXLSX
+            // 
+            this.btn_ExportXLSX.Caption = "Excel\'e Aktar";
+            this.btn_ExportXLSX.Id = 3;
+            this.btn_ExportXLSX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_ExportXLSX.ImageOptions.SvgImage")));
+            this.btn_ExportXLSX.Name = "btn_ExportXLSX";
+            this.btn_ExportXLSX.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btn_ExportXLSX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ExportXLSX_ItemClick);
+            // 
             // barDockControlTop
             // 
             this.barDockControlTop.CausesValidation = false;
@@ -147,6 +183,46 @@
             this.barDockControlRight.Location = new System.Drawing.Point(973, 35);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 519);
+            // 
+            // bar_Edit
+            // 
+            this.bar_Edit.Caption = "Düzenle";
+            this.bar_Edit.Id = 4;
+            this.bar_Edit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_Edit.ImageOptions.SvgImage")));
+            this.bar_Edit.Name = "bar_Edit";
+            this.bar_Edit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_Edit_ItemClick);
+            // 
+            // bar_Delete
+            // 
+            this.bar_Delete.Caption = "Sil";
+            this.bar_Delete.Id = 5;
+            this.bar_Delete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_Delete.ImageOptions.SvgImage")));
+            this.bar_Delete.Name = "bar_Delete";
+            this.bar_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_Delete_ItemClick);
+            // 
+            // bar_EmbezzlementToEmployee
+            // 
+            this.bar_EmbezzlementToEmployee.Caption = "Çalışana Zimmetle";
+            this.bar_EmbezzlementToEmployee.Id = 6;
+            this.bar_EmbezzlementToEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_EmbezzlementToEmployee.ImageOptions.SvgImage")));
+            this.bar_EmbezzlementToEmployee.Name = "bar_EmbezzlementToEmployee";
+            this.bar_EmbezzlementToEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EmbezzlementToEmployee_ItemClick);
+            // 
+            // bar_RemoveFromEmbezzlement
+            // 
+            this.bar_RemoveFromEmbezzlement.Caption = "Zimmetten Düşür";
+            this.bar_RemoveFromEmbezzlement.Id = 7;
+            this.bar_RemoveFromEmbezzlement.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_RemoveFromEmbezzlement.ImageOptions.SvgImage")));
+            this.bar_RemoveFromEmbezzlement.Name = "bar_RemoveFromEmbezzlement";
+            this.bar_RemoveFromEmbezzlement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_RemoveFromEmbezzlement_ItemClick);
+            // 
+            // bar_EmbezzlementHistory
+            // 
+            this.bar_EmbezzlementHistory.Caption = "Zimmet Geçmişi";
+            this.bar_EmbezzlementHistory.Id = 8;
+            this.bar_EmbezzlementHistory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_EmbezzlementHistory.ImageOptions.SvgImage")));
+            this.bar_EmbezzlementHistory.Name = "bar_EmbezzlementHistory";
+            this.bar_EmbezzlementHistory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EmbezzlementHistory_ItemClick);
             // 
             // groupControl1
             // 
@@ -198,8 +274,10 @@
             this.colModifiedDate,
             this.colCreatedBy,
             this.colModifiedBy});
+            this.gridView1.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView1_RowClick);
             // 
@@ -336,42 +414,6 @@
             this.colModifiedBy.Visible = true;
             this.colModifiedBy.VisibleIndex = 18;
             // 
-            // btn_Add
-            // 
-            this.btn_Add.Caption = "Yeni Demirbaş Ekle";
-            this.btn_Add.Id = 0;
-            this.btn_Add.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.btn_Add.Name = "btn_Add";
-            this.btn_Add.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btn_Add.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Add_ItemClick);
-            // 
-            // btn_RefreshData
-            // 
-            this.btn_RefreshData.Caption = "Verileri Güncelle";
-            this.btn_RefreshData.Id = 1;
-            this.btn_RefreshData.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.btn_RefreshData.Name = "btn_RefreshData";
-            this.btn_RefreshData.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btn_RefreshData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_RefreshData_ItemClick);
-            // 
-            // btn_ExportPDF
-            // 
-            this.btn_ExportPDF.Caption = "PDF\'e Aktar";
-            this.btn_ExportPDF.Id = 2;
-            this.btn_ExportPDF.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.btn_ExportPDF.Name = "btn_ExportPDF";
-            this.btn_ExportPDF.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btn_ExportPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ExportPDF_ItemClick);
-            // 
-            // btn_ExportXLSX
-            // 
-            this.btn_ExportXLSX.Caption = "Excel\'e Aktar";
-            this.btn_ExportXLSX.Id = 3;
-            this.btn_ExportXLSX.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.btn_ExportXLSX.Name = "btn_ExportXLSX";
-            this.btn_ExportXLSX.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btn_ExportXLSX.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_ExportXLSX_ItemClick);
-            // 
             // xtraSaveFileDialog1
             // 
             this.xtraSaveFileDialog1.FileName = "xtraSaveFileDialog1";
@@ -386,46 +428,6 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.bar_EmbezzlementHistory)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
-            // 
-            // bar_Edit
-            // 
-            this.bar_Edit.Caption = "Düzenle";
-            this.bar_Edit.Id = 4;
-            this.bar_Edit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage1")));
-            this.bar_Edit.Name = "bar_Edit";
-            this.bar_Edit.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_Edit_ItemClick);
-            // 
-            // bar_Delete
-            // 
-            this.bar_Delete.Caption = "Sil";
-            this.bar_Delete.Id = 5;
-            this.bar_Delete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.bar_Delete.Name = "bar_Delete";
-            this.bar_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_Delete_ItemClick);
-            // 
-            // bar_EmbezzlementToEmployee
-            // 
-            this.bar_EmbezzlementToEmployee.Caption = "Çalışana Zimmetle";
-            this.bar_EmbezzlementToEmployee.Id = 6;
-            this.bar_EmbezzlementToEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
-            this.bar_EmbezzlementToEmployee.Name = "bar_EmbezzlementToEmployee";
-            this.bar_EmbezzlementToEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EmbezzlementToEmployee_ItemClick);
-            // 
-            // bar_RemoveFromEmbezzlement
-            // 
-            this.bar_RemoveFromEmbezzlement.Caption = "Zimmetten Düşür";
-            this.bar_RemoveFromEmbezzlement.Id = 7;
-            this.bar_RemoveFromEmbezzlement.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
-            this.bar_RemoveFromEmbezzlement.Name = "bar_RemoveFromEmbezzlement";
-            this.bar_RemoveFromEmbezzlement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_RemoveFromEmbezzlement_ItemClick);
-            // 
-            // bar_EmbezzlementHistory
-            // 
-            this.bar_EmbezzlementHistory.Caption = "Zimmet Geçmişi";
-            this.bar_EmbezzlementHistory.Id = 8;
-            this.bar_EmbezzlementHistory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem5.ImageOptions.SvgImage")));
-            this.bar_EmbezzlementHistory.Name = "bar_EmbezzlementHistory";
-            this.bar_EmbezzlementHistory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EmbezzlementHistory_ItemClick);
             // 
             // InventoryListForm
             // 

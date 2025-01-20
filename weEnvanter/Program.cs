@@ -12,13 +12,16 @@ using System.Configuration;
 using weEnvanter.Data;
 using weEnvanter.Data.Repositories;
 using weEnvanter.Data.Repositories.Interfaces;
+using weEnvanter.UI.Forms.MainForms;
+using weEnvanter.UI.Forms.DepartmentForms;
+using weEnvanter.UI.Forms.EmployeeForms;
 
 namespace weEnvanter
 {
     internal static class Program
     {
         public static UserDto CurrentUser;
-        private static IServiceProvider ServiceProvider;
+        public static IServiceProvider ServiceProvider;
 
         /// <summary>
         /// The main entry point for the application.
@@ -47,7 +50,6 @@ namespace weEnvanter
             services.AddScoped<WeEnvanterDbContext>();
 
             // Repositories
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
@@ -56,7 +58,6 @@ namespace weEnvanter
             services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
 
             // Services
-            services.AddScoped(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
@@ -66,7 +67,9 @@ namespace weEnvanter
 
             // Forms
             services.AddTransient<LoginForm>();
-            services.AddTransient<InventoryListForm>();
+            services.AddTransient<MainForm>();
+            services.AddTransient<DepartmentListForm>();
+            services.AddTransient<EmployeeListForm>();
         }
     }
 }

@@ -138,6 +138,7 @@
     <Compile Include="Core\Helpers\ExportHelper.cs" />
     <Compile Include="Core\Helpers\GridControlHelper.cs" />
     <Compile Include="Core\Helpers\PasswordHelper.cs" />
+    <Compile Include="Core\Helpers\BarManagerHelper.cs" />
     <Compile Include="Data\Configurations\DepartmentConfiguration.cs" />
     <Compile Include="Data\Configurations\EmployeeConfiguration.cs" />
     <Compile Include="Data\Configurations\InventoryAssignmentConfiguration.cs" />
@@ -174,6 +175,7 @@
     <Compile Include="Domain\Enums\LogType.cs" />
     <Compile Include="Domain\Enums\MaintenanceStatus.cs" />
     <Compile Include="Domain\Enums\MaintenanceType.cs" />
+    <Compile Include="Domain\Enums\OperationType.cs" />
     <Compile Include="Domain\Enums\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -188,6 +190,30 @@
     </Compile>
     <Compile Include="UI\Forms\Auth\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\DepartmentForms\AddOrEditDepartmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\DepartmentForms\AddOrEditDepartmentForm.Designer.cs">
+      <DependentUpon>AddOrEditDepartmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\DepartmentForms\DepartmentListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\DepartmentForms\DepartmentListForm.Designer.cs">
+      <DependentUpon>DepartmentListForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\EmployeeForms\AddOrEditEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\EmployeeForms\AddOrEditEmployeeForm.Designer.cs">
+      <DependentUpon>AddOrEditEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\EmployeeForms\EmployeeListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\EmployeeForms\EmployeeListForm.Designer.cs">
+      <DependentUpon>EmployeeListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\InventoryForms\InventoryEditForm.cs">
       <SubType>Form</SubType>
@@ -236,6 +262,15 @@
     <EmbeddedResource Include="UI\Forms\Auth\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\DepartmentForms\AddOrEditDepartmentForm.resx">
+      <DependentUpon>AddOrEditDepartmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\DepartmentForms\DepartmentListForm.resx">
+      <DependentUpon>DepartmentListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\EmployeeForms\EmployeeListForm.resx">
+      <DependentUpon>EmployeeListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\InventoryForms\InventoryListForm.resx">
       <DependentUpon>InventoryListForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,8 +293,6 @@
     <Folder Include="UI\Controls\" />
     <Folder Include="UI\Extensions\" />
     <Folder Include="UI\Forms\DashboardForms\" />
-    <Folder Include="UI\Forms\DepartmentForms\" />
-    <Folder Include="UI\Forms\EmployeeForms\" />
     <Folder Include="UI\Forms\Settings\" />
     <Folder Include="UI\Helpers\" />
   </ItemGroup>
