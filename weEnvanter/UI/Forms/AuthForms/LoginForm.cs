@@ -1,10 +1,12 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
+using weEnvanter.UI.Forms.LoadingForms;
 using weEnvanter.UI.Forms.MainForms;
 
-namespace weEnvanter.UI.Forms.Auth
+namespace weEnvanter.UI.Forms.AuthForms
 {
     public partial class LoginForm : DevExpress.XtraEditors.XtraForm
     {
@@ -20,11 +22,14 @@ namespace weEnvanter.UI.Forms.Auth
         {
             try
             {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+
                 string username = txt_Username.Text.Trim();
                 string password = txt_Password.Text;
 
                 if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show("Kullanıcı adı ve şifre boş olamaz!", "Hata",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -45,7 +50,7 @@ namespace weEnvanter.UI.Forms.Auth
 
                         DialogResult = DialogResult.OK;
                         Hide();
-
+                        SplashScreenManager.CloseForm(false);
                         using (var mainForm = new MainForm())
                         {
                             mainForm.ShowDialog();
@@ -56,12 +61,14 @@ namespace weEnvanter.UI.Forms.Auth
                 }
                 else
                 {
+                    SplashScreenManager.CloseForm(false);
                     MessageBox.Show("Kullanıcı adı veya şifre hatalı!", "Hata",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 MessageBox.Show($"Giriş işlemi sırasında bir hata oluştu: {ex.Message}", "Hata",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

@@ -1,6 +1,6 @@
-﻿namespace weEnvanter.UI.Forms.DepartmentForms
+﻿namespace weEnvanter.UI.Forms.MaintenanceForms
 {
-    partial class DepartmentListForm
+    partial class MaintenanceListForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepartmentListForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MaintenanceListForm));
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.bar_EditDepartment = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_Delete = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_ShowEmployee = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_EditMaintenance = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_DeleteMaintenance = new DevExpress.XtraBars.BarButtonItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
-            this.btn_AddNewDepartment = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_AddNewMaintenance = new DevExpress.XtraBars.BarButtonItem();
             this.btn_RefreshDataSource = new DevExpress.XtraBars.BarButtonItem();
             this.btn_ExportPDF = new DevExpress.XtraBars.BarButtonItem();
             this.btn_ExportXLSX = new DevExpress.XtraBars.BarButtonItem();
@@ -44,9 +43,9 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.gridControl_Departments = new DevExpress.XtraGrid.GridControl();
+            this.gridControl_Maintenances = new DevExpress.XtraGrid.GridControl();
             this.pLinqServerModeSource1 = new DevExpress.Data.PLinq.PLinqServerModeSource();
-            this.gridView_Departments = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridView_Maintenances = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDepartmentCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,44 +55,35 @@
             this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Departments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Maintenances)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Departments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Maintenances)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).BeginInit();
             this.SuspendLayout();
             // 
             // popupMenu1
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.bar_EditDepartment),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bar_Delete),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bar_ShowEmployee)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bar_EditMaintenance),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bar_DeleteMaintenance)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
             // 
-            // bar_EditDepartment
+            // bar_EditMaintenance
             // 
-            this.bar_EditDepartment.Caption = "Düzenle";
-            this.bar_EditDepartment.Id = 4;
-            this.bar_EditDepartment.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_EditDepartment.ImageOptions.SvgImage")));
-            this.bar_EditDepartment.Name = "bar_EditDepartment";
-            this.bar_EditDepartment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EditDepartment_ItemClick);
+            this.bar_EditMaintenance.Caption = "Düzenle";
+            this.bar_EditMaintenance.Id = 4;
+            this.bar_EditMaintenance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_EditMaintenance.ImageOptions.SvgImage")));
+            this.bar_EditMaintenance.Name = "bar_EditMaintenance";
+            this.bar_EditMaintenance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_EditMaintenance_ItemClick);
             // 
-            // bar_Delete
+            // bar_DeleteMaintenance
             // 
-            this.bar_Delete.Caption = "Sil";
-            this.bar_Delete.Id = 5;
-            this.bar_Delete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_Delete.ImageOptions.SvgImage")));
-            this.bar_Delete.Name = "bar_Delete";
-            this.bar_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_Delete_ItemClick);
-            // 
-            // bar_ShowEmployee
-            // 
-            this.bar_ShowEmployee.Caption = "Çalışanları Görüntüle";
-            this.bar_ShowEmployee.Id = 6;
-            this.bar_ShowEmployee.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_ShowEmployee.ImageOptions.SvgImage")));
-            this.bar_ShowEmployee.Name = "bar_ShowEmployee";
-            this.bar_ShowEmployee.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_ShowEmployee_ItemClick);
+            this.bar_DeleteMaintenance.Caption = "Sil";
+            this.bar_DeleteMaintenance.Id = 5;
+            this.bar_DeleteMaintenance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_DeleteMaintenance.ImageOptions.SvgImage")));
+            this.bar_DeleteMaintenance.Name = "bar_DeleteMaintenance";
+            this.bar_DeleteMaintenance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_DeleteMaintenance_ItemClick);
             // 
             // barManager1
             // 
@@ -108,13 +98,12 @@
             this.barManager1.DockControls.Add(this.barDockControlRight);
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.btn_AddNewDepartment,
+            this.btn_AddNewMaintenance,
             this.btn_RefreshDataSource,
             this.btn_ExportPDF,
             this.btn_ExportXLSX,
-            this.bar_EditDepartment,
-            this.bar_Delete,
-            this.bar_ShowEmployee});
+            this.bar_EditMaintenance,
+            this.bar_DeleteMaintenance});
             this.barManager1.MaxItemId = 7;
             // 
             // bar1
@@ -124,20 +113,20 @@
             this.bar1.DockRow = 0;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AddNewDepartment),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btn_AddNewMaintenance),
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_RefreshDataSource),
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_ExportPDF),
             new DevExpress.XtraBars.LinkPersistInfo(this.btn_ExportXLSX)});
             this.bar1.Text = "Custom 2";
             // 
-            // btn_AddNewDepartment
+            // btn_AddNewMaintenance
             // 
-            this.btn_AddNewDepartment.Caption = "Yeni Departman Ekle";
-            this.btn_AddNewDepartment.Id = 0;
-            this.btn_AddNewDepartment.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_AddNewDepartment.ImageOptions.SvgImage")));
-            this.btn_AddNewDepartment.Name = "btn_AddNewDepartment";
-            this.btn_AddNewDepartment.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btn_AddNewDepartment.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_AddNewDepartment_ItemClick);
+            this.btn_AddNewMaintenance.Caption = "Yeni Bakım Ekle";
+            this.btn_AddNewMaintenance.Id = 0;
+            this.btn_AddNewMaintenance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_AddNewMaintenance.ImageOptions.SvgImage")));
+            this.btn_AddNewMaintenance.Name = "btn_AddNewMaintenance";
+            this.btn_AddNewMaintenance.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.btn_AddNewMaintenance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_AddNewMaintenance_ItemClick);
             // 
             // btn_RefreshDataSource
             // 
@@ -198,41 +187,41 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 298);
             // 
-            // gridControl_Departments
+            // gridControl_Maintenances
             // 
-            this.gridControl_Departments.DataSource = this.pLinqServerModeSource1;
-            this.gridControl_Departments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControl_Departments.Location = new System.Drawing.Point(0, 33);
-            this.gridControl_Departments.MainView = this.gridView_Departments;
-            this.gridControl_Departments.MenuManager = this.barManager1;
-            this.gridControl_Departments.Name = "gridControl_Departments";
-            this.gridControl_Departments.Size = new System.Drawing.Size(1053, 298);
-            this.gridControl_Departments.TabIndex = 4;
-            this.gridControl_Departments.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView_Departments});
+            this.gridControl_Maintenances.DataSource = this.pLinqServerModeSource1;
+            this.gridControl_Maintenances.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl_Maintenances.Location = new System.Drawing.Point(0, 33);
+            this.gridControl_Maintenances.MainView = this.gridView_Maintenances;
+            this.gridControl_Maintenances.MenuManager = this.barManager1;
+            this.gridControl_Maintenances.Name = "gridControl_Maintenances";
+            this.gridControl_Maintenances.Size = new System.Drawing.Size(1053, 298);
+            this.gridControl_Maintenances.TabIndex = 4;
+            this.gridControl_Maintenances.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView_Maintenances});
             // 
             // pLinqServerModeSource1
             // 
             this.pLinqServerModeSource1.DefaultSorting = "DepartmentCode ASC";
             this.pLinqServerModeSource1.ElementType = typeof(weEnvanter.Domain.Entities.Department);
             // 
-            // gridView_Departments
+            // gridView_Maintenances
             // 
-            this.gridView_Departments.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridView_Maintenances.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colName,
             this.colDepartmentCode,
             this.colId,
             this.colIsActive,
             this.colCreatedDate,
             this.colModifiedDate});
-            this.gridView_Departments.GridControl = this.gridControl_Departments;
-            this.gridView_Departments.Name = "gridView_Departments";
-            this.gridView_Departments.OptionsFind.AlwaysVisible = true;
-            this.gridView_Departments.OptionsFind.Condition = DevExpress.Data.Filtering.FilterCondition.Contains;
-            this.gridView_Departments.OptionsFind.FindDelay = 100;
-            this.gridView_Departments.OptionsFind.SearchInPreview = true;
-            this.gridView_Departments.OptionsView.ShowGroupPanel = false;
-            this.gridView_Departments.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Departments_RowClick);
+            this.gridView_Maintenances.GridControl = this.gridControl_Maintenances;
+            this.gridView_Maintenances.Name = "gridView_Maintenances";
+            this.gridView_Maintenances.OptionsFind.AlwaysVisible = true;
+            this.gridView_Maintenances.OptionsFind.Condition = DevExpress.Data.Filtering.FilterCondition.Contains;
+            this.gridView_Maintenances.OptionsFind.FindDelay = 100;
+            this.gridView_Maintenances.OptionsFind.SearchInPreview = true;
+            this.gridView_Maintenances.OptionsView.ShowGroupPanel = false;
+            this.gridView_Maintenances.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Maintenances_RowClick);
             // 
             // colName
             // 
@@ -278,24 +267,24 @@
             // 
             this.toastNotificationsManager1.ApplicationId = "f6724efb-e6a9-4033-a93d-737359eccec2";
             // 
-            // DepartmentListForm
+            // MaintenanceListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1053, 331);
-            this.Controls.Add(this.gridControl_Departments);
+            this.Controls.Add(this.gridControl_Maintenances);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = global::weEnvanter.Properties.Resources.weEnvanter_icon;
-            this.Name = "DepartmentListForm";
-            this.Text = "Departman Listesi";
+            this.Name = "MaintenanceListForm";
+            this.Text = "Bakım Listesi";
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Departments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl_Maintenances)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView_Departments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView_Maintenances)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -311,21 +300,20 @@
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem btn_AddNewDepartment;
+        private DevExpress.XtraBars.BarButtonItem btn_AddNewMaintenance;
         private DevExpress.XtraBars.BarButtonItem btn_RefreshDataSource;
         private DevExpress.XtraBars.BarButtonItem btn_ExportPDF;
         private DevExpress.XtraBars.BarButtonItem btn_ExportXLSX;
-        private DevExpress.XtraGrid.GridControl gridControl_Departments;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView_Departments;
+        private DevExpress.XtraGrid.GridControl gridControl_Maintenances;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView_Maintenances;
         private DevExpress.XtraGrid.Columns.GridColumn colName;
         private DevExpress.XtraGrid.Columns.GridColumn colDepartmentCode;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
         private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
         private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate;
-        private DevExpress.XtraBars.BarButtonItem bar_EditDepartment;
-        private DevExpress.XtraBars.BarButtonItem bar_Delete;
-        private DevExpress.XtraBars.BarButtonItem bar_ShowEmployee;
+        private DevExpress.XtraBars.BarButtonItem bar_EditMaintenance;
+        private DevExpress.XtraBars.BarButtonItem bar_DeleteMaintenance;
         private DevExpress.Data.PLinq.PLinqServerModeSource pLinqServerModeSource1;
         private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager toastNotificationsManager1;
     }

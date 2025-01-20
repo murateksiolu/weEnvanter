@@ -1,9 +1,11 @@
 ﻿using DevExpress.XtraEditors;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
+using weEnvanter.UI.Forms.LoadingForms;
 
-namespace weEnvanter.UI.Forms.Auth
+namespace weEnvanter.UI.Forms.AuthForms
 {
     public partial class ChangePassForm : DevExpress.XtraEditors.XtraForm
     {
@@ -45,6 +47,7 @@ namespace weEnvanter.UI.Forms.Auth
                     lbl_Warning.Visible = true;
                     return;
                 }
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
 
                 var success = await _userService.ChangePasswordAsync(
                     _currentUserId,
@@ -55,9 +58,10 @@ namespace weEnvanter.UI.Forms.Auth
                 {
                     lbl_Warning.Text = "Mevcut şifreniz hatalı!";
                     lbl_Warning.Visible = true;
+                    SplashScreenManager.CloseForm(false);
                     return;
                 }
-
+                SplashScreenManager.CloseForm(false);
                 XtraMessageBox.Show("Şifreniz başarıyla değiştirildi!", "Başarılı", 
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
@@ -66,6 +70,7 @@ namespace weEnvanter.UI.Forms.Auth
             }
             catch (Exception ex)
             {
+                SplashScreenManager.CloseForm(false);
                 lbl_Warning.Text = "Şifre değiştirme işlemi sırasında bir hata oluştu!";
                 lbl_Warning.Visible = true;
                 MessageBox.Show($"Hata: {ex.Message}", "Hata", 
@@ -77,6 +82,11 @@ namespace weEnvanter.UI.Forms.Auth
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void ChangePassForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

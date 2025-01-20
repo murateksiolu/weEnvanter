@@ -157,23 +157,32 @@ namespace weEnvanter.UI.Forms.DepartmentForms
                     }
                 }
 
-                var department = new Department
-                {
-                    Name = txt_DepartmentName.Text.Trim(),
-                    DepartmentCode = txt_DepartmentCode.Text.Trim(),
-                    ParentDepartmentId = lookUp_ParentDepartment.EditValue as int?,
-                    Description = txt_Description.Text.Trim(),
-                    IsActive = toggle_IsActive.IsOn
-                };
-
                 if (_operationType == OperationType.Update && _departmentId.HasValue)
                 {
-                    department.Id = _departmentId.Value;
-                    await _departmentService.UpdateAsync(department);
+                    var existingDepartment = await _departmentService.GetByIdAsync(_departmentId.Value);
+                    if (existingDepartment != null)
+                    {
+                        existingDepartment.Name = txt_DepartmentName.Text.Trim();
+                        existingDepartment.DepartmentCode = txt_DepartmentCode.Text.Trim();
+                        existingDepartment.ParentDepartmentId = lookUp_ParentDepartment.EditValue as int?;
+                        existingDepartment.Description = txt_Description.Text.Trim();
+                        existingDepartment.IsActive = toggle_IsActive.IsOn;
+
+                        await _departmentService.UpdateAsync(existingDepartment);
+                    }
                 }
                 else
                 {
-                    await _departmentService.AddAsync(department);
+                    var newDepartment = new Department
+                    {
+                        Name = txt_DepartmentName.Text.Trim(),
+                        DepartmentCode = txt_DepartmentCode.Text.Trim(),
+                        ParentDepartmentId = lookUp_ParentDepartment.EditValue as int?,
+                        Description = txt_Description.Text.Trim(),
+                        IsActive = toggle_IsActive.IsOn
+                    };
+
+                    await _departmentService.AddAsync(newDepartment);
                 }
 
                 DialogResult = DialogResult.OK;

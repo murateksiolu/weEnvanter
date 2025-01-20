@@ -1,11 +1,18 @@
 ﻿using DevExpress.XtraBars;
+using DevExpress.XtraSplashScreen;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Core.Helpers;
-using weEnvanter.UI.Forms.Auth;
+using weEnvanter.UI.Forms.AuthForms;
+using weEnvanter.UI.Forms.DashboardForms;
 using weEnvanter.UI.Forms.DepartmentForms;
-using Microsoft.Extensions.DependencyInjection;
+using weEnvanter.UI.Forms.EmployeeForms;
+using weEnvanter.UI.Forms.InventoryCategoryForms;
+using weEnvanter.UI.Forms.LoadingForms;
+using weEnvanter.UI.Forms.MaintenanceForms;
+using weEnvanter.UI.Forms.SettingForms;
 
 namespace weEnvanter.UI.Forms.MainForms
 {
@@ -14,18 +21,30 @@ namespace weEnvanter.UI.Forms.MainForms
         private readonly IUserService _userService;
         private readonly IDepartmentService _departmentService;
         private readonly IEmployeeService _employeeService;
+        private readonly IMaintenanceService _maintenanceService;
 
+        DashboardForm _dashboardForm;
+        DepartmentListForm _departmentListForm;
+        MaintenanceListForm _maintenanceListForm;
+        InventoryCategoryListForm _inventoryCategoryListForm;
+        EmployeeListForm _employeeListForm;
         public MainForm()
         {
             InitializeComponent();
             _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
             _departmentService = Program.ServiceProvider.GetRequiredService<IDepartmentService>();
             _employeeService = Program.ServiceProvider.GetRequiredService<IEmployeeService>();
+            _maintenanceService = Program.ServiceProvider.GetService<IMaintenanceService>();
+
             InitializeUserInfo();
             InitializeEvents();
             InitializeDashboard();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
         private void InitializeUserInfo()
         {
             if (Program.CurrentUser != null)
@@ -36,31 +55,26 @@ namespace weEnvanter.UI.Forms.MainForms
         }
         private void InitializeDashboard()
         {
-
+            if (!GeneralHelper.FormIsOpen("DepartmentListForm"))
+            {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _dashboardForm = new DashboardForm();
+                _dashboardForm.MdiParent = this;
+                _dashboardForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_dashboardForm];
         }
-
         private void InitializeEvents()
         {
             // Envanter İşlemleri
             btn_NewInventory.ItemClick += Btn_NewInventory_ItemClick;
             btn_InventoryList.ItemClick += Btn_InventoryList_ItemClick;
 
-            // Personel İşlemleri
-            btn_NewEmployee.ItemClick += Btn_NewEmployee_ItemClick;
-            btn_EmployeeList.ItemClick += Btn_EmployeeList_ItemClick;
-
             // Bakım İşlemleri
             btn_NewMaintenance.ItemClick += Btn_NewMaintenance_ItemClick;
             btn_MaintenanceList.ItemClick += Btn_MaintenanceList_ItemClick;
 
-            // Tanımlamalar
-            btn_InventoryCategories.ItemClick += Btn_Categories_ItemClick;
-            btn_Departments.ItemClick += Btn_Departments_ItemClick;
-
-            // Ayarlar
-            btn_Settings.ItemClick += Btn_Settings_ItemClick;
-            btn_ChangePassword.ItemClick += Btn_ChangePassword_ItemClick;
-            btn_Exit.ItemClick += Btn_Exit_ItemClick;
         }
 
         private void timer_Clock_Tick(object sender, EventArgs e)
@@ -87,7 +101,15 @@ namespace weEnvanter.UI.Forms.MainForms
 
         private void Btn_EmployeeList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("Personel Listesi formu açılacak");
+            if (!GeneralHelper.FormIsOpen("EmployeeListForm"))
+            {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _employeeListForm = new EmployeeListForm();
+                _employeeListForm.MdiParent = this;
+                _employeeListForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_employeeListForm];
         }
 
         private void Btn_NewMaintenance_ItemClick(object sender, ItemClickEventArgs e)
@@ -97,37 +119,63 @@ namespace weEnvanter.UI.Forms.MainForms
 
         private void Btn_MaintenanceList_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("Bakım Listesi formu açılacak");
-        }
-
-        private void Btn_Categories_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            MessageBox.Show("Kategoriler formu açılacak");
-        }
-
-        private void Btn_Departments_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            using(var form = new DepartmentListForm(_departmentService, _employeeService))
+            if (!GeneralHelper.FormIsOpen("MaintenanceListForm"))
             {
-                if(form.ShowDialog() == DialogResult.OK)
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _maintenanceListForm = new MaintenanceListForm();
+                _maintenanceListForm.MdiParent = this;
+                _maintenanceListForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_maintenanceListForm];
+        }
+        private void btn_InventoryCategories_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!GeneralHelper.FormIsOpen("InventoryCategoryListForm"))
+            {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _inventoryCategoryListForm = new InventoryCategoryListForm();
+                _inventoryCategoryListForm.MdiParent = this;
+                _inventoryCategoryListForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_inventoryCategoryListForm];
+        }
+
+        private void btn_Departments_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!GeneralHelper.FormIsOpen("DepartmentListForm"))
+            {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _departmentListForm = new DepartmentListForm();
+                _departmentListForm.MdiParent = this;
+                _departmentListForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_departmentListForm];
+        }
+
+        private void btn_Settings_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (SettingsForm form = new SettingsForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
                 {
-                    // İşlem başarılı
+
                 }
             }
         }
-
-        private void Btn_Settings_ItemClick(object sender, ItemClickEventArgs e)
+        private void btn_ChangePassword_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("Ayarlar formu açılacak");
-        }
+            using (ChangePassForm form = new ChangePassForm(_userService, Program.CurrentUser.Id))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
 
-        private void Btn_ChangePassword_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var changePassForm = new ChangePassForm(_userService, Program.CurrentUser.Id);
-            changePassForm.ShowDialog();
+                }
+            }
         }
-
-        private void Btn_Exit_ItemClick(object sender, ItemClickEventArgs e)
+        private void btn_Exit_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (MessageBox.Show("Uygulamadan çıkmak istediğinize emin misiniz?", "Çıkış",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -135,7 +183,6 @@ namespace weEnvanter.UI.Forms.MainForms
                 Application.Exit();
             }
         }
-
         #endregion
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -176,5 +223,7 @@ namespace weEnvanter.UI.Forms.MainForms
         {
             GridControlHelper.CustomDrawEmptyForeground(sender, e);
         }
+
+       
     }
 }

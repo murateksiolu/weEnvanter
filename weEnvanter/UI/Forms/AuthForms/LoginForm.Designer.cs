@@ -1,6 +1,6 @@
-﻿namespace weEnvanter.UI.Forms.Auth
+﻿namespace weEnvanter.UI.Forms.AuthForms
 {
-    partial class ChangePassForm
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,113 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_CurrentPassword = new DevExpress.XtraEditors.TextEdit();
-            this.txt_NewPassword = new DevExpress.XtraEditors.TextEdit();
             this.btn_Submit = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_NewPasswordConfirm = new DevExpress.XtraEditors.TextEdit();
             this.lbl_Warning = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_CurrentPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NewPassword.Properties)).BeginInit();
+            this.check_RememberMe = new DevExpress.XtraEditors.CheckEdit();
+            this.txt_Username = new DevExpress.XtraEditors.TextEdit();
+            this.txt_Password = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NewPasswordConfirm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txt_CurrentPassword
-            // 
-            this.txt_CurrentPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_CurrentPassword.Location = new System.Drawing.Point(98, 26);
-            this.txt_CurrentPassword.Name = "txt_CurrentPassword";
-            this.txt_CurrentPassword.Size = new System.Drawing.Size(168, 22);
-            this.txt_CurrentPassword.TabIndex = 0;
-            // 
-            // txt_NewPassword
-            // 
-            this.txt_NewPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_NewPassword.Location = new System.Drawing.Point(98, 52);
-            this.txt_NewPassword.Name = "txt_NewPassword";
-            this.txt_NewPassword.Properties.PasswordChar = '*';
-            this.txt_NewPassword.Size = new System.Drawing.Size(168, 22);
-            this.txt_NewPassword.TabIndex = 1;
             // 
             // btn_Submit
             // 
             this.btn_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_Submit.Location = new System.Drawing.Point(137, 137);
+            this.btn_Submit.Location = new System.Drawing.Point(10, 137);
             this.btn_Submit.Name = "btn_Submit";
-            this.btn_Submit.Size = new System.Drawing.Size(132, 23);
+            this.btn_Submit.Size = new System.Drawing.Size(259, 23);
             this.btn_Submit.TabIndex = 3;
-            this.btn_Submit.Text = "Şifreyi Güncelle";
+            this.btn_Submit.Text = "Giriş";
+            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(7, 30);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(60, 13);
+            this.labelControl1.Size = new System.Drawing.Size(57, 13);
             this.labelControl1.TabIndex = 99;
-            this.labelControl1.Text = "Mevcut Şifre";
+            this.labelControl1.Text = "Kullanıcı Adı";
             // 
             // labelControl2
             // 
             this.labelControl2.Location = new System.Drawing.Point(7, 56);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(45, 13);
+            this.labelControl2.Size = new System.Drawing.Size(21, 13);
             this.labelControl2.TabIndex = 99;
-            this.labelControl2.Text = "Yeni Şifre";
+            this.labelControl2.Text = "Şifre";
             // 
             // groupControl1
             // 
-            this.groupControl1.Controls.Add(this.simpleButton1);
-            this.groupControl1.Controls.Add(this.labelControl3);
-            this.groupControl1.Controls.Add(this.txt_NewPasswordConfirm);
             this.groupControl1.Controls.Add(this.lbl_Warning);
             this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Controls.Add(this.txt_CurrentPassword);
+            this.groupControl1.Controls.Add(this.check_RememberMe);
+            this.groupControl1.Controls.Add(this.txt_Username);
             this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.txt_NewPassword);
+            this.groupControl1.Controls.Add(this.txt_Password);
             this.groupControl1.Controls.Add(this.btn_Submit);
             this.groupControl1.Location = new System.Drawing.Point(12, 115);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(274, 165);
             this.groupControl1.TabIndex = 99;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(10, 137);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(121, 23);
-            this.simpleButton1.TabIndex = 103;
-            this.simpleButton1.Text = "İptal";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(7, 84);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(73, 13);
-            this.labelControl3.TabIndex = 102;
-            this.labelControl3.Text = "Yeni Şifre Onay";
-            // 
-            // txt_NewPasswordConfirm
-            // 
-            this.txt_NewPasswordConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_NewPasswordConfirm.Location = new System.Drawing.Point(98, 80);
-            this.txt_NewPasswordConfirm.Name = "txt_NewPasswordConfirm";
-            this.txt_NewPasswordConfirm.Properties.PasswordChar = '*';
-            this.txt_NewPasswordConfirm.Size = new System.Drawing.Size(168, 22);
-            this.txt_NewPasswordConfirm.TabIndex = 101;
             // 
             // lbl_Warning
             // 
@@ -156,9 +106,39 @@
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit1.Size = new System.Drawing.Size(274, 96);
-            this.pictureEdit1.TabIndex = 104;
+            this.pictureEdit1.TabIndex = 100;
             // 
-            // ChangePassForm
+            // check_RememberMe
+            // 
+            this.check_RememberMe.Location = new System.Drawing.Point(5, 78);
+            this.check_RememberMe.Name = "check_RememberMe";
+            this.check_RememberMe.Properties.Caption = "Beni Hatırla";
+            this.check_RememberMe.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.check_RememberMe.Size = new System.Drawing.Size(110, 20);
+            this.check_RememberMe.TabIndex = 2;
+            // 
+            // txt_Username
+            // 
+            this.txt_Username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Username.Location = new System.Drawing.Point(98, 26);
+            this.txt_Username.Name = "txt_Username";
+            this.txt_Username.Size = new System.Drawing.Size(168, 22);
+            this.txt_Username.TabIndex = 0;
+            this.txt_Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Username_KeyPress);
+            // 
+            // txt_Password
+            // 
+            this.txt_Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Password.Location = new System.Drawing.Point(98, 52);
+            this.txt_Password.Name = "txt_Password";
+            this.txt_Password.Properties.PasswordChar = '*';
+            this.txt_Password.Size = new System.Drawing.Size(168, 22);
+            this.txt_Password.TabIndex = 1;
+            this.txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Password_KeyPress);
+            // 
+            // LoginForm
             // 
             this.AcceptButton = this.btn_Submit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,32 +151,31 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 200);
-            this.Name = "ChangePassForm";
+            this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "weEnvanter - Şifre Değiştir";
-            ((System.ComponentModel.ISupportInitialize)(this.txt_CurrentPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NewPassword.Properties)).EndInit();
+            this.Text = "weEnvanter - Giriş";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_NewPasswordConfirm.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.TextEdit txt_CurrentPassword;
-        private DevExpress.XtraEditors.TextEdit txt_NewPassword;
+        private DevExpress.XtraEditors.TextEdit txt_Username;
+        private DevExpress.XtraEditors.TextEdit txt_Password;
         private DevExpress.XtraEditors.SimpleButton btn_Submit;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.CheckEdit check_RememberMe;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.LabelControl lbl_Warning;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.TextEdit txt_NewPasswordConfirm;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.PictureEdit pictureEdit1;
+        private DevExpress.XtraEditors.LabelControl lbl_Warning;
     }
 }

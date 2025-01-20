@@ -70,12 +70,13 @@
             this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl1.Location = new System.Drawing.Point(0, 0);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(368, 298);
+            this.groupControl1.Size = new System.Drawing.Size(398, 300);
             this.groupControl1.TabIndex = 0;
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(201, 265);
+            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Cancel.Location = new System.Drawing.Point(230, 265);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_Cancel.TabIndex = 11;
@@ -100,11 +101,14 @@
             // 
             // lookUp_ParentDepartment
             // 
+            this.lookUp_ParentDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lookUp_ParentDepartment.Location = new System.Drawing.Point(118, 92);
             this.lookUp_ParentDepartment.Name = "lookUp_ParentDepartment";
             this.lookUp_ParentDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lookUp_ParentDepartment.Size = new System.Drawing.Size(239, 22);
+            this.lookUp_ParentDepartment.Properties.NullText = "Üst Departman seçiniz..";
+            this.lookUp_ParentDepartment.Size = new System.Drawing.Size(268, 22);
             this.lookUp_ParentDepartment.TabIndex = 8;
             // 
             // labelControl3
@@ -117,9 +121,11 @@
             // 
             // txt_DepartmentName
             // 
+            this.txt_DepartmentName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DepartmentName.Location = new System.Drawing.Point(118, 63);
             this.txt_DepartmentName.Name = "txt_DepartmentName";
-            this.txt_DepartmentName.Size = new System.Drawing.Size(239, 22);
+            this.txt_DepartmentName.Size = new System.Drawing.Size(268, 22);
             this.txt_DepartmentName.TabIndex = 6;
             // 
             // labelControl2
@@ -132,7 +138,8 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(282, 265);
+            this.btn_Save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Save.Location = new System.Drawing.Point(311, 265);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(75, 23);
             this.btn_Save.TabIndex = 4;
@@ -151,16 +158,20 @@
             // 
             // txt_Description
             // 
+            this.txt_Description.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_Description.Location = new System.Drawing.Point(118, 120);
             this.txt_Description.Name = "txt_Description";
-            this.txt_Description.Size = new System.Drawing.Size(239, 96);
+            this.txt_Description.Size = new System.Drawing.Size(268, 96);
             this.txt_Description.TabIndex = 2;
             // 
             // txt_DepartmentCode
             // 
+            this.txt_DepartmentCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_DepartmentCode.Location = new System.Drawing.Point(118, 35);
             this.txt_DepartmentCode.Name = "txt_DepartmentCode";
-            this.txt_DepartmentCode.Size = new System.Drawing.Size(239, 22);
+            this.txt_DepartmentCode.Size = new System.Drawing.Size(268, 22);
             this.txt_DepartmentCode.TabIndex = 1;
             // 
             // labelControl1
@@ -175,7 +186,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(368, 298);
+            this.ClientSize = new System.Drawing.Size(398, 300);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.IconOptions.Image = global::weEnvanter.Properties.Resources.weEnvanter_icon;

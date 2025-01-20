@@ -1,6 +1,6 @@
 ﻿namespace weEnvanter.UI.Forms.InventoryForms
 {
-    partial class InventoryEditForm
+    partial class AddOrEditInventoryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "InventoryEditForm";
+            this.Text = "AddOrEditInventoryForm";
         }
 
         #endregion

@@ -46,7 +46,7 @@ namespace weEnvanter.Data
                 context.Users.Add(new User
                 {
                     Username = "admin",
-                    Password = "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", // admin
+                    Password = "jGl25bVBBBW96Qi9Te4V37Fnqchz/Eu4qB9vKrRIqRg=", // admin
                     FirstName = "System",
                     LastName = "Admin",
                     Role = UserRole.Admin,

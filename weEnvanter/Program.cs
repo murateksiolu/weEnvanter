@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using weEnvanter.Business.DTOs;
 using weEnvanter.Business.Mapping;
-using weEnvanter.UI.Forms.Auth;
+using weEnvanter.UI.Forms.AuthForms;
 using weEnvanter.UI.Forms.InventoryForms;
 using Microsoft.Extensions.DependencyInjection;
 using weEnvanter.Business.Services;
@@ -15,6 +15,7 @@ using weEnvanter.Data.Repositories.Interfaces;
 using weEnvanter.UI.Forms.MainForms;
 using weEnvanter.UI.Forms.DepartmentForms;
 using weEnvanter.UI.Forms.EmployeeForms;
+using weEnvanter.UI.Forms.MaintenanceForms;
 
 namespace weEnvanter
 {
@@ -69,6 +70,7 @@ namespace weEnvanter
             services.AddTransient<LoginForm>();
             services.AddTransient<MainForm>();
             services.AddTransient<DepartmentListForm>();
+            services.AddTransient<MaintenanceListForm>();
             services.AddTransient<EmployeeListForm>();
         }
     }
