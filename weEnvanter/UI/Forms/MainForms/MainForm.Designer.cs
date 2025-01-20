@@ -48,7 +48,9 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_ChangePassword = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Exit = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_Dashboard = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -62,8 +64,7 @@ namespace weEnvanter.UI.Forms.MainForms
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btn_Dashboard = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -88,9 +89,10 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_ChangePassword,
             this.btn_Exit,
             this.barButtonItem1,
-            this.btn_Dashboard});
+            this.btn_Dashboard,
+            this.barButtonItem2});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 19;
+            this.ribbon.MaxItemId = 20;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowQuickAccessToolbarItem = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -222,6 +224,14 @@ namespace weEnvanter.UI.Forms.MainForms
             this.barButtonItem1.Id = 17;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // btn_Dashboard
+            // 
+            this.btn_Dashboard.Caption = "Dashboard";
+            this.btn_Dashboard.Id = 18;
+            this.btn_Dashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Dashboard.ImageOptions.SvgImage")));
+            this.btn_Dashboard.Name = "btn_Dashboard";
+            this.btn_Dashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Dashboard_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -230,6 +240,11 @@ namespace weEnvanter.UI.Forms.MainForms
             this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Ana Sayfa";
+            // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.btn_Dashboard);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
             // 
             // ribbonPageGroup1
             // 
@@ -241,6 +256,7 @@ namespace weEnvanter.UI.Forms.MainForms
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btn_NewMaintenance);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Hızlı İşlemler";
             // 
@@ -320,18 +336,12 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // ribbonPageGroup7
+            // barButtonItem2
             // 
-            this.ribbonPageGroup7.ItemLinks.Add(this.btn_Dashboard);
-            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
-            // 
-            // btn_Dashboard
-            // 
-            this.btn_Dashboard.Caption = "Dashboard";
-            this.btn_Dashboard.Id = 18;
-            this.btn_Dashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.btn_Dashboard.Name = "btn_Dashboard";
-            this.btn_Dashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Dashboard_ItemClick);
+            this.barButtonItem2.Caption = "Kullanıcı Ekle";
+            this.barButtonItem2.Id = 19;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // MainForm
             // 
@@ -391,5 +401,6 @@ namespace weEnvanter.UI.Forms.MainForms
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem btn_Dashboard;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }
