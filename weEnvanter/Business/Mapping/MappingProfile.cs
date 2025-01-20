@@ -42,11 +42,11 @@ namespace weEnvanter.Business.Mapping
             CreateMap<InventoryCategoryUpdateDto, InventoryCategory>();
 
             // MaintenanceRecord mappings
-            CreateMap<MaintenanceRecord, MaintenanceRecordDto>()
+            CreateMap<Maintenance, MaintenanceRecordDto>()
                 .ForMember(dest => dest.InventoryName,
                           opt => opt.MapFrom(src => src.Inventory.Name));
-            CreateMap<MaintenanceRecordCreateDto, MaintenanceRecord>();
-            CreateMap<MaintenanceRecordUpdateDto, MaintenanceRecord>();
+            CreateMap<MaintenanceRecordCreateDto, Maintenance>();
+            CreateMap<MaintenanceRecordUpdateDto, Maintenance>();
         }
     }
 } 

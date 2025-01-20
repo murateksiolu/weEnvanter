@@ -11,5 +11,6 @@ namespace weEnvanter.Data.Repositories.Interfaces
         Task<Employee> GetByEmployeeNumberAsync(string employeeNumber);
         Task<bool> HasAssignedInventoriesAsync(int employeeId);
         Task<bool> IsEmployeeNumberUniqueAsync(string employeeNumber);
+        int GetActiveEmployeeCount();
     }
 } 

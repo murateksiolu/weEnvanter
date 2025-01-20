@@ -255,5 +255,45 @@ namespace weEnvanter.Business.Services
             return true;
         }
 
+        // Dashboard için eklenen metodlar
+        public int GetActiveInventoryCount()
+        {
+            return _inventoryRepository.GetActiveInventoryCountAsync().Result;
+        }
+
+        public int GetUpcomingExpirationCount(int days)
+        {
+            return _inventoryRepository.GetUpcomingExpirationCountAsync(days).Result;
+        }
+
+        public int GetUpcomingCalibrationCount(int days)
+        {
+            return _inventoryRepository.GetUpcomingCalibrationCountAsync(days).Result;
+        }
+
+        public int GetAssignedInventoryCount()
+        {
+            return _inventoryRepository.GetAssignedInventoryCountAsync().Result;
+        }
+
+        public List<Inventory> GetUpcomingCalibrations(int days)
+        {
+            return _inventoryRepository.GetUpcomingCalibrationsAsync(days).Result;
+        }
+
+        public List<Inventory> GetUpcomingExpirations(int days)
+        {
+            return _inventoryRepository.GetUpcomingExpirationsAsync(days).Result;
+        }
+
+        public List<Inventory> GetLastAddedInventories(int count)
+        {
+            return _inventoryRepository.GetLastAddedInventoriesAsync(count).Result;
+        }
+
+        public List<Inventory> GetLastAssignedInventories(int count)
+        {
+            return _inventoryRepository.GetLastAssignedInventoriesAsync(count).Result;
+        }
     }
 } 

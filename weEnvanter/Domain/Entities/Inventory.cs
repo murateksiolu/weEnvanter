@@ -10,7 +10,7 @@ namespace weEnvanter.Domain.Entities
         public Inventory()
         {
             Assignments = new HashSet<InventoryAssignment>();
-            MaintenanceRecords = new HashSet<MaintenanceRecord>();
+            Maintenances = new HashSet<Maintenance>();
         }
 
         public string InventoryCode { get; set; }
@@ -24,16 +24,22 @@ namespace weEnvanter.Domain.Entities
         public decimal? PurchasePrice { get; set; }
         public decimal? CurrentValue { get; set; }
         public DateTime? PurchaseDate { get; set; }
-        public DateTime? WarrantyEndDate { get; set; }
+        public DateTime? WarrantyExpirationDate { get; set; }
+        public DateTime? CalibrationDueDate { get; set; }
         public DateTime? LastMaintenanceDate { get; set; }
         public DateTime? NextMaintenanceDate { get; set; }
         public InventoryStatus Status { get; set; }
+        public string SerialNumber { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
         // Navigation properties
         public virtual InventoryCategory InventoryCategory { get; set; }
         public virtual Department Department { get; set; }
         public virtual Employee AssignedEmployee { get; set; }
         public virtual ICollection<InventoryAssignment> Assignments { get; set; }
-        public virtual ICollection<MaintenanceRecord> MaintenanceRecords { get; set; }
+        public virtual ICollection<Maintenance> Maintenances { get; set; }
     }
 } 

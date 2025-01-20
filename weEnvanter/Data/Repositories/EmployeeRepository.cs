@@ -41,5 +41,10 @@ namespace weEnvanter.Data.Repositories
         {
             return !await _dbSet.AnyAsync(x => x.EmployeeNumber == employeeNumber && !x.IsDeleted);
         }
+
+        public int GetActiveEmployeeCount()
+        {
+           return _dbSet.Count(x=>x.IsDeleted == false);
+        }
     }
 } 

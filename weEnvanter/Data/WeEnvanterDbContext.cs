@@ -19,7 +19,7 @@ namespace weEnvanter.Data
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<InventoryAssignment> InventoryAssignments { get; set; }
         public DbSet<InventoryCategory> InventoryCategories { get; set; }
-        public DbSet<MaintenanceRecord> MaintenanceRecords { get; set; }
+        public DbSet<Maintenance> Maintenances { get; set; }
         public DbSet<SystemLog> SystemLogs { get; set; }
         public DbSet<User> Users { get; set; }
 
@@ -30,7 +30,7 @@ namespace weEnvanter.Data
             modelBuilder.Configurations.Add(new InventoryConfiguration());
             modelBuilder.Configurations.Add(new InventoryAssignmentConfiguration());
             modelBuilder.Configurations.Add(new InventoryCategoryConfiguration());
-            modelBuilder.Configurations.Add(new MaintenanceRecordConfiguration());
+            modelBuilder.Configurations.Add(new MaintenanceConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
 
             base.OnModelCreating(modelBuilder);

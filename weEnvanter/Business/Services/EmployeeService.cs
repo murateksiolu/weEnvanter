@@ -155,5 +155,10 @@ namespace weEnvanter.Business.Services
 
             return true;
         }
+
+        public int GetActiveEmployeeCount()
+        {
+            return _employeeRepository.GetActiveEmployeeCount();
+        }
     }
 } 

@@ -44,21 +44,29 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl_Maintenances = new DevExpress.XtraGrid.GridControl();
-            this.pLinqServerModeSource1 = new DevExpress.Data.PLinq.PLinqServerModeSource();
             this.gridView_Maintenances = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDepartmentCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
+            this.pLinqServerModeSource2 = new DevExpress.Data.PLinq.PLinqServerModeSource();
+            this.colInventoryId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStartDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEndDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNotes = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInventory = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsActive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDeleted = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colModifiedDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.toastNotificationsManager1 = new DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager(this.components);
+            this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colModifiedBy = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Maintenances)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Maintenances)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // popupMenu1
@@ -189,7 +197,7 @@
             // 
             // gridControl_Maintenances
             // 
-            this.gridControl_Maintenances.DataSource = this.pLinqServerModeSource1;
+            this.gridControl_Maintenances.DataSource = this.pLinqServerModeSource2;
             this.gridControl_Maintenances.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Maintenances.Location = new System.Drawing.Point(0, 33);
             this.gridControl_Maintenances.MainView = this.gridView_Maintenances;
@@ -200,20 +208,23 @@
             this.gridControl_Maintenances.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Maintenances});
             // 
-            // pLinqServerModeSource1
-            // 
-            this.pLinqServerModeSource1.DefaultSorting = "DepartmentCode ASC";
-            this.pLinqServerModeSource1.ElementType = typeof(weEnvanter.Domain.Entities.Department);
-            // 
             // gridView_Maintenances
             // 
             this.gridView_Maintenances.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colName,
-            this.colDepartmentCode,
+            this.colInventoryId,
+            this.colDescription,
+            this.colStartDate,
+            this.colEndDate,
+            this.colNotes,
+            this.colStatus,
+            this.colInventory,
             this.colId,
             this.colIsActive,
+            this.colIsDeleted,
             this.colCreatedDate,
-            this.colModifiedDate});
+            this.colModifiedDate,
+            this.colCreatedBy,
+            this.colModifiedBy});
             this.gridView_Maintenances.GridControl = this.gridControl_Maintenances;
             this.gridView_Maintenances.Name = "gridView_Maintenances";
             this.gridView_Maintenances.OptionsFind.AlwaysVisible = true;
@@ -223,49 +234,112 @@
             this.gridView_Maintenances.OptionsView.ShowGroupPanel = false;
             this.gridView_Maintenances.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Maintenances_RowClick);
             // 
-            // colName
+            // toastNotificationsManager1
             // 
-            this.colName.FieldName = "Name";
-            this.colName.Name = "colName";
-            this.colName.Visible = true;
-            this.colName.VisibleIndex = 1;
+            this.toastNotificationsManager1.ApplicationId = "f6724efb-e6a9-4033-a93d-737359eccec2";
             // 
-            // colDepartmentCode
+            // pLinqServerModeSource2
             // 
-            this.colDepartmentCode.FieldName = "DepartmentCode";
-            this.colDepartmentCode.Name = "colDepartmentCode";
-            this.colDepartmentCode.Visible = true;
-            this.colDepartmentCode.VisibleIndex = 0;
+            this.pLinqServerModeSource2.DefaultSorting = "StartDate DESC";
+            this.pLinqServerModeSource2.ElementType = typeof(weEnvanter.Domain.Entities.Maintenance);
+            // 
+            // colInventoryId
+            // 
+            this.colInventoryId.FieldName = "InventoryId";
+            this.colInventoryId.Name = "colInventoryId";
+            this.colInventoryId.Visible = true;
+            this.colInventoryId.VisibleIndex = 0;
+            // 
+            // colDescription
+            // 
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 1;
+            // 
+            // colStartDate
+            // 
+            this.colStartDate.FieldName = "StartDate";
+            this.colStartDate.Name = "colStartDate";
+            this.colStartDate.Visible = true;
+            this.colStartDate.VisibleIndex = 2;
+            // 
+            // colEndDate
+            // 
+            this.colEndDate.FieldName = "EndDate";
+            this.colEndDate.Name = "colEndDate";
+            this.colEndDate.Visible = true;
+            this.colEndDate.VisibleIndex = 3;
+            // 
+            // colNotes
+            // 
+            this.colNotes.FieldName = "Notes";
+            this.colNotes.Name = "colNotes";
+            this.colNotes.Visible = true;
+            this.colNotes.VisibleIndex = 4;
+            // 
+            // colStatus
+            // 
+            this.colStatus.FieldName = "Status";
+            this.colStatus.Name = "colStatus";
+            this.colStatus.Visible = true;
+            this.colStatus.VisibleIndex = 5;
+            // 
+            // colInventory
+            // 
+            this.colInventory.FieldName = "Inventory";
+            this.colInventory.Name = "colInventory";
+            this.colInventory.Visible = true;
+            this.colInventory.VisibleIndex = 6;
             // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 7;
             // 
             // colIsActive
             // 
             this.colIsActive.FieldName = "IsActive";
             this.colIsActive.Name = "colIsActive";
             this.colIsActive.Visible = true;
-            this.colIsActive.VisibleIndex = 2;
+            this.colIsActive.VisibleIndex = 8;
+            // 
+            // colIsDeleted
+            // 
+            this.colIsDeleted.FieldName = "IsDeleted";
+            this.colIsDeleted.Name = "colIsDeleted";
+            this.colIsDeleted.Visible = true;
+            this.colIsDeleted.VisibleIndex = 9;
             // 
             // colCreatedDate
             // 
             this.colCreatedDate.FieldName = "CreatedDate";
             this.colCreatedDate.Name = "colCreatedDate";
             this.colCreatedDate.Visible = true;
-            this.colCreatedDate.VisibleIndex = 3;
+            this.colCreatedDate.VisibleIndex = 10;
             // 
             // colModifiedDate
             // 
             this.colModifiedDate.FieldName = "ModifiedDate";
             this.colModifiedDate.Name = "colModifiedDate";
             this.colModifiedDate.Visible = true;
-            this.colModifiedDate.VisibleIndex = 4;
+            this.colModifiedDate.VisibleIndex = 11;
             // 
-            // toastNotificationsManager1
+            // colCreatedBy
             // 
-            this.toastNotificationsManager1.ApplicationId = "f6724efb-e6a9-4033-a93d-737359eccec2";
+            this.colCreatedBy.FieldName = "CreatedBy";
+            this.colCreatedBy.Name = "colCreatedBy";
+            this.colCreatedBy.Visible = true;
+            this.colCreatedBy.VisibleIndex = 12;
+            // 
+            // colModifiedBy
+            // 
+            this.colModifiedBy.FieldName = "ModifiedBy";
+            this.colModifiedBy.Name = "colModifiedBy";
+            this.colModifiedBy.Visible = true;
+            this.colModifiedBy.VisibleIndex = 13;
             // 
             // MaintenanceListForm
             // 
@@ -283,9 +357,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Maintenances)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Maintenances)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toastNotificationsManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,15 +380,23 @@
         private DevExpress.XtraBars.BarButtonItem btn_ExportXLSX;
         private DevExpress.XtraGrid.GridControl gridControl_Maintenances;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_Maintenances;
-        private DevExpress.XtraGrid.Columns.GridColumn colName;
-        private DevExpress.XtraGrid.Columns.GridColumn colDepartmentCode;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
-        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate;
         private DevExpress.XtraBars.BarButtonItem bar_EditMaintenance;
         private DevExpress.XtraBars.BarButtonItem bar_DeleteMaintenance;
-        private DevExpress.Data.PLinq.PLinqServerModeSource pLinqServerModeSource1;
         private DevExpress.XtraBars.ToastNotifications.ToastNotificationsManager toastNotificationsManager1;
+        private DevExpress.Data.PLinq.PLinqServerModeSource pLinqServerModeSource2;
+        private DevExpress.XtraGrid.Columns.GridColumn colInventoryId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colStartDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colEndDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colNotes;
+        private DevExpress.XtraGrid.Columns.GridColumn colStatus;
+        private DevExpress.XtraGrid.Columns.GridColumn colInventory;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDeleted;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
+        private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy;
     }
 }

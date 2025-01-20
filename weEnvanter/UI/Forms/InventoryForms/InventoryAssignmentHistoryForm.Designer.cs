@@ -1,6 +1,6 @@
 ﻿namespace weEnvanter.UI.Forms.InventoryForms
 {
-    partial class InventoryEmbezzlementHistoryForm
+    partial class InventoryAssignmentHistoryForm
     {
         /// <summary>
         /// Required designer variable.

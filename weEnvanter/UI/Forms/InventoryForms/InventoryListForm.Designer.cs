@@ -446,7 +446,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.IconOptions.Image = global::weEnvanter.Properties.Resources.weEnvanter_icon;
-            this.IsMdiContainer = true;
+            this.IsMdiContainer = false;
             this.Name = "InventoryListForm";
             this.Text = "Demirbaş Listesi";
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();

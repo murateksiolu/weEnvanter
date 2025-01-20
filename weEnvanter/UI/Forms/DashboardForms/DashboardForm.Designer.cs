@@ -52,24 +52,24 @@
             this.gridView_UpcomingMaintenances = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_StartCounting = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_AddLocation = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_AddEmployee = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_AssignInventoryToEmployee = new DevExpress.XtraEditors.SimpleButton();
+            this.btn_AddInventory = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.groupControl12 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_TotalEmployeeCount = new DevExpress.XtraEditors.LabelControl();
             this.groupControl11 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_EmbezzlementInventoryRatio = new DevExpress.XtraEditors.LabelControl();
             this.groupControl10 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_MaintenanceDateUpcomingCount = new DevExpress.XtraEditors.LabelControl();
             this.groupControl9 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_CalibrationDateUpcomingCount = new DevExpress.XtraEditors.LabelControl();
             this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_ExpirationDateUpcomingCount = new DevExpress.XtraEditors.LabelControl();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.lbl_ActiveInventoryCount = new DevExpress.XtraEditors.LabelControl();
             this.tableLayoutPanel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
@@ -184,7 +184,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.gridControl_LastAssignedAssets);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(339, 171);
+            this.xtraTabPage2.Size = new System.Drawing.Size(339, 172);
             this.xtraTabPage2.Text = "Son Atanan Demirbaşlar";
             // 
             // gridControl_LastAssignedAssets
@@ -193,7 +193,7 @@
             this.gridControl_LastAssignedAssets.Location = new System.Drawing.Point(0, 0);
             this.gridControl_LastAssignedAssets.MainView = this.gridViewLastAssignedAssets;
             this.gridControl_LastAssignedAssets.Name = "gridControl_LastAssignedAssets";
-            this.gridControl_LastAssignedAssets.Size = new System.Drawing.Size(339, 171);
+            this.gridControl_LastAssignedAssets.Size = new System.Drawing.Size(339, 172);
             this.gridControl_LastAssignedAssets.TabIndex = 0;
             this.gridControl_LastAssignedAssets.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewLastAssignedAssets});
@@ -349,11 +349,11 @@
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel8.Controls.Add(this.simpleButton5, 4, 0);
-            this.tableLayoutPanel8.Controls.Add(this.simpleButton4, 3, 0);
-            this.tableLayoutPanel8.Controls.Add(this.simpleButton3, 2, 0);
-            this.tableLayoutPanel8.Controls.Add(this.simpleButton2, 1, 0);
-            this.tableLayoutPanel8.Controls.Add(this.simpleButton1, 0, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_StartCounting, 4, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_AddLocation, 3, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_AddEmployee, 2, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_AssignInventoryToEmployee, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.btn_AddInventory, 0, 0);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel8.Location = new System.Drawing.Point(2, 22);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
@@ -362,62 +362,67 @@
             this.tableLayoutPanel8.Size = new System.Drawing.Size(965, 61);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
-            // simpleButton5
+            // btn_StartCounting
             // 
-            this.simpleButton5.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(122)))));
-            this.simpleButton5.Appearance.Options.UseBackColor = true;
-            this.simpleButton5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton5.Location = new System.Drawing.Point(775, 3);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(187, 55);
-            this.simpleButton5.TabIndex = 4;
-            this.simpleButton5.Text = "Hızlı Sayım Başlat";
+            this.btn_StartCounting.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(122)))));
+            this.btn_StartCounting.Appearance.Options.UseBackColor = true;
+            this.btn_StartCounting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_StartCounting.Location = new System.Drawing.Point(775, 3);
+            this.btn_StartCounting.Name = "btn_StartCounting";
+            this.btn_StartCounting.Size = new System.Drawing.Size(187, 55);
+            this.btn_StartCounting.TabIndex = 4;
+            this.btn_StartCounting.Text = "Hızlı Sayım Başlat";
+            this.btn_StartCounting.Click += new System.EventHandler(this.btn_StartCounting_Click);
             // 
-            // simpleButton4
+            // btn_AddLocation
             // 
-            this.simpleButton4.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.simpleButton4.Appearance.Options.UseBackColor = true;
-            this.simpleButton4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton4.Location = new System.Drawing.Point(582, 3);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(187, 55);
-            this.simpleButton4.TabIndex = 3;
-            this.simpleButton4.Text = "Lokasyon Ekle";
+            this.btn_AddLocation.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.btn_AddLocation.Appearance.Options.UseBackColor = true;
+            this.btn_AddLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AddLocation.Location = new System.Drawing.Point(582, 3);
+            this.btn_AddLocation.Name = "btn_AddLocation";
+            this.btn_AddLocation.Size = new System.Drawing.Size(187, 55);
+            this.btn_AddLocation.TabIndex = 3;
+            this.btn_AddLocation.Text = "Lokasyon Ekle";
+            this.btn_AddLocation.Click += new System.EventHandler(this.btn_AddLocation_Click);
             // 
-            // simpleButton3
+            // btn_AddEmployee
             // 
-            this.simpleButton3.Appearance.BackColor = System.Drawing.Color.ForestGreen;
-            this.simpleButton3.Appearance.ForeColor = System.Drawing.Color.White;
-            this.simpleButton3.Appearance.Options.UseBackColor = true;
-            this.simpleButton3.Appearance.Options.UseForeColor = true;
-            this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton3.Location = new System.Drawing.Point(389, 3);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(187, 55);
-            this.simpleButton3.TabIndex = 2;
-            this.simpleButton3.Text = "Çalışan Ekle";
+            this.btn_AddEmployee.Appearance.BackColor = System.Drawing.Color.ForestGreen;
+            this.btn_AddEmployee.Appearance.ForeColor = System.Drawing.Color.White;
+            this.btn_AddEmployee.Appearance.Options.UseBackColor = true;
+            this.btn_AddEmployee.Appearance.Options.UseForeColor = true;
+            this.btn_AddEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AddEmployee.Location = new System.Drawing.Point(389, 3);
+            this.btn_AddEmployee.Name = "btn_AddEmployee";
+            this.btn_AddEmployee.Size = new System.Drawing.Size(187, 55);
+            this.btn_AddEmployee.TabIndex = 2;
+            this.btn_AddEmployee.Text = "Çalışan Ekle";
+            this.btn_AddEmployee.Click += new System.EventHandler(this.btn_AddEmployee_Click);
             // 
-            // simpleButton2
+            // btn_AssignInventoryToEmployee
             // 
-            this.simpleButton2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
-            this.simpleButton2.Appearance.Options.UseBackColor = true;
-            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton2.Location = new System.Drawing.Point(196, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(187, 55);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "Demirbaş Atama";
+            this.btn_AssignInventoryToEmployee.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
+            this.btn_AssignInventoryToEmployee.Appearance.Options.UseBackColor = true;
+            this.btn_AssignInventoryToEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AssignInventoryToEmployee.Location = new System.Drawing.Point(196, 3);
+            this.btn_AssignInventoryToEmployee.Name = "btn_AssignInventoryToEmployee";
+            this.btn_AssignInventoryToEmployee.Size = new System.Drawing.Size(187, 55);
+            this.btn_AssignInventoryToEmployee.TabIndex = 1;
+            this.btn_AssignInventoryToEmployee.Text = "Demirbaş Atama";
+            this.btn_AssignInventoryToEmployee.Click += new System.EventHandler(this.btn_AssignInventoryToEmployee_Click);
             // 
-            // simpleButton1
+            // btn_AddInventory
             // 
-            this.simpleButton1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(165)))), ((int)(((byte)(233)))));
-            this.simpleButton1.Appearance.Options.UseBackColor = true;
-            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton1.Location = new System.Drawing.Point(3, 3);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(187, 55);
-            this.simpleButton1.TabIndex = 0;
-            this.simpleButton1.Text = "Demirbaş Ekle";
+            this.btn_AddInventory.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(165)))), ((int)(((byte)(233)))));
+            this.btn_AddInventory.Appearance.Options.UseBackColor = true;
+            this.btn_AddInventory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AddInventory.Location = new System.Drawing.Point(3, 3);
+            this.btn_AddInventory.Name = "btn_AddInventory";
+            this.btn_AddInventory.Size = new System.Drawing.Size(187, 55);
+            this.btn_AddInventory.TabIndex = 0;
+            this.btn_AddInventory.Text = "Demirbaş Ekle";
+            this.btn_AddInventory.Click += new System.EventHandler(this.btn_AddInventory_Click);
             // 
             // tableLayoutPanel7
             // 
@@ -445,7 +450,7 @@
             // 
             // groupControl12
             // 
-            this.groupControl12.Controls.Add(this.labelControl6);
+            this.groupControl12.Controls.Add(this.lbl_TotalEmployeeCount);
             this.groupControl12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl12.Location = new System.Drawing.Point(808, 3);
             this.groupControl12.Name = "groupControl12";
@@ -453,25 +458,25 @@
             this.groupControl12.TabIndex = 5;
             this.groupControl12.Text = "Toplam Çalışan";
             // 
-            // labelControl6
+            // lbl_TotalEmployeeCount
             // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl6.Appearance.Options.UseFont = true;
-            this.labelControl6.Appearance.Options.UseForeColor = true;
-            this.labelControl6.Appearance.Options.UseTextOptions = true;
-            this.labelControl6.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl6.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl6.Location = new System.Drawing.Point(2, 22);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(154, 108);
-            this.labelControl6.TabIndex = 1;
-            this.labelControl6.Text = "0";
+            this.lbl_TotalEmployeeCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_TotalEmployeeCount.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_TotalEmployeeCount.Appearance.Options.UseFont = true;
+            this.lbl_TotalEmployeeCount.Appearance.Options.UseForeColor = true;
+            this.lbl_TotalEmployeeCount.Appearance.Options.UseTextOptions = true;
+            this.lbl_TotalEmployeeCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_TotalEmployeeCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_TotalEmployeeCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_TotalEmployeeCount.Location = new System.Drawing.Point(2, 22);
+            this.lbl_TotalEmployeeCount.Name = "lbl_TotalEmployeeCount";
+            this.lbl_TotalEmployeeCount.Size = new System.Drawing.Size(154, 108);
+            this.lbl_TotalEmployeeCount.TabIndex = 1;
+            this.lbl_TotalEmployeeCount.Text = "0";
             // 
             // groupControl11
             // 
-            this.groupControl11.Controls.Add(this.labelControl5);
+            this.groupControl11.Controls.Add(this.lbl_EmbezzlementInventoryRatio);
             this.groupControl11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl11.Location = new System.Drawing.Point(647, 3);
             this.groupControl11.Name = "groupControl11";
@@ -479,51 +484,51 @@
             this.groupControl11.TabIndex = 4;
             this.groupControl11.Text = "Zimmetli Demirbaş Oranı";
             // 
-            // labelControl5
+            // lbl_EmbezzlementInventoryRatio
             // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl5.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl5.Appearance.Options.UseFont = true;
-            this.labelControl5.Appearance.Options.UseForeColor = true;
-            this.labelControl5.Appearance.Options.UseTextOptions = true;
-            this.labelControl5.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl5.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl5.Location = new System.Drawing.Point(2, 22);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(151, 108);
-            this.labelControl5.TabIndex = 1;
-            this.labelControl5.Text = "0";
+            this.lbl_EmbezzlementInventoryRatio.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_EmbezzlementInventoryRatio.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_EmbezzlementInventoryRatio.Appearance.Options.UseFont = true;
+            this.lbl_EmbezzlementInventoryRatio.Appearance.Options.UseForeColor = true;
+            this.lbl_EmbezzlementInventoryRatio.Appearance.Options.UseTextOptions = true;
+            this.lbl_EmbezzlementInventoryRatio.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_EmbezzlementInventoryRatio.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_EmbezzlementInventoryRatio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_EmbezzlementInventoryRatio.Location = new System.Drawing.Point(2, 22);
+            this.lbl_EmbezzlementInventoryRatio.Name = "lbl_EmbezzlementInventoryRatio";
+            this.lbl_EmbezzlementInventoryRatio.Size = new System.Drawing.Size(151, 108);
+            this.lbl_EmbezzlementInventoryRatio.TabIndex = 1;
+            this.lbl_EmbezzlementInventoryRatio.Text = "0";
             // 
             // groupControl10
             // 
-            this.groupControl10.Controls.Add(this.labelControl4);
+            this.groupControl10.Controls.Add(this.lbl_MaintenanceDateUpcomingCount);
             this.groupControl10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl10.Location = new System.Drawing.Point(486, 3);
             this.groupControl10.Name = "groupControl10";
             this.groupControl10.Size = new System.Drawing.Size(155, 132);
             this.groupControl10.TabIndex = 3;
-            this.groupControl10.Text = "Kalibrasyon Bekleyen";
+            this.groupControl10.Text = "Bakım Tarihi Yaklaşan";
             // 
-            // labelControl4
+            // lbl_MaintenanceDateUpcomingCount
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl4.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl4.Appearance.Options.UseFont = true;
-            this.labelControl4.Appearance.Options.UseForeColor = true;
-            this.labelControl4.Appearance.Options.UseTextOptions = true;
-            this.labelControl4.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl4.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl4.Location = new System.Drawing.Point(2, 22);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(151, 108);
-            this.labelControl4.TabIndex = 1;
-            this.labelControl4.Text = "0";
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.Options.UseFont = true;
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.Options.UseForeColor = true;
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.Options.UseTextOptions = true;
+            this.lbl_MaintenanceDateUpcomingCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_MaintenanceDateUpcomingCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_MaintenanceDateUpcomingCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_MaintenanceDateUpcomingCount.Location = new System.Drawing.Point(2, 22);
+            this.lbl_MaintenanceDateUpcomingCount.Name = "lbl_MaintenanceDateUpcomingCount";
+            this.lbl_MaintenanceDateUpcomingCount.Size = new System.Drawing.Size(151, 108);
+            this.lbl_MaintenanceDateUpcomingCount.TabIndex = 1;
+            this.lbl_MaintenanceDateUpcomingCount.Text = "0";
             // 
             // groupControl9
             // 
-            this.groupControl9.Controls.Add(this.labelControl3);
+            this.groupControl9.Controls.Add(this.lbl_CalibrationDateUpcomingCount);
             this.groupControl9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl9.Location = new System.Drawing.Point(325, 3);
             this.groupControl9.Name = "groupControl9";
@@ -531,25 +536,25 @@
             this.groupControl9.TabIndex = 2;
             this.groupControl9.Text = "Kalibrasyonu Yaklaşan";
             // 
-            // labelControl3
+            // lbl_CalibrationDateUpcomingCount
             // 
-            this.labelControl3.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl3.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Appearance.Options.UseForeColor = true;
-            this.labelControl3.Appearance.Options.UseTextOptions = true;
-            this.labelControl3.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl3.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl3.Location = new System.Drawing.Point(2, 22);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(151, 108);
-            this.labelControl3.TabIndex = 1;
-            this.labelControl3.Text = "0";
+            this.lbl_CalibrationDateUpcomingCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_CalibrationDateUpcomingCount.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_CalibrationDateUpcomingCount.Appearance.Options.UseFont = true;
+            this.lbl_CalibrationDateUpcomingCount.Appearance.Options.UseForeColor = true;
+            this.lbl_CalibrationDateUpcomingCount.Appearance.Options.UseTextOptions = true;
+            this.lbl_CalibrationDateUpcomingCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_CalibrationDateUpcomingCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_CalibrationDateUpcomingCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_CalibrationDateUpcomingCount.Location = new System.Drawing.Point(2, 22);
+            this.lbl_CalibrationDateUpcomingCount.Name = "lbl_CalibrationDateUpcomingCount";
+            this.lbl_CalibrationDateUpcomingCount.Size = new System.Drawing.Size(151, 108);
+            this.lbl_CalibrationDateUpcomingCount.TabIndex = 1;
+            this.lbl_CalibrationDateUpcomingCount.Text = "0";
             // 
             // groupControl8
             // 
-            this.groupControl8.Controls.Add(this.labelControl1);
+            this.groupControl8.Controls.Add(this.lbl_ExpirationDateUpcomingCount);
             this.groupControl8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl8.Location = new System.Drawing.Point(164, 3);
             this.groupControl8.Name = "groupControl8";
@@ -557,25 +562,25 @@
             this.groupControl8.TabIndex = 1;
             this.groupControl8.Text = "SKT Yaklaşan";
             // 
-            // labelControl1
+            // lbl_ExpirationDateUpcomingCount
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl1.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Appearance.Options.UseForeColor = true;
-            this.labelControl1.Appearance.Options.UseTextOptions = true;
-            this.labelControl1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl1.Location = new System.Drawing.Point(2, 22);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(151, 108);
-            this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "0";
+            this.lbl_ExpirationDateUpcomingCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_ExpirationDateUpcomingCount.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_ExpirationDateUpcomingCount.Appearance.Options.UseFont = true;
+            this.lbl_ExpirationDateUpcomingCount.Appearance.Options.UseForeColor = true;
+            this.lbl_ExpirationDateUpcomingCount.Appearance.Options.UseTextOptions = true;
+            this.lbl_ExpirationDateUpcomingCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_ExpirationDateUpcomingCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_ExpirationDateUpcomingCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_ExpirationDateUpcomingCount.Location = new System.Drawing.Point(2, 22);
+            this.lbl_ExpirationDateUpcomingCount.Name = "lbl_ExpirationDateUpcomingCount";
+            this.lbl_ExpirationDateUpcomingCount.Size = new System.Drawing.Size(151, 108);
+            this.lbl_ExpirationDateUpcomingCount.TabIndex = 1;
+            this.lbl_ExpirationDateUpcomingCount.Text = "0";
             // 
             // groupControl7
             // 
-            this.groupControl7.Controls.Add(this.labelControl2);
+            this.groupControl7.Controls.Add(this.lbl_ActiveInventoryCount);
             this.groupControl7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupControl7.Location = new System.Drawing.Point(3, 3);
             this.groupControl7.Name = "groupControl7";
@@ -583,21 +588,21 @@
             this.groupControl7.TabIndex = 0;
             this.groupControl7.Text = "Aktif Demirbaş";
             // 
-            // labelControl2
+            // lbl_ActiveInventoryCount
             // 
-            this.labelControl2.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
-            this.labelControl2.Appearance.ForeColor = System.Drawing.Color.Green;
-            this.labelControl2.Appearance.Options.UseFont = true;
-            this.labelControl2.Appearance.Options.UseForeColor = true;
-            this.labelControl2.Appearance.Options.UseTextOptions = true;
-            this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.labelControl2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl2.Location = new System.Drawing.Point(2, 22);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(151, 108);
-            this.labelControl2.TabIndex = 1;
-            this.labelControl2.Text = "0";
+            this.lbl_ActiveInventoryCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lbl_ActiveInventoryCount.Appearance.ForeColor = System.Drawing.Color.Green;
+            this.lbl_ActiveInventoryCount.Appearance.Options.UseFont = true;
+            this.lbl_ActiveInventoryCount.Appearance.Options.UseForeColor = true;
+            this.lbl_ActiveInventoryCount.Appearance.Options.UseTextOptions = true;
+            this.lbl_ActiveInventoryCount.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.lbl_ActiveInventoryCount.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lbl_ActiveInventoryCount.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_ActiveInventoryCount.Location = new System.Drawing.Point(2, 22);
+            this.lbl_ActiveInventoryCount.Name = "lbl_ActiveInventoryCount";
+            this.lbl_ActiveInventoryCount.Size = new System.Drawing.Size(151, 108);
+            this.lbl_ActiveInventoryCount.TabIndex = 1;
+            this.lbl_ActiveInventoryCount.Text = "0";
             // 
             // DashboardForm
             // 
@@ -684,23 +689,23 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gridView_UpcomingMaintenances;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
-        private DevExpress.XtraEditors.SimpleButton simpleButton5;
-        private DevExpress.XtraEditors.SimpleButton simpleButton4;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btn_StartCounting;
+        private DevExpress.XtraEditors.SimpleButton btn_AddLocation;
+        private DevExpress.XtraEditors.SimpleButton btn_AddEmployee;
+        private DevExpress.XtraEditors.SimpleButton btn_AssignInventoryToEmployee;
+        private DevExpress.XtraEditors.SimpleButton btn_AddInventory;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private DevExpress.XtraEditors.GroupControl groupControl12;
-        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.LabelControl lbl_TotalEmployeeCount;
         private DevExpress.XtraEditors.GroupControl groupControl11;
-        private DevExpress.XtraEditors.LabelControl labelControl5;
+        private DevExpress.XtraEditors.LabelControl lbl_EmbezzlementInventoryRatio;
         private DevExpress.XtraEditors.GroupControl groupControl10;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.LabelControl lbl_MaintenanceDateUpcomingCount;
         private DevExpress.XtraEditors.GroupControl groupControl9;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl lbl_CalibrationDateUpcomingCount;
         private DevExpress.XtraEditors.GroupControl groupControl8;
-        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lbl_ExpirationDateUpcomingCount;
         private DevExpress.XtraEditors.GroupControl groupControl7;
-        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.LabelControl lbl_ActiveInventoryCount;
     }
 }

@@ -3,14 +3,14 @@ using weEnvanter.Domain.Entities;
 
 namespace weEnvanter.Data.Configurations
 {
-    public class MaintenanceRecordConfiguration : EntityTypeConfiguration<MaintenanceRecord>
+    public class MaintenanceConfiguration : EntityTypeConfiguration<Maintenance>
     {
-        public MaintenanceRecordConfiguration()
+        public MaintenanceConfiguration()
         {
-            ToTable("MaintenanceRecords");
+            ToTable("Maintenances");
 
             HasRequired(m => m.Inventory)
-                .WithMany(i => i.MaintenanceRecords)
+                .WithMany(i => i.Maintenances)
                 .HasForeignKey(m => m.InventoryId)
                 .WillCascadeOnDelete(false);
 

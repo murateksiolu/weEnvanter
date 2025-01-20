@@ -143,7 +143,7 @@ namespace weEnvanter.UI.Forms.InventoryCategoryForms
             {
                 try
                 {
-                    using (var inventoryListForm = new InventoryListForm(_inventoryService))
+                    using (var inventoryListForm = new InventoryListForm())
                     {
                         // TODO: InventoryListForm'a FilterByCategory metodu eklenecek
                         //inventoryListForm.FilterByCategory(selectedRow.Id);

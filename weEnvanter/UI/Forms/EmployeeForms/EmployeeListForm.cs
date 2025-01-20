@@ -155,7 +155,7 @@ namespace weEnvanter.UI.Forms.EmployeeForms
             {
                 try
                 {
-                    using (var inventoryListForm = new InventoryListForm(_inventoryService))
+                    using (var inventoryListForm = new InventoryListForm())
                     {
                         // TODO: Burası da yapılacak.
                         //inventoryListForm.FilterByEmployee(selectedRow.Id);

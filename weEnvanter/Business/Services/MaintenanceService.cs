@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Data.Repositories.Interfaces;
@@ -61,7 +62,7 @@ namespace weEnvanter.Business.Services
 
         public async Task<List<Maintenance>> GetPendingMaintenanceAsync()
         {
-            return await _maintenanceRepository.GetByStatusAsync(MaintenanceStatus.Pending);
+            return await _maintenanceRepository.GetPendingMaintenanceAsync();
         }
 
         public async Task<bool> StartMaintenanceAsync(int inventoryId, string description)
@@ -183,6 +184,32 @@ namespace weEnvanter.Business.Services
                 return false;
 
             return true;
+        }
+
+        // Dashboard için eklenen metodlar
+        public int GetUpcomingMaintenanceCount(int days)
+        {
+            var targetDate = DateTime.Now.AddDays(days);
+            return _inventoryRepository.GetAllAsync().Result
+                .Count(x => x.IsActive && x.NextMaintenanceDate.HasValue && 
+                      x.NextMaintenanceDate.Value <= targetDate && 
+                      x.NextMaintenanceDate.Value > DateTime.Now);
+        }
+
+        public List<Maintenance> GetUpcomingMaintenances(int days)
+        {
+            var targetDate = DateTime.Now.AddDays(days);
+            var inventories = _inventoryRepository.GetAllAsync().Result
+                .Where(x => x.IsActive && x.NextMaintenanceDate.HasValue && 
+                      x.NextMaintenanceDate.Value <= targetDate && 
+                      x.NextMaintenanceDate.Value > DateTime.Now)
+                .Select(x => x.Id)
+                .ToList();
+
+            return _maintenanceRepository.GetAllAsync().Result
+                .Where(x => inventories.Contains(x.InventoryId) && x.Status == MaintenanceStatus.InProgress)
+                .OrderBy(x => x.StartDate)
+                .ToList();
         }
     }
 } 

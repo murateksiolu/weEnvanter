@@ -31,5 +31,15 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<bool> CanBeDeletedAsync(int inventoryId);
         Task<bool> CanBeAssignedAsync(int inventoryId);
         Task<bool> CanBeMaintenancedAsync(int inventoryId);
+
+        // Dashboard için eklenen metodlar
+        int GetActiveInventoryCount();
+        int GetUpcomingExpirationCount(int days);
+        int GetUpcomingCalibrationCount(int days);
+        int GetAssignedInventoryCount();
+        List<Inventory> GetUpcomingCalibrations(int days);
+        List<Inventory> GetUpcomingExpirations(int days);
+        List<Inventory> GetLastAddedInventories(int count);
+        List<Inventory> GetLastAssignedInventories(int count);
     }
 } 

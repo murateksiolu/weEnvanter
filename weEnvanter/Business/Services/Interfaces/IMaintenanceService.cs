@@ -17,5 +17,9 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<bool> CanBeDeletedAsync(int maintenanceId);
         Task<bool> CanBeCompletedAsync(int maintenanceId);
         Task<bool> CanBeCanceledAsync(int maintenanceId);
+
+        // Dashboard için eklenen metodlar
+        int GetUpcomingMaintenanceCount(int days);
+        List<Maintenance> GetUpcomingMaintenances(int days);
     }
 } 

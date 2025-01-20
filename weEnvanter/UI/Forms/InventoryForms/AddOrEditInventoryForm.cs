@@ -15,7 +15,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
 {
     public partial class AddOrEditInventoryForm : DevExpress.XtraEditors.XtraForm
     {
-        public AddOrEditInventoryForm(IInventoryService inventoryService, OperationType operationType,int? inventoryId = 0)
+        public AddOrEditInventoryForm(OperationType operationType,int? inventoryId = 0)
         {
             InitializeComponent();
         }

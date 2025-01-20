@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
@@ -12,10 +13,10 @@ namespace weEnvanter.UI.Forms.AuthForms
         private readonly IUserService _userService;
         private readonly int _currentUserId; // Yeni field ekleyelim
 
-        public ChangePassForm(IUserService userService, int currentUserId) // Constructor'ı güncelleyelim
+        public ChangePassForm(int currentUserId) // Constructor'ı güncelleyelim
         {
             InitializeComponent();
-            _userService = userService;
+            _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
             _currentUserId = currentUserId;
         }
 

@@ -12,5 +12,8 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<List<Inventory>> GetAssignedInventoriesAsync(int employeeId);
         Task<bool> HasAssignedInventoriesAsync(int employeeId);
         Task<bool> CanBeDeletedAsync(int employeeId);
+
+        // Dashboard için eklenen metodlar
+        int GetActiveEmployeeCount();
     }
 } 

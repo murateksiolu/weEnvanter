@@ -10,6 +10,7 @@ using weEnvanter.Core.Helpers;
 using DevExpress.XtraBars.ToastNotifications;
 using static weEnvanter.Core.Helpers.ToastNotificationHelper;
 using weEnvanter.Domain.Enums;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace weEnvanter.UI.Forms.InventoryForms
 {
@@ -18,10 +19,10 @@ namespace weEnvanter.UI.Forms.InventoryForms
         private readonly IInventoryService _inventoryService;
         private readonly ToastNotificationsManager _toastNotificationsManager;
 
-        public InventoryListForm(IInventoryService inventoryService)
+        public InventoryListForm()
         {
             InitializeComponent();
-            _inventoryService = inventoryService;
+            _inventoryService = Program.ServiceProvider.GetRequiredService<IInventoryService>();
 
             // Toast Notification Manager'ı başlat
             _toastNotificationsManager = ToastNotificationHelper.CreateManager(components);
@@ -36,7 +37,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
         {
             try
             {
-                using (var addInventoryForm = new AddOrEditInventoryForm(_inventoryService,OperationType.Add))
+                using (var addInventoryForm = new AddOrEditInventoryForm(OperationType.Add))
                 {
                     if (addInventoryForm.ShowDialog() == DialogResult.OK)
                     {
@@ -96,7 +97,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             {
                 try
                 {
-                    using (var editForm = new AddOrEditInventoryForm(_inventoryService,OperationType.Update,selectedRow.Id))
+                    using (var editForm = new AddOrEditInventoryForm(OperationType.Update,selectedRow.Id))
                     {
                         if (editForm.ShowDialog() == DialogResult.OK)
                         {
@@ -150,7 +151,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             {
                 try
                 {
-                    using (var embezzlementForm = new InventoryEmbezzlementForm(selectedRow.Id))
+                    using (var embezzlementForm = new AssignInventoryToEmployeeForm(selectedRow.Id))
                     {
                         if (embezzlementForm.ShowDialog() == DialogResult.OK)
                         {
@@ -196,7 +197,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             Inventory selectedRow = gridView1.GetFocusedRow() as Inventory;
             if (selectedRow != null)
             {
-                var historyForm = new InventoryEmbezzlementHistoryForm(selectedRow.Id);
+                var historyForm = new InventoryAssignmentHistoryForm(selectedRow.Id);
                 historyForm.ShowDialog();
             }
         }

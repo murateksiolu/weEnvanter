@@ -128,10 +128,12 @@
     <Compile Include="Business\Services\Interfaces\IInventoryCategoryService.cs" />
     <Compile Include="Business\Services\Interfaces\IInventoryService.cs" />
     <Compile Include="Business\Services\Interfaces\IMaintenanceService.cs" />
+    <Compile Include="Business\Services\Interfaces\ISystemLogService.cs" />
     <Compile Include="Business\Services\Interfaces\IUserService.cs" />
     <Compile Include="Business\Services\InventoryCategoryService.cs" />
     <Compile Include="Business\Services\InventoryService.cs" />
     <Compile Include="Business\Services\MaintenanceService.cs" />
+    <Compile Include="Business\Services\SystemLogService.cs" />
     <Compile Include="Business\Services\UserService.cs" />
     <Compile Include="Business\Validation\EmployeeValidators.cs" />
     <Compile Include="Business\Validation\UserValidators.cs" />
@@ -146,7 +148,7 @@
     <Compile Include="Data\Configurations\InventoryAssignmentConfiguration.cs" />
     <Compile Include="Data\Configurations\InventoryCategoryConfiguration.cs" />
     <Compile Include="Data\Configurations\InventoryConfiguration.cs" />
-    <Compile Include="Data\Configurations\MaintenanceRecordConfiguration.cs" />
+    <Compile Include="Data\Configurations\MaintenanceConfiguration.cs" />
     <Compile Include="Data\Configurations\UserConfiguration.cs" />
     <Compile Include="Data\Repositories\BaseRepository.cs" />
     <Compile Include="Data\Repositories\DepartmentRepository.cs" />
@@ -157,10 +159,12 @@
     <Compile Include="Data\Repositories\Interfaces\IInventoryCategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IInventoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IMaintenanceRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\ISystemLogRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IUserRepository.cs" />
     <Compile Include="Data\Repositories\InventoryCategoryRepository.cs" />
     <Compile Include="Data\Repositories\InventoryRepository.cs" />
     <Compile Include="Data\Repositories\MaintenanceRepository.cs" />
+    <Compile Include="Data\Repositories\SystemLogRepository.cs" />
     <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Data\WeEnvanterDbContext.cs" />
     <Compile Include="Domain\Common\BaseEntity.cs" />
@@ -170,7 +174,6 @@
     <Compile Include="Domain\Entities\InventoryAssignment.cs" />
     <Compile Include="Domain\Entities\InventoryCategory.cs" />
     <Compile Include="Domain\Entities\Maintenance.cs" />
-    <Compile Include="Domain\Entities\MaintenanceRecord.cs" />
     <Compile Include="Domain\Entities\SystemLog.cs" />
     <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="Domain\Enums\InventoryStatus.cs" />
@@ -241,17 +244,17 @@
     <Compile Include="UI\Forms\InventoryForms\AddOrEditInventoryForm.Designer.cs">
       <DependentUpon>AddOrEditInventoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementForm.cs">
+    <Compile Include="UI\Forms\InventoryForms\AssignInventoryToEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementForm.Designer.cs">
-      <DependentUpon>InventoryEmbezzlementForm.cs</DependentUpon>
+    <Compile Include="UI\Forms\InventoryForms\AssignInventoryToEmployeeForm.Designer.cs">
+      <DependentUpon>AssignInventoryToEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementHistoryForm.cs">
+    <Compile Include="UI\Forms\InventoryForms\InventoryAssignmentHistoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementHistoryForm.Designer.cs">
-      <DependentUpon>InventoryEmbezzlementHistoryForm.cs</DependentUpon>
+    <Compile Include="UI\Forms\InventoryForms\InventoryAssignmentHistoryForm.Designer.cs">
+      <DependentUpon>InventoryAssignmentHistoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\InventoryForms\InventoryListForm.cs">
       <SubType>Form</SubType>

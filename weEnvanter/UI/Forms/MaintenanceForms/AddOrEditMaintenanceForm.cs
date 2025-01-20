@@ -15,7 +15,7 @@ namespace weEnvanter.UI.Forms.MaintenanceForms
 {
     public partial class AddOrEditMaintenanceForm : DevExpress.XtraEditors.XtraForm
     {
-        public AddOrEditMaintenanceForm(IMaintenanceService maintenanceService, OperationType operationType,int id = 0 )
+        public AddOrEditMaintenanceForm(OperationType operationType,int id = 0 )
         {
             InitializeComponent();
         }

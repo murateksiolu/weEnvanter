@@ -62,6 +62,8 @@ namespace weEnvanter.UI.Forms.MainForms
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_Dashboard = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -85,9 +87,10 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_Settings,
             this.btn_ChangePassword,
             this.btn_Exit,
-            this.barButtonItem1});
+            this.barButtonItem1,
+            this.btn_Dashboard});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 18;
+            this.ribbon.MaxItemId = 19;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowQuickAccessToolbarItem = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -130,13 +133,17 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             this.btn_NewInventory.Caption = "Yeni Envanter";
             this.btn_NewInventory.Id = 5;
+            this.btn_NewInventory.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_NewInventory.ImageOptions.SvgImage")));
             this.btn_NewInventory.Name = "btn_NewInventory";
+            this.btn_NewInventory.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_NewInventory_ItemClick);
             // 
             // btn_InventoryList
             // 
             this.btn_InventoryList.Caption = "Envanter Listesi";
             this.btn_InventoryList.Id = 6;
+            this.btn_InventoryList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_InventoryList.ImageOptions.SvgImage")));
             this.btn_InventoryList.Name = "btn_InventoryList";
+            this.btn_InventoryList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_InventoryList_ItemClick);
             // 
             // btn_EmployeeList
             // 
@@ -150,13 +157,17 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             this.btn_NewMaintenance.Caption = "Yeni Bakım Kaydı";
             this.btn_NewMaintenance.Id = 9;
+            this.btn_NewMaintenance.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_NewMaintenance.ImageOptions.SvgImage")));
             this.btn_NewMaintenance.Name = "btn_NewMaintenance";
+            this.btn_NewMaintenance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_NewMaintenance_ItemClick);
             // 
             // btn_MaintenanceList
             // 
             this.btn_MaintenanceList.Caption = "Bakım Listesi";
             this.btn_MaintenanceList.Id = 10;
+            this.btn_MaintenanceList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_MaintenanceList.ImageOptions.SvgImage")));
             this.btn_MaintenanceList.Name = "btn_MaintenanceList";
+            this.btn_MaintenanceList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_MaintenanceList_ItemClick);
             // 
             // btn_InventoryCategories
             // 
@@ -214,6 +225,7 @@ namespace weEnvanter.UI.Forms.MainForms
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup7,
             this.ribbonPageGroup1,
             this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
@@ -308,6 +320,19 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
+            // ribbonPageGroup7
+            // 
+            this.ribbonPageGroup7.ItemLinks.Add(this.btn_Dashboard);
+            this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            // 
+            // btn_Dashboard
+            // 
+            this.btn_Dashboard.Caption = "Dashboard";
+            this.btn_Dashboard.Id = 18;
+            this.btn_Dashboard.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.btn_Dashboard.Name = "btn_Dashboard";
+            this.btn_Dashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Dashboard_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,5 +389,7 @@ namespace weEnvanter.UI.Forms.MainForms
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btn_Dashboard;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
     }
 }
