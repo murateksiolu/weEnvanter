@@ -44,6 +44,7 @@
     <Reference Include="DevExpress.Data.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Dialogs.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v23.1.Core, Version=23.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -114,6 +115,7 @@
     <Compile Include="Business\DTOs\DepartmentDtos.cs" />
     <Compile Include="Business\DTOs\EmployeeDtos.cs" />
     <Compile Include="Business\DTOs\InventoryAssignmentDtos.cs" />
+    <Compile Include="Business\DTOs\InventoryAssignmentHistoryDto.cs" />
     <Compile Include="Business\DTOs\InventoryCategoryDtos.cs" />
     <Compile Include="Business\DTOs\InventoryDtos.cs" />
     <Compile Include="Business\DTOs\MaintenanceRecordDtos.cs" />
@@ -125,11 +127,13 @@
     <Compile Include="Business\Services\Interfaces\IBaseService.cs" />
     <Compile Include="Business\Services\Interfaces\IDepartmentService.cs" />
     <Compile Include="Business\Services\Interfaces\IEmployeeService.cs" />
+    <Compile Include="Business\Services\Interfaces\IInventoryAssignmentService.cs" />
     <Compile Include="Business\Services\Interfaces\IInventoryCategoryService.cs" />
     <Compile Include="Business\Services\Interfaces\IInventoryService.cs" />
     <Compile Include="Business\Services\Interfaces\IMaintenanceService.cs" />
     <Compile Include="Business\Services\Interfaces\ISystemLogService.cs" />
     <Compile Include="Business\Services\Interfaces\IUserService.cs" />
+    <Compile Include="Business\Services\InventoryAssignmentService.cs" />
     <Compile Include="Business\Services\InventoryCategoryService.cs" />
     <Compile Include="Business\Services\InventoryService.cs" />
     <Compile Include="Business\Services\MaintenanceService.cs" />
@@ -156,11 +160,13 @@
     <Compile Include="Data\Repositories\Interfaces\IBaseRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IDepartmentRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IEmployeeRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IInventoryAssignmentRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IInventoryCategoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IInventoryRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IMaintenanceRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\ISystemLogRepository.cs" />
     <Compile Include="Data\Repositories\Interfaces\IUserRepository.cs" />
+    <Compile Include="Data\Repositories\InventoryAssignmentRepository.cs" />
     <Compile Include="Data\Repositories\InventoryCategoryRepository.cs" />
     <Compile Include="Data\Repositories\InventoryRepository.cs" />
     <Compile Include="Data\Repositories\MaintenanceRepository.cs" />
@@ -329,6 +335,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\InventoryCategoryForms\InventoryCategoryListForm.resx">
       <DependentUpon>InventoryCategoryListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\InventoryForms\AddOrEditInventoryForm.resx">
+      <DependentUpon>AddOrEditInventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\InventoryForms\AssignInventoryToEmployeeForm.resx">
+      <DependentUpon>AssignInventoryToEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\InventoryForms\InventoryAssignmentHistoryForm.resx">
+      <DependentUpon>InventoryAssignmentHistoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\InventoryForms\InventoryListForm.resx">
       <DependentUpon>InventoryListForm.cs</DependentUpon>

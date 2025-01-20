@@ -55,6 +55,7 @@ namespace weEnvanter
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IInventoryRepository, InventoryRepository>();
+            services.AddScoped<IInventoryAssignmentRepository, InventoryAssignmentRepository>();
             services.AddScoped<IInventoryCategoryRepository, InventoryCategoryRepository>();
             services.AddScoped<IMaintenanceRepository, MaintenanceRepository>();
             services.AddScoped<ISystemLogRepository, SystemLogRepository>();
@@ -64,6 +65,7 @@ namespace weEnvanter
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<IInventoryAssignmentService, InventoryAssignmentService>();
             services.AddScoped<IInventoryCategoryService, InventoryCategoryService>();
             services.AddScoped<IMaintenanceService, MaintenanceService>();
             services.AddScoped<ISystemLogService, SystemLogService>();

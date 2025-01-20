@@ -215,35 +215,6 @@ namespace weEnvanter.UI.Forms.MainForms
             }
         }
 
-        private void gridView_UpcomingCalibrations_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
-
-        private void gridView_UpcomingMaintenances_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
-
-        private void gridView_UpcomingExpirations_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
-
-        private void gridView_LastAddedAssets_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
-
-        private void gridViewLastAssignedAssets_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
-
-        private void gridView_LastActions_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
-        {
-            GridControlHelper.CustomDrawEmptyForeground(sender, e);
-        }
 
        
     }

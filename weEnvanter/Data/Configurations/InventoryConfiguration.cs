@@ -14,11 +14,6 @@ namespace weEnvanter.Data.Configurations
                 .HasForeignKey(i => i.InventoryCategoryId)
                 .WillCascadeOnDelete(false);
 
-            HasRequired(i => i.Department)
-                .WithMany()
-                .HasForeignKey(i => i.DepartmentId)
-                .WillCascadeOnDelete(false);
-
             HasOptional(i => i.AssignedEmployee)
                 .WithMany()
                 .HasForeignKey(i => i.AssignedEmployeeId)
@@ -32,11 +27,41 @@ namespace weEnvanter.Data.Configurations
                 .IsRequired()
                 .HasMaxLength(20);
 
+            Property(i => i.BarcodeNumber)
+                .HasMaxLength(50);
+
+            Property(i => i.QRCode)
+                .HasMaxLength(500);
+
             Property(i => i.Description)
                 .HasMaxLength(500);
 
+            Property(i => i.Location)
+                .HasMaxLength(100);
+
             Property(i => i.AssignmentNotes)
                 .HasMaxLength(500);
+
+            Property(i => i.SerialNumber)
+                .HasMaxLength(50);
+
+            Property(i => i.Brand)
+                .HasMaxLength(50);
+
+            Property(i => i.Model)
+                .HasMaxLength(50);
+
+            Property(i => i.Supplier)
+                .HasMaxLength(100);
+
+            Property(i => i.SupplierPhone)
+                .HasMaxLength(20);
+
+            Property(i => i.SupplierEmail)
+                .HasMaxLength(100);
+
+            Property(i => i.Notes)
+                .HasMaxLength(1000);
         }
     }
 } 

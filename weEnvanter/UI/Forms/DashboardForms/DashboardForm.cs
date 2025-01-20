@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using weEnvanter.Business.Services.Interfaces;
+using weEnvanter.Core.Helpers;
 using weEnvanter.Domain.Enums;
 using weEnvanter.UI.Forms.EmployeeForms;
 using weEnvanter.UI.Forms.InventoryForms;
@@ -136,6 +137,36 @@ namespace weEnvanter.UI.Forms.DashboardForms
             base.OnFormClosing(e);
             _refreshTimer.Stop();
             _refreshTimer.Dispose();
+        }
+
+        private void gridViewLastAssignedAssets_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
+        }
+
+        private void gridView_UpcomingMaintenances_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
+        }
+
+        private void gridView_UpcomingExpirations_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
+        }
+
+        private void gridView_UpcomingCalibrations_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
+        }
+
+        private void gridView_LastAddedAssets_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
+        }
+
+        private void gridView_LastActions_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)
+        {
+            GridControlHelper.CustomDrawEmptyForeground(sender, e);
         }
     }
 }

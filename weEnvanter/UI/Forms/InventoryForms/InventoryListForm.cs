@@ -84,9 +84,9 @@ namespace weEnvanter.UI.Forms.InventoryForms
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            if (e.Clicks == 2)
+            if (e.Button == MouseButtons.Right)
             {
-                bar_Edit_ItemClick(null, null);
+                popupMenu1.ShowPopup(Cursor.Position);
             }
         }
 

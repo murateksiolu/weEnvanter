@@ -9,6 +9,7 @@ namespace weEnvanter.Business.Services.Interfaces
     public interface IInventoryService : IBaseService<Inventory>
     {
         // Özel sorgular
+        Inventory GetById(int id);
         Task<List<Inventory>> GetByDepartmentAsync(int departmentId);
         Task<List<Inventory>> GetByEmployeeAsync(int employeeId);
         Task<List<Inventory>> GetByCategoryAsync(int inventoryCategoryId);
@@ -17,6 +18,7 @@ namespace weEnvanter.Business.Services.Interfaces
         // Zimmet işlemleri
         Task<bool> AssignToEmployeeAsync(int inventoryId, int employeeId, string notes = null);
         Task<bool> UnassignFromEmployeeAsync(int inventoryId, string notes = null);
+        Task<InventoryAssignment> AddAssignmentAsync(InventoryAssignment assignment);
         
         // Bakım işlemleri
         Task<bool> SendToMaintenanceAsync(int inventoryId, string description);

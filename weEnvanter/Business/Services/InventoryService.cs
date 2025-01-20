@@ -14,15 +14,18 @@ namespace weEnvanter.Business.Services
         private readonly IInventoryRepository _inventoryRepository;
         private readonly IEmployeeRepository _employeeRepository;
         private readonly IMaintenanceRepository _maintenanceRepository;
+        private readonly IInventoryAssignmentRepository _assignmentRepository;
 
         public InventoryService(
             IInventoryRepository inventoryRepository,
             IEmployeeRepository employeeRepository,
-            IMaintenanceRepository maintenanceRepository) : base(inventoryRepository)
+            IMaintenanceRepository maintenanceRepository,
+            IInventoryAssignmentRepository assignmentRepository) : base(inventoryRepository)
         {
             _inventoryRepository = inventoryRepository;
             _employeeRepository = employeeRepository;
             _maintenanceRepository = maintenanceRepository;
+            _assignmentRepository = assignmentRepository;
         }
 
         public override async Task<Inventory> AddAsync(Inventory inventory)
@@ -294,6 +297,32 @@ namespace weEnvanter.Business.Services
         public List<Inventory> GetLastAssignedInventories(int count)
         {
             return _inventoryRepository.GetLastAssignedInventoriesAsync(count).Result;
+        }
+
+        public async Task<InventoryAssignment> AddAssignmentAsync(InventoryAssignment assignment)
+        {
+            if (assignment == null)
+                throw new ArgumentNullException(nameof(assignment));
+
+            // Demirbaş kontrolü
+            var inventory = await GetByIdAsync(assignment.InventoryId);
+            if (inventory == null)
+                throw new ArgumentException("Demirbaş bulunamadı.");
+
+            // Çalışan kontrolü
+            var employee = await _employeeRepository.GetByIdAsync(assignment.EmployeeId);
+            if (employee == null)
+                throw new ArgumentException("Çalışan bulunamadı.");
+
+            assignment.CreatedDate = DateTime.Now;
+            assignment.IsActive = true;
+
+            return await _assignmentRepository.AddAsync(assignment);
+        }
+
+        public Inventory GetById(int id)
+        {
+            return _inventoryRepository.GetById(id);
         }
     }
 } 

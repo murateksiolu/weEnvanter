@@ -8,6 +8,7 @@ namespace weEnvanter.Data.Repositories.Interfaces
 {
     public interface IInventoryRepository : IBaseRepository<Inventory>
     {
+        Inventory GetById(int id);
         Task<List<Inventory>> GetByDepartmentAsync(int departmentId);
         Task<List<Inventory>> GetByEmployeeAsync(int employeeId);
         Task<List<Inventory>> GetByCategoryAsync(int inventoryCategoryId);

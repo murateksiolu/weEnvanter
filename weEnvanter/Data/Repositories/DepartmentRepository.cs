@@ -39,7 +39,7 @@ namespace weEnvanter.Data.Repositories
 
         public async Task<bool> HasInventoriesAsync(int departmentId)
         {
-            return await _context.Inventories.AnyAsync(x => x.DepartmentId == departmentId && !x.IsDeleted);
+            return await _context.Inventories.AnyAsync(x => !x.IsDeleted);
         }
     }
 } 

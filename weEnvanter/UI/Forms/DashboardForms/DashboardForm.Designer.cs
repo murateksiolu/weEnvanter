@@ -179,6 +179,7 @@
             this.gridView_LastAddedAssets.GridControl = this.gridControl_LastAddedAssets;
             this.gridView_LastAddedAssets.Name = "gridView_LastAddedAssets";
             this.gridView_LastAddedAssets.OptionsView.ShowGroupPanel = false;
+            this.gridView_LastAddedAssets.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_LastAddedAssets_CustomDrawEmptyForeground);
             // 
             // xtraTabPage2
             // 
@@ -203,6 +204,7 @@
             this.gridViewLastAssignedAssets.GridControl = this.gridControl_LastAssignedAssets;
             this.gridViewLastAssignedAssets.Name = "gridViewLastAssignedAssets";
             this.gridViewLastAssignedAssets.OptionsView.ShowGroupPanel = false;
+            this.gridViewLastAssignedAssets.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridViewLastAssignedAssets_CustomDrawEmptyForeground);
             // 
             // groupControl5
             // 
@@ -230,6 +232,7 @@
             this.gridView_LastActions.GridControl = this.gridControl_LastActions;
             this.gridView_LastActions.Name = "gridView_LastActions";
             this.gridView_LastActions.OptionsView.ShowGroupPanel = false;
+            this.gridView_LastActions.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_LastActions_CustomDrawEmptyForeground);
             // 
             // tableLayoutPanel9
             // 
@@ -275,6 +278,7 @@
             this.gridView_UpcomingCalibrations.GridControl = this.gridControl_UpcomingCalibrations;
             this.gridView_UpcomingCalibrations.Name = "gridView_UpcomingCalibrations";
             this.gridView_UpcomingCalibrations.OptionsView.ShowGroupPanel = false;
+            this.gridView_UpcomingCalibrations.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_UpcomingCalibrations_CustomDrawEmptyForeground);
             // 
             // groupControl99
             // 
@@ -302,6 +306,7 @@
             this.gridView_UpcomingExpirations.GridControl = this.gridControl_UpcomingExpirations;
             this.gridView_UpcomingExpirations.Name = "gridView_UpcomingExpirations";
             this.gridView_UpcomingExpirations.OptionsView.ShowGroupPanel = false;
+            this.gridView_UpcomingExpirations.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_UpcomingExpirations_CustomDrawEmptyForeground);
             // 
             // groupControl3
             // 
@@ -329,6 +334,7 @@
             this.gridView_UpcomingMaintenances.GridControl = this.gridControl_UpcomingMaintenances;
             this.gridView_UpcomingMaintenances.Name = "gridView_UpcomingMaintenances";
             this.gridView_UpcomingMaintenances.OptionsView.ShowGroupPanel = false;
+            this.gridView_UpcomingMaintenances.CustomDrawEmptyForeground += new DevExpress.XtraGrid.Views.Base.CustomDrawEventHandler(this.gridView_UpcomingMaintenances_CustomDrawEmptyForeground);
             // 
             // groupControl1
             // 
@@ -367,6 +373,7 @@
             this.btn_StartCounting.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(122)))));
             this.btn_StartCounting.Appearance.Options.UseBackColor = true;
             this.btn_StartCounting.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_StartCounting.Enabled = false;
             this.btn_StartCounting.Location = new System.Drawing.Point(775, 3);
             this.btn_StartCounting.Name = "btn_StartCounting";
             this.btn_StartCounting.Size = new System.Drawing.Size(187, 55);
@@ -379,6 +386,7 @@
             this.btn_AddLocation.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.btn_AddLocation.Appearance.Options.UseBackColor = true;
             this.btn_AddLocation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AddLocation.Enabled = false;
             this.btn_AddLocation.Location = new System.Drawing.Point(582, 3);
             this.btn_AddLocation.Name = "btn_AddLocation";
             this.btn_AddLocation.Size = new System.Drawing.Size(187, 55);
@@ -405,6 +413,7 @@
             this.btn_AssignInventoryToEmployee.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(22)))));
             this.btn_AssignInventoryToEmployee.Appearance.Options.UseBackColor = true;
             this.btn_AssignInventoryToEmployee.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AssignInventoryToEmployee.Enabled = false;
             this.btn_AssignInventoryToEmployee.Location = new System.Drawing.Point(196, 3);
             this.btn_AssignInventoryToEmployee.Name = "btn_AssignInventoryToEmployee";
             this.btn_AssignInventoryToEmployee.Size = new System.Drawing.Size(187, 55);

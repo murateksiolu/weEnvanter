@@ -17,7 +17,7 @@ namespace weEnvanter.Data.Repositories
 
         public async Task<List<Inventory>> GetByDepartmentAsync(int departmentId)
         {
-            return await _dbSet.Where(x => x.DepartmentId == departmentId && !x.IsDeleted)
+            return await _dbSet.Where(x => !x.IsDeleted)
                 .OrderBy(x => x.Name)
                 .ToListAsync();
         }
@@ -131,6 +131,11 @@ namespace weEnvanter.Data.Repositories
                 .OrderByDescending(x => x.ModifiedDate)
                 .Take(count)
                 .ToListAsync();
+        }
+
+        public Inventory GetById(int id)
+        {
+            return _dbSet.FirstOrDefault(x=>x.Id== id);
         }
     }
 } 
