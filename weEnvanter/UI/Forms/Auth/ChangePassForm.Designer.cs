@@ -34,11 +34,11 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txt_NewPasswordConfirm = new DevExpress.XtraEditors.TextEdit();
             this.lbl_Warning = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txt_CurrentPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_NewPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -108,11 +108,21 @@
             this.groupControl1.Size = new System.Drawing.Size(274, 165);
             this.groupControl1.TabIndex = 99;
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(10, 137);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(121, 23);
+            this.simpleButton1.TabIndex = 103;
+            this.simpleButton1.Text = "İptal";
+            // 
             // labelControl3
             // 
             this.labelControl3.Location = new System.Drawing.Point(7, 84);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(74, 13);
+            this.labelControl3.Size = new System.Drawing.Size(73, 13);
             this.labelControl3.TabIndex = 102;
             this.labelControl3.Text = "Yeni Şifre Onay";
             // 
@@ -139,21 +149,14 @@
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.EditValue = global::weEnvanter.Properties.Resources.we_envanter;
             this.pictureEdit1.Location = new System.Drawing.Point(12, 12);
             this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit1.Size = new System.Drawing.Size(274, 96);
-            this.pictureEdit1.TabIndex = 100;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(10, 137);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(121, 23);
-            this.simpleButton1.TabIndex = 103;
-            this.simpleButton1.Text = "İptal";
+            this.pictureEdit1.TabIndex = 104;
             // 
             // ChangePassForm
             // 
@@ -164,6 +167,7 @@
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::weEnvanter.Properties.Resources.weEnvanter_icon;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 200);
@@ -189,10 +193,10 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
         private DevExpress.XtraEditors.LabelControl lbl_Warning;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.TextEdit txt_NewPasswordConfirm;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit1;
     }
 }

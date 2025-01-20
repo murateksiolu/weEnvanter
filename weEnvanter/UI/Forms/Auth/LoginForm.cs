@@ -1,9 +1,8 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using weEnvanter.Business.DTOs;
-using weEnvanter.Business.Services;
-using weEnvanter.UI.Forms.Main;
+using weEnvanter.Business.Services.Interfaces;
+using weEnvanter.UI.Forms.MainForms;
 
 namespace weEnvanter.UI.Forms.Auth
 {
@@ -21,43 +20,57 @@ namespace weEnvanter.UI.Forms.Auth
         {
             try
             {
-                if (string.IsNullOrEmpty(txt_Username.Text) || string.IsNullOrEmpty(txt_Password.Text))
+                string username = txt_Username.Text.Trim();
+                string password = txt_Password.Text;
+
+                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 {
-                    lbl_Warning.Text = "Kullanıcı adı ve şifre boş olamaz!";
-                    lbl_Warning.Visible = true;
+                    MessageBox.Show("Kullanıcı adı ve şifre boş olamaz!", "Hata",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                var loginDto = new UserLoginDto
+                bool isValid = await _userService.ValidateCredentialsAsync(username, password);
+                if (isValid)
                 {
-                    Username = txt_Username.Text.Trim(),
-                    Password = txt_Password.Text,
-                    RememberMe = check_RememberMe.Checked
-                };
+                    var user = await _userService.GetByUsernameAsync(username);
+                    if (user != null)
+                    {
+                        Program.CurrentUser = new Business.DTOs.UserDto
+                        {
+                            Id = user.Id,
+                            Username = user.Username,
+                            Role = user.Role
+                        };
 
-                var user = await _userService.AuthenticateAsync(loginDto);
+                        DialogResult = DialogResult.OK;
+                        Hide();
 
-                if (user == null)
-                {
-                    lbl_Warning.Text = "Kullanıcı adı veya şifre hatalı!";
-                    lbl_Warning.Visible = true;
-                    return;
+                        using (var mainForm = new MainForm(_userService))
+                        {
+                            mainForm.ShowDialog();
+                        }
+
+                        Close();
+                    }
                 }
-
-                // Kullanıcı bilgilerini global olarak sakla
-                Program.CurrentUser = user;
-
-                // Ana formu aç
-                var mainForm = new MainForm(_userService);
-                this.Hide();
-                mainForm.Show();
+                else
+                {
+                    MessageBox.Show("Kullanıcı adı veya şifre hatalı!", "Hata",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
-                lbl_Warning.Text = "Giriş işlemi sırasında bir hata oluştu!";
-                lbl_Warning.Visible = true;
-                MessageBox.Show($"Hata: {ex.Message}", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Giriş işlemi sırasında bir hata oluştu: {ex.Message}", "Hata",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)

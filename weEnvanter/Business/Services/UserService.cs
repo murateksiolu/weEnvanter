@@ -1,58 +1,71 @@
 using System;
-using System.Data.Entity;
+using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using weEnvanter.Business.DTOs;
-using weEnvanter.Data;
+using weEnvanter.Business.Services.Interfaces;
+using weEnvanter.Data.Repositories.Interfaces;
+using weEnvanter.Domain.Entities;
+using weEnvanter.Domain.Enums;
 
 namespace weEnvanter.Business.Services
 {
-    public class UserService : IUserService
+    public class UserService : BaseService<User>, IUserService
     {
-        private readonly WeEnvanterDbContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public UserService(WeEnvanterDbContext context)
+        public UserService(IUserRepository userRepository) : base(userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
-        public async Task<UserDto> AuthenticateAsync(UserLoginDto loginDto)
+        public async Task<User> GetByUsernameAsync(string username)
         {
-            var hashedPassword = HashPassword(loginDto.Password);
-            
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Username == loginDto.Username && 
-                                        u.Password == hashedPassword);
-
-            if (user == null)
-                return null;
-
-            return new UserDto
-            {
-                Id = user.Id,
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                Role = user.Role
-            };
+            return await _userRepository.GetByUsernameAsync(username);
         }
 
-        public async Task<bool> ChangePasswordAsync(int userId, string currentPassword, string newPassword)
+        public async Task<bool> ValidateCredentialsAsync(string username, string password)
         {
-            var user = await _context.Users.FindAsync(userId);
+            var user = await _userRepository.GetByUsernameAsync(username);
             if (user == null)
                 return false;
 
-            var hashedCurrentPassword = HashPassword(currentPassword);
-            if (user.Password != hashedCurrentPassword)
-                return false;
+            var hashedPassword = HashPassword(password);
+            return user.Password == hashedPassword;
+        }
+
+        public async Task<bool> ChangePasswordAsync(int userId, string oldPassword, string newPassword)
+        {
+            var user = await GetByIdAsync(userId);
+            if (user == null)
+                throw new ArgumentException("Kullanıcı bulunamadı.");
+
+            var hashedOldPassword = HashPassword(oldPassword);
+            if (user.Password != hashedOldPassword)
+                throw new InvalidOperationException("Mevcut şifre hatalı.");
 
             user.Password = HashPassword(newPassword);
-            await _context.SaveChangesAsync();
-            
+            user.ModifiedDate = DateTime.Now;
+
+            await UpdateAsync(user);
             return true;
+        }
+
+        public override async Task<User> AddAsync(User user)
+        {
+            if (string.IsNullOrEmpty(user.Username))
+                throw new ArgumentException("Kullanıcı adı boş olamaz.");
+
+            if (string.IsNullOrEmpty(user.Password))
+                throw new ArgumentException("Şifre boş olamaz.");
+
+            var existingUser = await _userRepository.GetByUsernameAsync(user.Username);
+            if (existingUser != null)
+                throw new InvalidOperationException("Bu kullanıcı adı zaten kullanılıyor.");
+
+            user.Password = HashPassword(user.Password);
+            user.CreatedDate = DateTime.Now;
+            
+            return await base.AddAsync(user);
         }
 
         private string HashPassword(string password)
@@ -60,8 +73,52 @@ namespace weEnvanter.Business.Services
             using (var sha256 = SHA256.Create())
             {
                 var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+                return Convert.ToBase64String(hashedBytes);
             }
+        }
+
+        public async Task<bool> IsUsernameUniqueAsync(string username)
+        {
+            return await _userRepository.IsUsernameUniqueAsync(username);
+        }
+
+        public async Task<bool> ResetPasswordAsync(int userId, string newPassword)
+        {
+            var user = await GetByIdAsync(userId);
+            if (user == null)
+                throw new ArgumentException("Kullanıcı bulunamadı.");
+
+            user.Password = HashPassword(newPassword);
+            user.ModifiedDate = DateTime.Now;
+
+            await UpdateAsync(user);
+            return true;
+        }
+
+        public async Task<bool> UpdateUserRoleAsync(int userId, UserRole role)
+        {
+            var user = await GetByIdAsync(userId);
+            if (user == null)
+                throw new ArgumentException("Kullanıcı bulunamadı.");
+
+            user.Role = role;
+            user.ModifiedDate = DateTime.Now;
+
+            await UpdateAsync(user);
+            return true;
+        }
+
+        public async Task<bool> CanBeDeletedAsync(int userId)
+        {
+            var user = await GetByIdAsync(userId);
+            if (user == null)
+                return false;
+
+            // Admin kullanıcısı silinemez
+            if (user.Role == UserRole.Admin)
+                return false;
+
+            return true;
         }
     }
 } 

@@ -28,43 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_Username = new DevExpress.XtraEditors.TextEdit();
-            this.txt_Password = new DevExpress.XtraEditors.TextEdit();
             this.btn_Submit = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.check_RememberMe = new DevExpress.XtraEditors.CheckEdit();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.lbl_Warning = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).BeginInit();
+            this.check_RememberMe = new DevExpress.XtraEditors.CheckEdit();
+            this.txt_Username = new DevExpress.XtraEditors.TextEdit();
+            this.txt_Password = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txt_Username
-            // 
-            this.txt_Username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_Username.Location = new System.Drawing.Point(98, 26);
-            this.txt_Username.Name = "txt_Username";
-            this.txt_Username.Size = new System.Drawing.Size(168, 22);
-            this.txt_Username.TabIndex = 0;
-            this.txt_Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Username_KeyPress);
-            // 
-            // txt_Password
-            // 
-            this.txt_Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_Password.Location = new System.Drawing.Point(98, 52);
-            this.txt_Password.Name = "txt_Password";
-            this.txt_Password.Properties.PasswordChar = '*';
-            this.txt_Password.Size = new System.Drawing.Size(168, 22);
-            this.txt_Password.TabIndex = 1;
-            this.txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Password_KeyPress);
             // 
             // btn_Submit
             // 
@@ -81,7 +60,7 @@
             // 
             this.labelControl1.Location = new System.Drawing.Point(7, 30);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(55, 13);
+            this.labelControl1.Size = new System.Drawing.Size(57, 13);
             this.labelControl1.TabIndex = 99;
             this.labelControl1.Text = "Kullanıcı Adı";
             // 
@@ -89,18 +68,9 @@
             // 
             this.labelControl2.Location = new System.Drawing.Point(7, 56);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(22, 13);
+            this.labelControl2.Size = new System.Drawing.Size(21, 13);
             this.labelControl2.TabIndex = 99;
             this.labelControl2.Text = "Şifre";
-            // 
-            // check_RememberMe
-            // 
-            this.check_RememberMe.Location = new System.Drawing.Point(5, 78);
-            this.check_RememberMe.Name = "check_RememberMe";
-            this.check_RememberMe.Properties.Caption = "Beni Hatırla";
-            this.check_RememberMe.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.check_RememberMe.Size = new System.Drawing.Size(110, 20);
-            this.check_RememberMe.TabIndex = 2;
             // 
             // groupControl1
             // 
@@ -129,11 +99,44 @@
             // 
             // pictureEdit1
             // 
+            this.pictureEdit1.EditValue = global::weEnvanter.Properties.Resources.we_envanter;
             this.pictureEdit1.Location = new System.Drawing.Point(12, 12);
             this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit1.Size = new System.Drawing.Size(274, 96);
             this.pictureEdit1.TabIndex = 100;
+            // 
+            // check_RememberMe
+            // 
+            this.check_RememberMe.Location = new System.Drawing.Point(5, 78);
+            this.check_RememberMe.Name = "check_RememberMe";
+            this.check_RememberMe.Properties.Caption = "Beni Hatırla";
+            this.check_RememberMe.Properties.GlyphAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.check_RememberMe.Size = new System.Drawing.Size(110, 20);
+            this.check_RememberMe.TabIndex = 2;
+            // 
+            // txt_Username
+            // 
+            this.txt_Username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Username.Location = new System.Drawing.Point(98, 26);
+            this.txt_Username.Name = "txt_Username";
+            this.txt_Username.Size = new System.Drawing.Size(168, 22);
+            this.txt_Username.TabIndex = 0;
+            this.txt_Username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Username_KeyPress);
+            // 
+            // txt_Password
+            // 
+            this.txt_Password.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_Password.Location = new System.Drawing.Point(98, 52);
+            this.txt_Password.Name = "txt_Password";
+            this.txt_Password.Properties.PasswordChar = '*';
+            this.txt_Password.Size = new System.Drawing.Size(168, 22);
+            this.txt_Password.TabIndex = 1;
+            this.txt_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Password_KeyPress);
             // 
             // LoginForm
             // 
@@ -144,6 +147,7 @@
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.IconOptions.Image = global::weEnvanter.Properties.Resources.weEnvanter_icon;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(300, 200);
@@ -151,13 +155,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "weEnvanter - Giriş";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.check_RememberMe.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Username.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_Password.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

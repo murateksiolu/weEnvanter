@@ -3,6 +3,7 @@ using weEnvanter.Domain.Entities;
 using System;
 using System.Linq;
 using weEnvanter.Domain.Enums;
+using weEnvanter.Data.Configurations;
 
 namespace weEnvanter.Data
 {
@@ -24,14 +25,13 @@ namespace weEnvanter.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Department>().ToTable("Departments");
-            modelBuilder.Entity<Employee>().ToTable("Employees");
-            modelBuilder.Entity<Inventory>().ToTable("Inventories");
-            modelBuilder.Entity<InventoryAssignment>().ToTable("InventoryAssignments");
-            modelBuilder.Entity<InventoryCategory>().ToTable("InventoryCategories");
-            modelBuilder.Entity<MaintenanceRecord>().ToTable("MaintenanceRecords");
-            modelBuilder.Entity<SystemLog>().ToTable("SystemLogs");
-            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Configurations.Add(new DepartmentConfiguration());
+            modelBuilder.Configurations.Add(new EmployeeConfiguration());
+            modelBuilder.Configurations.Add(new InventoryConfiguration());
+            modelBuilder.Configurations.Add(new InventoryAssignmentConfiguration());
+            modelBuilder.Configurations.Add(new InventoryCategoryConfiguration());
+            modelBuilder.Configurations.Add(new MaintenanceRecordConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

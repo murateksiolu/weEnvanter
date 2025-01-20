@@ -23,7 +23,7 @@ namespace weEnvanter.Business.Mapping
             // Inventory mappings
             CreateMap<Inventory, InventoryDto>()
                 .ForMember(dest => dest.CategoryName,
-                          opt => opt.MapFrom(src => src.Category.Name));
+                          opt => opt.MapFrom(src => src.InventoryCategory.Name));
             CreateMap<InventoryCreateDto, Inventory>();
             CreateMap<InventoryUpdateDto, Inventory>();
 

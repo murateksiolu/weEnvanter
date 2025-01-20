@@ -11,6 +11,7 @@ namespace weEnvanter.Domain.Entities
         public DateTime? NextMaintenanceDate { get; set; }
         public MaintenanceType MaintenanceType { get; set; }
         public string Description { get; set; }
+        public string Notes { get; set; }
         public decimal? Cost { get; set; }
         public string PerformedBy { get; set; }
         public bool IsCompleted { get; set; }

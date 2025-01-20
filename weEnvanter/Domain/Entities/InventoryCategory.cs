@@ -11,8 +11,10 @@ namespace weEnvanter.Domain.Entities
             SubCategories = new HashSet<InventoryCategory>();
         }
 
+        public string CategoryCode { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsActive { get; set; }
         public int? ParentCategoryId { get; set; }
 
         public virtual InventoryCategory ParentCategory { get; set; }

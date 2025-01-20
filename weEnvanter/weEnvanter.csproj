@@ -40,25 +40,22 @@
     </Reference>
     <Reference Include="DevExpress.BonusSkins.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Dashboard.v24.2.Win, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Drawing.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Sparkline.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v24.2.Core, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v24.2.UI, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDialogs.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraTreeList.v24.2, Version=24.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -122,16 +119,46 @@
     <Compile Include="Business\DTOs\MaintenanceRecordDtos.cs" />
     <Compile Include="Business\DTOs\UserDto.cs" />
     <Compile Include="Business\Mapping\MappingProfile.cs" />
-    <Compile Include="Business\Services\IEmployeeService.cs" />
-    <Compile Include="Business\Services\IInventoryService.cs" />
-    <Compile Include="Business\Services\IUserService.cs" />
+    <Compile Include="Business\Services\BaseService.cs" />
+    <Compile Include="Business\Services\DepartmentService.cs" />
+    <Compile Include="Business\Services\EmployeeService.cs" />
+    <Compile Include="Business\Services\Interfaces\IBaseService.cs" />
+    <Compile Include="Business\Services\Interfaces\IDepartmentService.cs" />
+    <Compile Include="Business\Services\Interfaces\IEmployeeService.cs" />
+    <Compile Include="Business\Services\Interfaces\IInventoryCategoryService.cs" />
+    <Compile Include="Business\Services\Interfaces\IInventoryService.cs" />
+    <Compile Include="Business\Services\Interfaces\IMaintenanceService.cs" />
+    <Compile Include="Business\Services\Interfaces\IUserService.cs" />
+    <Compile Include="Business\Services\InventoryCategoryService.cs" />
+    <Compile Include="Business\Services\InventoryService.cs" />
+    <Compile Include="Business\Services\MaintenanceService.cs" />
     <Compile Include="Business\Services\UserService.cs" />
     <Compile Include="Business\Validation\EmployeeValidators.cs" />
     <Compile Include="Business\Validation\UserValidators.cs" />
+    <Compile Include="Core\Helpers\ExportHelper.cs" />
     <Compile Include="Core\Helpers\GridControlHelper.cs" />
     <Compile Include="Core\Helpers\PasswordHelper.cs" />
-    <Compile Include="Data\Repositories\IRepository.cs" />
-    <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\Configurations\DepartmentConfiguration.cs" />
+    <Compile Include="Data\Configurations\EmployeeConfiguration.cs" />
+    <Compile Include="Data\Configurations\InventoryAssignmentConfiguration.cs" />
+    <Compile Include="Data\Configurations\InventoryCategoryConfiguration.cs" />
+    <Compile Include="Data\Configurations\InventoryConfiguration.cs" />
+    <Compile Include="Data\Configurations\MaintenanceRecordConfiguration.cs" />
+    <Compile Include="Data\Configurations\UserConfiguration.cs" />
+    <Compile Include="Data\Repositories\BaseRepository.cs" />
+    <Compile Include="Data\Repositories\DepartmentRepository.cs" />
+    <Compile Include="Data\Repositories\EmployeeRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IBaseRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IDepartmentRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IEmployeeRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IInventoryCategoryRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IInventoryRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IMaintenanceRepository.cs" />
+    <Compile Include="Data\Repositories\Interfaces\IUserRepository.cs" />
+    <Compile Include="Data\Repositories\InventoryCategoryRepository.cs" />
+    <Compile Include="Data\Repositories\InventoryRepository.cs" />
+    <Compile Include="Data\Repositories\MaintenanceRepository.cs" />
+    <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Data\WeEnvanterDbContext.cs" />
     <Compile Include="Domain\Common\BaseEntity.cs" />
     <Compile Include="Domain\Entities\Department.cs" />
@@ -139,11 +166,13 @@
     <Compile Include="Domain\Entities\Inventory.cs" />
     <Compile Include="Domain\Entities\InventoryAssignment.cs" />
     <Compile Include="Domain\Entities\InventoryCategory.cs" />
+    <Compile Include="Domain\Entities\Maintenance.cs" />
     <Compile Include="Domain\Entities\MaintenanceRecord.cs" />
     <Compile Include="Domain\Entities\SystemLog.cs" />
     <Compile Include="Domain\Entities\User.cs" />
     <Compile Include="Domain\Enums\InventoryStatus.cs" />
     <Compile Include="Domain\Enums\LogType.cs" />
+    <Compile Include="Domain\Enums\MaintenanceStatus.cs" />
     <Compile Include="Domain\Enums\MaintenanceType.cs" />
     <Compile Include="Domain\Enums\UserRole.cs" />
     <Compile Include="Program.cs" />
@@ -160,20 +189,34 @@
     <Compile Include="UI\Forms\Auth\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\Inventory\InventoryListForm.cs">
+    <Compile Include="UI\Forms\InventoryForms\InventoryEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\Inventory\InventoryListForm.Designer.cs">
+    <Compile Include="UI\Forms\InventoryForms\InventoryEditForm.Designer.cs">
+      <DependentUpon>InventoryEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementForm.Designer.cs">
+      <DependentUpon>InventoryEmbezzlementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementHistoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryEmbezzlementHistoryForm.Designer.cs">
+      <DependentUpon>InventoryEmbezzlementHistoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\InventoryForms\InventoryListForm.Designer.cs">
       <DependentUpon>InventoryListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\Main\MainForm2.cs">
+    <Compile Include="UI\Forms\MainForms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\Main\MainForm2.Designer.cs">
-      <DependentUpon>MainForm2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\Forms\Main\MainForm.cs" />
-    <Compile Include="UI\Forms\Main\MainForm.Designer.cs">
+    <Compile Include="UI\Forms\MainForms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -185,6 +228,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UI\Forms\Auth\ChangePassForm.resx">
       <DependentUpon>ChangePassForm.cs</DependentUpon>
@@ -192,13 +236,10 @@
     <EmbeddedResource Include="UI\Forms\Auth\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\Inventory\InventoryListForm.resx">
+    <EmbeddedResource Include="UI\Forms\InventoryForms\InventoryListForm.resx">
       <DependentUpon>InventoryListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\Main\MainForm2.resx">
-      <DependentUpon>MainForm2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\Main\MainForm.resx">
+    <EmbeddedResource Include="UI\Forms\MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
@@ -216,11 +257,17 @@
   <ItemGroup>
     <Folder Include="UI\Controls\" />
     <Folder Include="UI\Extensions\" />
-    <Folder Include="UI\Forms\Dashboard\" />
-    <Folder Include="UI\Forms\Department\" />
-    <Folder Include="UI\Forms\Employee\" />
+    <Folder Include="UI\Forms\DashboardForms\" />
+    <Folder Include="UI\Forms\DepartmentForms\" />
+    <Folder Include="UI\Forms\EmployeeForms\" />
     <Folder Include="UI\Forms\Settings\" />
     <Folder Include="UI\Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\we-envanter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weEnvanter_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -2,10 +2,11 @@ namespace weEnvanter.Domain.Enums
 {
     public enum InventoryStatus
     {
-        Available = 1,
-        InUse = 2,
-        UnderMaintenance = 3,
-        Damaged = 4,
-        Disposed = 5
+        Active = 1,
+        Passive = 2,
+        InMaintenance = 3,
+        Broken = 4,
+        InRepair = 5,
+        Disposed = 6
     }
 } 

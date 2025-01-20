@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using System;
 using System.Windows.Forms;
-using weEnvanter.Business.Services;
+using weEnvanter.Business.Services.Interfaces;
 
 namespace weEnvanter.UI.Forms.Auth
 {
