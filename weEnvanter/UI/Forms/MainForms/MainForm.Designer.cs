@@ -49,6 +49,7 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_Exit = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btn_Dashboard = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -64,7 +65,10 @@ namespace weEnvanter.UI.Forms.MainForms
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.timer_Clock = new System.Windows.Forms.Timer(this.components);
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage6 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btn_AddNewUser = new DevExpress.XtraBars.BarButtonItem();
+            this.btn_UserList = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.SuspendLayout();
@@ -90,9 +94,11 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_Exit,
             this.barButtonItem1,
             this.btn_Dashboard,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.btn_AddNewUser,
+            this.btn_UserList});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 20;
+            this.ribbon.MaxItemId = 22;
             this.ribbon.Name = "ribbon";
             this.ribbon.OptionsExpandCollapseMenu.ShowQuickAccessToolbarItem = DevExpress.Utils.DefaultBoolean.False;
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -100,6 +106,7 @@ namespace weEnvanter.UI.Forms.MainForms
             this.ribbonPage2,
             this.ribbonPage3,
             this.ribbonPage4,
+            this.ribbonPage6,
             this.ribbonPage5});
             this.ribbon.PopupShowMode = DevExpress.XtraBars.PopupShowMode.Inplace;
             this.ribbon.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
@@ -232,6 +239,13 @@ namespace weEnvanter.UI.Forms.MainForms
             this.btn_Dashboard.Name = "btn_Dashboard";
             this.btn_Dashboard.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_Dashboard_ItemClick);
             // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Kullanıcı Ekle";
+            this.barButtonItem2.Id = 19;
+            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -336,12 +350,35 @@ namespace weEnvanter.UI.Forms.MainForms
             // 
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
-            // barButtonItem2
+            // ribbonPage6
             // 
-            this.barButtonItem2.Caption = "Kullanıcı Ekle";
-            this.barButtonItem2.Id = 19;
-            this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
-            this.barButtonItem2.Name = "barButtonItem2";
+            this.ribbonPage6.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup8});
+            this.ribbonPage6.Name = "ribbonPage6";
+            this.ribbonPage6.Text = "Kullanıcılar";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.btn_AddNewUser);
+            this.ribbonPageGroup8.ItemLinks.Add(this.btn_UserList);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "Kullanıcı Yönetimi";
+            // 
+            // btn_AddNewUser
+            // 
+            this.btn_AddNewUser.Caption = "Kullanıcı Ekle";
+            this.btn_AddNewUser.Id = 20;
+            this.btn_AddNewUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
+            this.btn_AddNewUser.Name = "btn_AddNewUser";
+            this.btn_AddNewUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_AddNewUser_ItemClick);
+            // 
+            // btn_UserList
+            // 
+            this.btn_UserList.Caption = "Kullanıcı Listesi";
+            this.btn_UserList.Id = 21;
+            this.btn_UserList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
+            this.btn_UserList.Name = "btn_UserList";
+            this.btn_UserList.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btn_UserList_ItemClick);
             // 
             // MainForm
             // 
@@ -402,5 +439,9 @@ namespace weEnvanter.UI.Forms.MainForms
         private DevExpress.XtraBars.BarButtonItem btn_Dashboard;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage6;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.BarButtonItem btn_AddNewUser;
+        private DevExpress.XtraBars.BarButtonItem btn_UserList;
     }
 }

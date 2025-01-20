@@ -298,6 +298,18 @@
     <Compile Include="UI\Forms\SettingForms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\UsersForms\AddOrEditUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\UsersForms\AddOrEditUserForm.Designer.cs">
+      <DependentUpon>AddOrEditUserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\UsersForms\UserListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\UsersForms\UserListForm.Designer.cs">
+      <DependentUpon>UserListForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -356,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MaintenanceForms\MaintenanceListForm.resx">
       <DependentUpon>MaintenanceListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\UsersForms\UserListForm.resx">
+      <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />

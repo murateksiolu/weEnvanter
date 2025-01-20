@@ -15,6 +15,7 @@ using weEnvanter.UI.Forms.InventoryForms;
 using weEnvanter.UI.Forms.LoadingForms;
 using weEnvanter.UI.Forms.MaintenanceForms;
 using weEnvanter.UI.Forms.SettingForms;
+using weEnvanter.UI.Forms.UsersForms;
 
 namespace weEnvanter.UI.Forms.MainForms
 {
@@ -31,6 +32,7 @@ namespace weEnvanter.UI.Forms.MainForms
         InventoryCategoryListForm _inventoryCategoryListForm;
         InventoryListForm _inventoryListForm;
         EmployeeListForm _employeeListForm;
+        UserListForm _userListForm;
         public MainForm()
         {
             InitializeComponent();
@@ -175,7 +177,29 @@ namespace weEnvanter.UI.Forms.MainForms
             }
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_departmentListForm];
         }
+        private void btn_UserList_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!GeneralHelper.FormIsOpen("UserListForm"))
+            {
+                SplashScreenManager.ShowForm(this, typeof(LoadingForm), true, true, false);
+                _userListForm = new UserListForm();
+                _userListForm.MdiParent = this;
+                _userListForm.Show();
+                SplashScreenManager.CloseForm(false);
+            }
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[_userListForm];
+        }
 
+        private void btn_AddNewUser_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (AddOrEditUserForm form = new AddOrEditUserForm(OperationType.Add))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
         private void btn_Settings_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SettingsForm form = new SettingsForm())
@@ -214,7 +238,6 @@ namespace weEnvanter.UI.Forms.MainForms
                 Application.Exit();
             }
         }
-
 
        
     }
