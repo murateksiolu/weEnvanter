@@ -6,6 +6,7 @@ using weEnvanter.Core.Helpers;
 using weEnvanter.Domain.Enums;
 using weEnvanter.UI.Forms.EmployeeForms;
 using weEnvanter.UI.Forms.InventoryForms;
+using System.Threading.Tasks;
 
 namespace weEnvanter.UI.Forms.DashboardForms
 {
@@ -32,93 +33,115 @@ namespace weEnvanter.UI.Forms.DashboardForms
             //_refreshTimer.Interval = 30000; // 30 saniye
             //_refreshTimer.Tick += RefreshTimer_Tick;
 
-            //Initialize();
+            InitializeAsync();
             //_refreshTimer.Start();
         }
 
-        private void Initialize()
+        private async Task InitializeAsync()
         {
-            // Label'ları doldur
-            UpdateLabels();
-
-            // Grid'leri doldur
-            UpdateGrids();
+            // Label'ları ve Grid'leri paralel olarak güncelle
+            await Task.WhenAll(
+                UpdateLabelsAsync(),
+                UpdateGridsAsync()
+            );
         }
 
-        private void RefreshTimer_Tick(object sender, EventArgs e)
+        private async Task UpdateLabelsAsync()
         {
-            Initialize();
+            // Tüm servis çağrılarını paralel olarak yap
+            var activeInventoryTask = _inventoryService.GetActiveInventoryCountAsync();
+            var expirationTask = _inventoryService.GetUpcomingExpirationCountAsync(30);
+            var calibrationTask = _inventoryService.GetUpcomingCalibrationCountAsync(30);
+            var maintenanceTask = _maintenanceService.GetUpcomingMaintenanceCountAsync(30);
+            var assignedCountTask = _inventoryService.GetAssignedInventoryCountAsync();
+            var employeeCountTask = _employeeService.GetActiveEmployeeCountAsync();
+
+            await Task.WhenAll(
+                activeInventoryTask,
+                expirationTask,
+                calibrationTask,
+                maintenanceTask,
+                assignedCountTask,
+                employeeCountTask
+            );
+
+            // Sonuçları UI thread'inde güncelle
+            this.Invoke((MethodInvoker)delegate
+            {
+                lbl_ActiveInventoryCount.Text = activeInventoryTask.Result.ToString();
+                lbl_ExpirationDateUpcomingCount.Text = expirationTask.Result.ToString();
+                lbl_CalibrationDateUpcomingCount.Text = calibrationTask.Result.ToString();
+                lbl_MaintenanceDateUpcomingCount.Text = maintenanceTask.Result.ToString();
+
+                var totalCount = activeInventoryTask.Result;
+                var assignedCount = assignedCountTask.Result;
+                var ratio = totalCount > 0 ? (double)assignedCount / totalCount * 100 : 0;
+                lbl_EmbezzlementInventoryRatio.Text = $"%{ratio:F2}";
+
+                lbl_TotalEmployeeCount.Text = employeeCountTask.Result.ToString();
+            });
         }
 
-        private void UpdateLabels()
+        private async Task UpdateGridsAsync()
         {
-            // Aktif demirbaş sayısı
-            lbl_ActiveInventoryCount.Text = _inventoryService.GetActiveInventoryCount().ToString();
+            // Tüm grid güncellemelerini paralel olarak yap
+            var calibrationsTask = _inventoryService.GetUpcomingCalibrationsAsync(30);
+            var maintenancesTask = _maintenanceService.GetUpcomingMaintenancesAsync(30);
+            var expirationsTask = _inventoryService.GetUpcomingExpirationsAsync(30);
+            var lastAddedTask = _inventoryService.GetLastAddedInventoriesAsync(5);
+            var lastAssignedTask = _inventoryService.GetLastAssignedInventoriesAsync(5);
+            var lastActionsTask = _systemLogService.GetLastLogsAsync(10);
 
-            // Son kullanma tarihi yaklaşan demirbaş sayısı
-            lbl_ExpirationDateUpcomingCount.Text = _inventoryService.GetUpcomingExpirationCount(30).ToString();
+            await Task.WhenAll(
+                calibrationsTask,
+                maintenancesTask,
+                expirationsTask,
+                lastAddedTask,
+                lastAssignedTask,
+                lastActionsTask
+            );
 
-            // Kalibrasyon tarihi yaklaşan demirbaş sayısı
-            lbl_CalibrationDateUpcomingCount.Text = _inventoryService.GetUpcomingCalibrationCount(30).ToString();
-
-            // Bakım tarihi yaklaşan demirbaş sayısı
-            lbl_MaintenanceDateUpcomingCount.Text = _maintenanceService.GetUpcomingMaintenanceCount(30).ToString();
-
-            // Zimmetli demirbaş oranı
-            var totalCount = _inventoryService.GetActiveInventoryCount();
-            var assignedCount = _inventoryService.GetAssignedInventoryCount();
-            var ratio = totalCount > 0 ? (double)assignedCount / totalCount * 100 : 0;
-            lbl_EmbezzlementInventoryRatio.Text = $"%{ratio:F2}";
-
-            // Toplam aktif çalışan sayısı
-            lbl_TotalEmployeeCount.Text = _employeeService.GetActiveEmployeeCount().ToString();
+            // Sonuçları UI thread'inde güncelle
+            this.Invoke((MethodInvoker)delegate
+            {
+                gridControl_UpcomingCalibrations.DataSource = calibrationsTask.Result;
+                gridControl_UpcomingMaintenances.DataSource = maintenancesTask.Result;
+                gridControl_UpcomingExpirations.DataSource = expirationsTask.Result;
+                gridControl_LastAddedAssets.DataSource = lastAddedTask.Result;
+                gridControl_LastAssignedAssets.DataSource = lastAssignedTask.Result;
+                gridControl_LastActions.DataSource = lastActionsTask.Result;
+            });
         }
 
-        private void UpdateGrids()
+        private async void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            // Kalibrasyon tarihi yaklaşan demirbaşlar
-            gridControl_UpcomingCalibrations.DataSource = _inventoryService.GetUpcomingCalibrations(30);
-
-            // Bakım tarihi yaklaşan demirbaşlar
-            gridControl_UpcomingMaintenances.DataSource = _maintenanceService.GetUpcomingMaintenances(30);
-
-            // Son kullanma tarihi yaklaşan demirbaşlar
-            gridControl_UpcomingExpirations.DataSource = _inventoryService.GetUpcomingExpirations(30);
-
-            // Son eklenen demirbaşlar
-            gridControl_LastAddedAssets.DataSource = _inventoryService.GetLastAddedInventories(5);
-
-            // Son zimmetlenen demirbaşlar
-            gridControl_LastAssignedAssets.DataSource = _inventoryService.GetLastAssignedInventories(5);
-
-            // Son hareketler
-            gridControl_LastActions.DataSource = _systemLogService.GetLastLogs(10);
+            await InitializeAsync();
         }
 
-        private void btn_AddInventory_Click(object sender, EventArgs e)
+        private async void btn_AddInventory_Click(object sender, EventArgs e)
         {
             using (var form = new AddOrEditInventoryForm(OperationType.Add))
             {
                 form.ShowDialog();
-                Initialize();
+                await InitializeAsync();
             }
         }
 
-        private void btn_AssignInventoryToEmployee_Click(object sender, EventArgs e)
+        private async void btn_AssignInventoryToEmployee_Click(object sender, EventArgs e)
         {
             using (var form = new AssignInventoryToEmployeeForm(0))
             {
                 form.ShowDialog();
-                Initialize();
+                await InitializeAsync();
             }
         }
 
-        private void btn_AddEmployee_Click(object sender, EventArgs e)
+        private async void btn_AddEmployee_Click(object sender, EventArgs e)
         {
             using (var form = new AddOrEditEmployeeForm(_employeeService, OperationType.Add))
             {
                 form.ShowDialog();
-                Initialize();
+                await InitializeAsync();
             }
         }
 

@@ -19,7 +19,7 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<bool> CanBeCanceledAsync(int maintenanceId);
 
         // Dashboard için eklenen metodlar
-        int GetUpcomingMaintenanceCount(int days);
-        List<Maintenance> GetUpcomingMaintenances(int days);
+        Task<int> GetUpcomingMaintenanceCountAsync(int days);
+        Task<List<Maintenance>> GetUpcomingMaintenancesAsync(int days);
     }
 } 

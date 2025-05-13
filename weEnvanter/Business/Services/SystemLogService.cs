@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Data.Repositories.Interfaces;
 using weEnvanter.Domain.Entities;
@@ -58,6 +59,11 @@ namespace weEnvanter.Business.Services
             };
 
             _systemLogRepository.AddAsync(log);
+        }
+
+        public async Task<List<SystemLog>> GetLastLogsAsync(int count)
+        {
+            return await _systemLogRepository.GetLastLogsAsync(count);
         }
     }
 } 

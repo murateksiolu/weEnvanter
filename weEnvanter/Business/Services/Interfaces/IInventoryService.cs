@@ -35,13 +35,13 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<bool> CanBeMaintenancedAsync(int inventoryId);
 
         // Dashboard için eklenen metodlar
-        int GetActiveInventoryCount();
-        int GetUpcomingExpirationCount(int days);
-        int GetUpcomingCalibrationCount(int days);
-        int GetAssignedInventoryCount();
-        List<Inventory> GetUpcomingCalibrations(int days);
-        List<Inventory> GetUpcomingExpirations(int days);
-        List<Inventory> GetLastAddedInventories(int count);
-        List<Inventory> GetLastAssignedInventories(int count);
+        Task<int> GetActiveInventoryCountAsync();
+        Task<int> GetUpcomingExpirationCountAsync(int days);
+        Task<int> GetUpcomingCalibrationCountAsync(int days);
+        Task<int> GetAssignedInventoryCountAsync();
+        Task<List<Inventory>> GetUpcomingCalibrationsAsync(int days);
+        Task<List<Inventory>> GetUpcomingExpirationsAsync(int days);
+        Task<List<Inventory>> GetLastAddedInventoriesAsync(int count);
+        Task<List<Inventory>> GetLastAssignedInventoriesAsync(int count);
     }
 } 

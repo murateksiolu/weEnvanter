@@ -11,5 +11,6 @@ namespace weEnvanter.Data.Repositories.Interfaces
         List<SystemLog> GetLogsByUser(int userId);
         List<SystemLog> GetLogsByEntityName(string entityName);
         List<SystemLog> GetLogsByLogType(Domain.Enums.LogType logType);
+        Task<List<SystemLog>> GetLastLogsAsync(int count);
     }
 } 

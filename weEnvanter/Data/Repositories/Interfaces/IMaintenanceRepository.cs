@@ -11,5 +11,7 @@ namespace weEnvanter.Data.Repositories.Interfaces
         Task<Maintenance> GetActiveMaintenanceByInventoryIdAsync(int inventoryId);
         Task<List<Maintenance>> GetByStatusAsync(MaintenanceStatus status);
         Task<List<Maintenance>> GetPendingMaintenanceAsync();
+        Task<int> GetUpcomingMaintenanceCountAsync(int days);
+        Task<List<Maintenance>> GetUpcomingMaintenancesAsync(int days);
     }
 } 

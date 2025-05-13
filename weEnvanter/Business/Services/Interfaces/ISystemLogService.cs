@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using weEnvanter.Domain.Entities;
 using weEnvanter.Domain.Enums;
 
@@ -13,5 +14,6 @@ namespace weEnvanter.Business.Services.Interfaces
         List<SystemLog> GetLogsByEntityName(string entityName);
         List<SystemLog> GetLogsByLogType(LogType logType);
         void LogActivity(int? userId, string action, string description, string entityName = null, string entityId = null, string oldValue = null, string newValue = null, LogType logType = LogType.Information);
+        Task<List<SystemLog>> GetLastLogsAsync(int count);
     }
 } 

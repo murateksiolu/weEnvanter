@@ -259,44 +259,44 @@ namespace weEnvanter.Business.Services
         }
 
         // Dashboard için eklenen metodlar
-        public int GetActiveInventoryCount()
+        public async Task<int> GetActiveInventoryCountAsync()
         {
-            return _inventoryRepository.GetActiveInventoryCountAsync().Result;
+            return await _inventoryRepository.GetActiveInventoryCountAsync();
         }
 
-        public int GetUpcomingExpirationCount(int days)
+        public async Task<int> GetUpcomingExpirationCountAsync(int days)
         {
-            return _inventoryRepository.GetUpcomingExpirationCountAsync(days).Result;
+            return await _inventoryRepository.GetUpcomingExpirationCountAsync(days);
         }
 
-        public int GetUpcomingCalibrationCount(int days)
+        public async Task<int> GetUpcomingCalibrationCountAsync(int days)
         {
-            return _inventoryRepository.GetUpcomingCalibrationCountAsync(days).Result;
+            return await _inventoryRepository.GetUpcomingCalibrationCountAsync(days);
         }
 
-        public int GetAssignedInventoryCount()
+        public async Task<int> GetAssignedInventoryCountAsync()
         {
-            return _inventoryRepository.GetAssignedInventoryCountAsync().Result;
+            return await _inventoryRepository.GetAssignedInventoryCountAsync();
         }
 
-        public List<Inventory> GetUpcomingCalibrations(int days)
+        public async Task<List<Inventory>> GetUpcomingCalibrationsAsync(int days)
         {
-            return _inventoryRepository.GetUpcomingCalibrationsAsync(days).Result;
+            return await _inventoryRepository.GetUpcomingCalibrationsAsync(days);
         }
 
-        public List<Inventory> GetUpcomingExpirations(int days)
+        public async Task<List<Inventory>> GetUpcomingExpirationsAsync(int days)
         {
-            return _inventoryRepository.GetUpcomingExpirationsAsync(days).Result;
+            return await _inventoryRepository.GetUpcomingExpirationsAsync(days);
         }
 
-        public List<Inventory> GetLastAddedInventories(int count)
+        public async Task<List<Inventory>> GetLastAddedInventoriesAsync(int count)
         {
-            return _inventoryRepository.GetLastAddedInventoriesAsync(count).Result;
+            return await _inventoryRepository.GetLastAddedInventoriesAsync(count);
         }
 
-        public List<Inventory> GetLastAssignedInventories(int count)
+        public async Task<List<Inventory>> GetLastAssignedInventoriesAsync(int count)
         {
-            return _inventoryRepository.GetLastAssignedInventoriesAsync(count).Result;
+            return await _inventoryRepository.GetLastAssignedInventoriesAsync(count);
         }
 
         public async Task<InventoryAssignment> AddAssignmentAsync(InventoryAssignment assignment)

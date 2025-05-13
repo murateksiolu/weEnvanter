@@ -160,5 +160,11 @@ namespace weEnvanter.Business.Services
         {
             return _employeeRepository.GetActiveEmployeeCount();
         }
+
+        // Dashboard için eklenen metodlar
+        public async Task<int> GetActiveEmployeeCountAsync()
+        {
+            return await _employeeRepository.GetActiveEmployeeCountAsync();
+        }
     }
 } 

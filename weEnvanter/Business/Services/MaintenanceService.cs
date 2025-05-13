@@ -187,29 +187,14 @@ namespace weEnvanter.Business.Services
         }
 
         // Dashboard için eklenen metodlar
-        public int GetUpcomingMaintenanceCount(int days)
+        public async Task<int> GetUpcomingMaintenanceCountAsync(int days)
         {
-            var targetDate = DateTime.Now.AddDays(days);
-            return _inventoryRepository.GetAllAsync().Result
-                .Count(x => x.IsActive && x.NextMaintenanceDate.HasValue && 
-                      x.NextMaintenanceDate.Value <= targetDate && 
-                      x.NextMaintenanceDate.Value > DateTime.Now);
+            return await _maintenanceRepository.GetUpcomingMaintenanceCountAsync(days);
         }
 
-        public List<Maintenance> GetUpcomingMaintenances(int days)
+        public async Task<List<Maintenance>> GetUpcomingMaintenancesAsync(int days)
         {
-            var targetDate = DateTime.Now.AddDays(days);
-            var inventories = _inventoryRepository.GetAllAsync().Result
-                .Where(x => x.IsActive && x.NextMaintenanceDate.HasValue && 
-                      x.NextMaintenanceDate.Value <= targetDate && 
-                      x.NextMaintenanceDate.Value > DateTime.Now)
-                .Select(x => x.Id)
-                .ToList();
-
-            return _maintenanceRepository.GetAllAsync().Result
-                .Where(x => inventories.Contains(x.InventoryId) && x.Status == MaintenanceStatus.InProgress)
-                .OrderBy(x => x.StartDate)
-                .ToList();
+            return await _maintenanceRepository.GetUpcomingMaintenancesAsync(days);
         }
     }
 } 

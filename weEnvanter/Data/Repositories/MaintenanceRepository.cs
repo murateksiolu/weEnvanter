@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -41,6 +42,24 @@ namespace weEnvanter.Data.Repositories
             return await _dbSet.Where(x => x.Status == MaintenanceStatus.InProgress && !x.IsDeleted)
                 .OrderBy(x => x.StartDate)
                 .ToListAsync();
+        }
+
+        public async Task<int> GetUpcomingMaintenanceCountAsync(int days)
+        {
+            var targetDate = DateTime.Now.AddDays(days);
+            return await _dbSet.CountAsync(x => x.Status == MaintenanceStatus.InProgress && 
+                                               x.StartDate <= targetDate && 
+                                               x.StartDate > DateTime.Now);
+        }
+
+        public async Task<List<Maintenance>> GetUpcomingMaintenancesAsync(int days)
+        {
+            var targetDate = DateTime.Now.AddDays(days);
+            return await _dbSet.Where(x => x.Status == MaintenanceStatus.InProgress && 
+                                         x.StartDate <= targetDate && 
+                                         x.StartDate > DateTime.Now)
+                              .OrderBy(x => x.StartDate)
+                              .ToListAsync();
         }
     }
 } 

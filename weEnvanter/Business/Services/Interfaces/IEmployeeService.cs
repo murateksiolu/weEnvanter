@@ -14,6 +14,6 @@ namespace weEnvanter.Business.Services.Interfaces
         Task<bool> CanBeDeletedAsync(int employeeId);
 
         // Dashboard için eklenen metodlar
-        int GetActiveEmployeeCount();
+        Task<int> GetActiveEmployeeCountAsync();
     }
 } 
