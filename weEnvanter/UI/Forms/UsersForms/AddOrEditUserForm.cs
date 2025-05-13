@@ -5,7 +5,7 @@ namespace weEnvanter.UI.Forms.UsersForms
 {
     public partial class AddOrEditUserForm : DevExpress.XtraEditors.XtraForm
     {
-        public AddOrEditUserForm(OperationType operationType, User user = null)
+        public AddOrEditUserForm(OperationType operationType, int userId = 0)
         {
             InitializeComponent();
         }

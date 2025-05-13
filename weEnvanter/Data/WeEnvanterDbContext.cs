@@ -9,7 +9,7 @@ namespace weEnvanter.Data
 {
     public class WeEnvanterDbContext : DbContext
     {
-        public WeEnvanterDbContext() : base("name=WeEnvanterRemoteConnection")
+        public WeEnvanterDbContext() : base("name=WeEnvanterConnection")
         {
             Database.SetInitializer(new WeEnvanterDbInitializer());
         }

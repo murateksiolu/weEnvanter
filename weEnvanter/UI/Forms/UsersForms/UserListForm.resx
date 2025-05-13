@@ -192,9 +192,6 @@
   <metadata name="barManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>143, 17</value>
   </metadata>
-  <metadata name="pLinqServerModeSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>267, 17</value>
-  </metadata>
   <data name="btn_AddNewUser.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjI0LjIsIFZlcnNpb249MjQuMi4z
@@ -344,5 +341,11 @@
         LTAuNCwwLjItMC43bDEuMi0yLjNoMS45ICAgbC0yLjMsMy44bDIuNCwzLjlIMjguMXoiIGNsYXNzPSJC
         bHVlIiAvPg0KICA8L2c+DQo8L3N2Zz4L
 </value>
+  </data>
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>456, 17</value>
+  </metadata>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlVzZXJzIj48RmllbGQgTmFtZT0iVXNlcm5hbWUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRmlyc3ROYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ikxhc3ROYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9Ikxhc3RMb2dpbkRhdGUiIFR5cGU9IkRhdGVUaW1lIiAvPjxGaWVsZCBOYW1lPSJJc0FjdGl2ZSIgVHlwZT0iQm9vbGVhbiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
   </data>
 </root>

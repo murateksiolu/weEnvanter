@@ -30,6 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserListForm));
+            DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Column column2 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column3 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression3 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column4 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression4 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column5 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression5 = new DevExpress.DataAccess.Sql.ColumnExpression();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.bar_EditUser = new DevExpress.XtraBars.BarButtonItem();
             this.bar_DeleteUser = new DevExpress.XtraBars.BarButtonItem();
@@ -45,27 +57,17 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.gridControl_Users = new DevExpress.XtraGrid.GridControl();
-            this.pLinqServerModeSource1 = new DevExpress.Data.PLinq.PLinqServerModeSource();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.gridView_Users = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colUsername = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPassword = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEmail = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFirstName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colRole = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastLoginDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsActive = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsDeleted = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreatedDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colModifiedDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreatedBy = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colModifiedBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKullanıcıAdı = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colİsim = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSoyisim = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSonGirişTarihi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAktiflikDurumu = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Users)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,7 +206,8 @@
             // 
             // gridControl_Users
             // 
-            this.gridControl_Users.DataSource = this.pLinqServerModeSource1;
+            this.gridControl_Users.DataMember = "Users";
+            this.gridControl_Users.DataSource = this.sqlDataSource1;
             this.gridControl_Users.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl_Users.Location = new System.Drawing.Point(0, 33);
             this.gridControl_Users.MainView = this.gridView_Users;
@@ -214,138 +217,93 @@
             this.gridControl_Users.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView_Users});
             // 
-            // pLinqServerModeSource1
+            // sqlDataSource1
             // 
-            this.pLinqServerModeSource1.DefaultSorting = "Username ASC";
-            this.pLinqServerModeSource1.ElementType = typeof(weEnvanter.Domain.Entities.User);
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            columnExpression1.ColumnName = "Username";
+            table1.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"363\" />";
+            table1.Name = "Users";
+            columnExpression1.Table = table1;
+            column1.Expression = columnExpression1;
+            columnExpression2.ColumnName = "FirstName";
+            columnExpression2.Table = table1;
+            column2.Expression = columnExpression2;
+            columnExpression3.ColumnName = "LastName";
+            columnExpression3.Table = table1;
+            column3.Expression = columnExpression3;
+            columnExpression4.ColumnName = "LastLoginDate";
+            columnExpression4.Table = table1;
+            column4.Expression = columnExpression4;
+            columnExpression5.ColumnName = "IsActive";
+            columnExpression5.Table = table1;
+            column5.Expression = columnExpression5;
+            selectQuery1.Columns.Add(column1);
+            selectQuery1.Columns.Add(column2);
+            selectQuery1.Columns.Add(column3);
+            selectQuery1.Columns.Add(column4);
+            selectQuery1.Columns.Add(column5);
+            selectQuery1.FilterString = "[Users.IsDeleted] = False";
+            selectQuery1.GroupFilterString = "";
+            selectQuery1.MetaSerializable = "<Meta X=\"20\" Y=\"20\" Width=\"105\" Height=\"141\" />";
+            selectQuery1.Name = "Users";
+            selectQuery1.Tables.Add(table1);
+            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            selectQuery1});
+            this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // gridView_Users
             // 
             this.gridView_Users.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colUsername,
-            this.colPassword,
-            this.colEmail,
-            this.colPhone,
-            this.colFirstName,
-            this.colLastName,
-            this.colRole,
-            this.colLastLoginDate,
             this.colId,
-            this.colIsActive,
-            this.colIsDeleted,
-            this.colCreatedDate,
-            this.colModifiedDate,
-            this.colCreatedBy,
-            this.colModifiedBy});
+            this.colKullanıcıAdı,
+            this.colİsim,
+            this.colSoyisim,
+            this.colSonGirişTarihi,
+            this.colAktiflikDurumu});
             this.gridView_Users.GridControl = this.gridControl_Users;
             this.gridView_Users.Name = "gridView_Users";
             this.gridView_Users.OptionsView.ShowGroupPanel = false;
             this.gridView_Users.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gridView_Users_RowClick);
             // 
-            // colUsername
-            // 
-            this.colUsername.FieldName = "Username";
-            this.colUsername.Name = "colUsername";
-            this.colUsername.Visible = true;
-            this.colUsername.VisibleIndex = 0;
-            // 
-            // colPassword
-            // 
-            this.colPassword.FieldName = "Password";
-            this.colPassword.Name = "colPassword";
-            this.colPassword.Visible = true;
-            this.colPassword.VisibleIndex = 1;
-            // 
-            // colEmail
-            // 
-            this.colEmail.FieldName = "Email";
-            this.colEmail.Name = "colEmail";
-            this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 2;
-            // 
-            // colPhone
-            // 
-            this.colPhone.FieldName = "Phone";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.Visible = true;
-            this.colPhone.VisibleIndex = 3;
-            // 
-            // colFirstName
-            // 
-            this.colFirstName.FieldName = "FirstName";
-            this.colFirstName.Name = "colFirstName";
-            this.colFirstName.Visible = true;
-            this.colFirstName.VisibleIndex = 4;
-            // 
-            // colLastName
-            // 
-            this.colLastName.FieldName = "LastName";
-            this.colLastName.Name = "colLastName";
-            this.colLastName.Visible = true;
-            this.colLastName.VisibleIndex = 5;
-            // 
-            // colRole
-            // 
-            this.colRole.FieldName = "Role";
-            this.colRole.Name = "colRole";
-            this.colRole.Visible = true;
-            this.colRole.VisibleIndex = 6;
-            // 
-            // colLastLoginDate
-            // 
-            this.colLastLoginDate.FieldName = "LastLoginDate";
-            this.colLastLoginDate.Name = "colLastLoginDate";
-            this.colLastLoginDate.Visible = true;
-            this.colLastLoginDate.VisibleIndex = 7;
-            // 
             // colId
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 8;
             // 
-            // colIsActive
+            // colKullanıcıAdı
             // 
-            this.colIsActive.FieldName = "IsActive";
-            this.colIsActive.Name = "colIsActive";
-            this.colIsActive.Visible = true;
-            this.colIsActive.VisibleIndex = 9;
+            this.colKullanıcıAdı.FieldName = "Kullanıcı Adı";
+            this.colKullanıcıAdı.Name = "colKullanıcıAdı";
+            this.colKullanıcıAdı.Visible = true;
+            this.colKullanıcıAdı.VisibleIndex = 0;
             // 
-            // colIsDeleted
+            // colİsim
             // 
-            this.colIsDeleted.FieldName = "IsDeleted";
-            this.colIsDeleted.Name = "colIsDeleted";
-            this.colIsDeleted.Visible = true;
-            this.colIsDeleted.VisibleIndex = 10;
+            this.colİsim.FieldName = "İsim";
+            this.colİsim.Name = "colİsim";
+            this.colİsim.Visible = true;
+            this.colİsim.VisibleIndex = 1;
             // 
-            // colCreatedDate
+            // colSoyisim
             // 
-            this.colCreatedDate.FieldName = "CreatedDate";
-            this.colCreatedDate.Name = "colCreatedDate";
-            this.colCreatedDate.Visible = true;
-            this.colCreatedDate.VisibleIndex = 11;
+            this.colSoyisim.FieldName = "Soyisim";
+            this.colSoyisim.Name = "colSoyisim";
+            this.colSoyisim.Visible = true;
+            this.colSoyisim.VisibleIndex = 2;
             // 
-            // colModifiedDate
+            // colSonGirişTarihi
             // 
-            this.colModifiedDate.FieldName = "ModifiedDate";
-            this.colModifiedDate.Name = "colModifiedDate";
-            this.colModifiedDate.Visible = true;
-            this.colModifiedDate.VisibleIndex = 12;
+            this.colSonGirişTarihi.FieldName = "Son Giriş Tarihi";
+            this.colSonGirişTarihi.Name = "colSonGirişTarihi";
+            this.colSonGirişTarihi.Visible = true;
+            this.colSonGirişTarihi.VisibleIndex = 3;
             // 
-            // colCreatedBy
+            // colAktiflikDurumu
             // 
-            this.colCreatedBy.FieldName = "CreatedBy";
-            this.colCreatedBy.Name = "colCreatedBy";
-            this.colCreatedBy.Visible = true;
-            this.colCreatedBy.VisibleIndex = 13;
-            // 
-            // colModifiedBy
-            // 
-            this.colModifiedBy.FieldName = "ModifiedBy";
-            this.colModifiedBy.Name = "colModifiedBy";
-            this.colModifiedBy.Visible = true;
-            this.colModifiedBy.VisibleIndex = 14;
+            this.colAktiflikDurumu.FieldName = "Aktiflik Durumu";
+            this.colAktiflikDurumu.Name = "colAktiflikDurumu";
+            this.colAktiflikDurumu.Visible = true;
+            this.colAktiflikDurumu.VisibleIndex = 4;
             // 
             // UserListForm
             // 
@@ -363,7 +321,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Users)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pLinqServerModeSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Users)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -388,21 +345,12 @@
         private DevExpress.XtraBars.BarButtonItem bar_EditUser;
         private DevExpress.XtraBars.BarButtonItem bar_DeleteUser;
         private DevExpress.XtraBars.BarButtonItem bar_ShowHistory;
-        private DevExpress.Data.PLinq.PLinqServerModeSource pLinqServerModeSource1;
-        private DevExpress.XtraGrid.Columns.GridColumn colUsername;
-        private DevExpress.XtraGrid.Columns.GridColumn colPassword;
-        private DevExpress.XtraGrid.Columns.GridColumn colEmail;
-        private DevExpress.XtraGrid.Columns.GridColumn colPhone;
-        private DevExpress.XtraGrid.Columns.GridColumn colFirstName;
-        private DevExpress.XtraGrid.Columns.GridColumn colLastName;
-        private DevExpress.XtraGrid.Columns.GridColumn colRole;
-        private DevExpress.XtraGrid.Columns.GridColumn colLastLoginDate;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsActive;
-        private DevExpress.XtraGrid.Columns.GridColumn colIsDeleted;
-        private DevExpress.XtraGrid.Columns.GridColumn colCreatedDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colModifiedDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colCreatedBy;
-        private DevExpress.XtraGrid.Columns.GridColumn colModifiedBy;
+        private DevExpress.XtraGrid.Columns.GridColumn colKullanıcıAdı;
+        private DevExpress.XtraGrid.Columns.GridColumn colİsim;
+        private DevExpress.XtraGrid.Columns.GridColumn colSoyisim;
+        private DevExpress.XtraGrid.Columns.GridColumn colSonGirişTarihi;
+        private DevExpress.XtraGrid.Columns.GridColumn colAktiflikDurumu;
     }
 }

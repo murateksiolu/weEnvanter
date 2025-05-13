@@ -135,8 +135,11 @@ namespace weEnvanter.UI.Forms.DashboardForms
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
+            if(_refreshTimer != null)
+            {
             _refreshTimer.Stop();
             _refreshTimer.Dispose();
+            }
         }
 
         private void gridViewLastAssignedAssets_CustomDrawEmptyForeground(object sender, DevExpress.XtraGrid.Views.Base.CustomDrawEventArgs e)

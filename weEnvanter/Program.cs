@@ -16,6 +16,8 @@ using weEnvanter.UI.Forms.MainForms;
 using weEnvanter.UI.Forms.DepartmentForms;
 using weEnvanter.UI.Forms.EmployeeForms;
 using weEnvanter.UI.Forms.MaintenanceForms;
+using weEnvanter.Core.Helpers;
+using weEnvanter.UI.Forms.SettingForms;
 
 namespace weEnvanter
 {
@@ -43,7 +45,16 @@ namespace weEnvanter
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(ServiceProvider.GetRequiredService<LoginForm>());
+
+            if (ConfigHelper.TestConnection())
+            {
+                Application.Run(ServiceProvider.GetRequiredService<LoginForm>());
+            }
+            else
+            {
+                MessageBox.Show("Mevcut veritabanı bağlantısı yapılamadı. Lütfen ayarları kontrol ediniz.", "Bağlantı Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Run(new DatabaseConnectionForm());
+            }
         }
         private static void ConfigureServices(ServiceCollection services)
         {
