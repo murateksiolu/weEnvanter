@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using weEnvanter.Business.Services;
 using weEnvanter.Business.Services.Interfaces;
 using weEnvanter.Core.Helpers;
 using weEnvanter.UI.Forms.AuthForms;
@@ -67,27 +68,33 @@ namespace weEnvanter.UI.Forms.SettingForms
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            string connectionString;
-            if (chkWindowsAuth.Checked)
-            {
-                connectionString = $"Server={txtServer.Text};Database={txtDatabase.Text};Trusted_Connection=True;";
-            }
-            else
-            {
-                connectionString = $"Server={txtServer.Text};Database={txtDatabase.Text};User Id={txtUsername.Text};Password={txtPassword.Text};";
-            }
+            string server = txtServer.Text;
+            string database = txtDatabase.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            bool windowsAuth = chkWindowsAuth.Checked;
 
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            try
             {
-                try
+                // Önce veritabanı var mı kontrol et, yoksa oluştur
+                ConfigHelper.EnsureDatabaseExists(server, database, username, password, windowsAuth);
+
+                // Sonra bağlantıyı test et
+                string connectionString;
+                if (windowsAuth)
+                    connectionString = $"Server={server};Database={database};Trusted_Connection=True;Connect Timeout=3;";
+                else
+                    connectionString = $"Server={server};Database={database};User Id={username};Password={password};Connect Timeout=3;";
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
                     MessageBox.Show("Bağlantı başarılı!", "Başarılı", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Bağlantı başarısız!\n\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bağlantı başarısız!\n\n" + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -98,27 +105,30 @@ namespace weEnvanter.UI.Forms.SettingForms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString;
-            if (chkWindowsAuth.Checked)
-            {
-                connectionString = $"Server={txtServer.Text};Database={txtDatabase.Text};Trusted_Connection=True;";
-            }
-            else
-            {
-                connectionString = $"Server={txtServer.Text};Database={txtDatabase.Text};User Id={txtUsername.Text};Password={txtPassword.Text};";
-            }
+            string server = txtServer.Text;
+            string database = txtDatabase.Text;
+            string username = txtUsername.Text;
+            string password = txtPassword.Text;
+            bool windowsAuth = chkWindowsAuth.Checked;
 
-            // Connection string'i App.config'e kaydet
+            // Önce veritabanı var mı kontrol et, yoksa oluştur
+            ConfigHelper.EnsureDatabaseExists(server, database, username, password, windowsAuth);
+
+            // Sonra connection string'i oluştur ve kaydet
+            string connectionString;
+            if (windowsAuth)
+                connectionString = $"Server={server};Database={database};Trusted_Connection=True;Connect Timeout=3;";
+            else
+                connectionString = $"Server={server};Database={database};User Id={username};Password={password};Connect Timeout=3;";
+
             ConfigHelper.UpdateConnectionString("WeEnvanterConnection", connectionString);
 
             MessageBox.Show("Bağlantı ayarları kaydedildi.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            // LoginForm'u aç
-            this.Hide(); // veya this.Close();
+
+            this.Hide();
             var _userService = Program.ServiceProvider.GetRequiredService<IUserService>();
             LoginForm loginForm = new LoginForm(_userService);
             loginForm.ShowDialog();
-
-            // Eğer ShowDialog kullandıysan, form kapandıktan sonra ana formu da kapatabilirsin
             this.Close();
         }
 

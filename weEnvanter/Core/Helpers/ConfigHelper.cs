@@ -46,5 +46,24 @@ namespace weEnvanter.Core.Helpers
                 return false;
             }
         }
+        public static void EnsureDatabaseExists(string server, string database, string username, string password, bool windowsAuth)
+        {
+            // Sunucuya bağlanmak için master veritabanını kullan
+            string masterConnStr;
+            if (windowsAuth)
+                masterConnStr = $"Server={server};Database=master;Trusted_Connection=True;Connect Timeout=3;";
+            else
+                masterConnStr = $"Server={server};Database=master;User Id={username};Password={password};Connect Timeout=3;";
+
+            using (SqlConnection conn = new SqlConnection(masterConnStr))
+            {
+                conn.Open();
+                string checkDbQuery = $"IF DB_ID('{database}') IS NULL CREATE DATABASE [{database}]";
+                using (SqlCommand cmd = new SqlCommand(checkDbQuery, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
