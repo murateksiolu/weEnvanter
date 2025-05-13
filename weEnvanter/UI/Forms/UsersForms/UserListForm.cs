@@ -32,7 +32,7 @@ namespace weEnvanter.UI.Forms.UsersForms
         }
         private async void LoadDataAsync()
         {
-            sqlDataSource1.ConnectionName = "WeEnvanterRemoteConnection";
+            sqlDataSource1.ConnectionName = "WeEnvanterConnection";
             await sqlDataSource1.FillAsync(); // Asenkron doldurma
             gridControl_Users.DataSource = sqlDataSource1; // Doldurma tamamlandıktan sonra grid'e bağla
             gridView_Users.PopulateColumns();

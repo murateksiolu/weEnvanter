@@ -200,6 +200,16 @@ namespace weEnvanter.UI.Forms.MainForms
                 }
             }
         }
+        private void btn_AddUser_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (AddOrEditUserForm form = new AddOrEditUserForm(OperationType.Add))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
         private void btn_Settings_ItemClick(object sender, ItemClickEventArgs e)
         {
             using (SettingsForm form = new SettingsForm())

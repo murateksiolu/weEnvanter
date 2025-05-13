@@ -383,6 +383,9 @@
     <EmbeddedResource Include="UI\Forms\SettingForms\DatabaseConnectionForm.resx">
       <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\UsersForms\AddOrEditUserForm.resx">
+      <DependentUpon>AddOrEditUserForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\UsersForms\UserListForm.resx">
       <DependentUpon>UserListForm.cs</DependentUpon>
     </EmbeddedResource>
