@@ -20,6 +20,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
     {
         private readonly IInventoryService _inventoryService;
         private readonly IInventoryCategoryService _inventoryCategoryService;
+        private readonly ISystemLogService _systemLogService;
         private readonly OperationType _operationType;
         private readonly int? _inventoryId;
         private Inventory _inventory;
@@ -32,6 +33,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
 
             _inventoryService = Program.ServiceProvider.GetRequiredService<IInventoryService>();
             _inventoryCategoryService = Program.ServiceProvider.GetRequiredService<IInventoryCategoryService>();
+            _systemLogService = Program.ServiceProvider.GetRequiredService<ISystemLogService>();
 
             InitializeForm();
         }
@@ -131,7 +133,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             try
             {
                 if (_operationType == OperationType.Add)
-                    _inventory = new Inventory();
+                    _inventory = new Inventory() { IsActive = true };
 
                 // Temel Bilgiler
                 _inventory.Name = txt_Name.Text;
@@ -164,15 +166,34 @@ namespace weEnvanter.UI.Forms.InventoryForms
                 _inventory.SupplierPhone = txt_SupplierPhone.Text;
                 _inventory.SupplierEmail = txt_SupplierEmail.Text;
 
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+
                 if (_operationType == OperationType.Add)
                 {
                     await _inventoryService.AddAsync(_inventory);
+                    _systemLogService.LogActivity(
+                        Program.CurrentUser?.Id,
+                        "Envanter Eklendi",
+                        $"{userFullName} {now} tarihinde '{_inventory.Name}' isimli envanteri ekledi.",
+                        "Inventory",
+                        _inventory.Id.ToString(),
+                        weEnvanter.Domain.Enums.LogType.Information.ToString()
+                    );
                     XtraMessageBox.Show("Demirbaş başarıyla eklendi.", "Bilgi", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     await _inventoryService.UpdateAsync(_inventory);
+                    _systemLogService.LogActivity(
+                        Program.CurrentUser?.Id,
+                        "Envanter Güncellendi",
+                        $"{userFullName} {now} tarihinde '{_inventory.Name}' isimli envanteri güncelledi.",
+                        "Inventory",
+                        _inventory.Id.ToString(),
+                        weEnvanter.Domain.Enums.LogType.Information.ToString()
+                    );
                     XtraMessageBox.Show("Demirbaş başarıyla güncellendi.", "Bilgi", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -182,7 +203,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show("İşlem sırasında bir hata oluştu: " + ex.Message,
+                XtraMessageBox.Show("Demirbaş kaydedilirken bir hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

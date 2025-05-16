@@ -12,13 +12,18 @@ namespace weEnvanter.UI.Forms.InventoryForms
     {
         private readonly IInventoryService _inventoryService;
         private readonly IEmployeeService _employeeService;
+        private readonly ISystemLogService _systemLogService;
         private readonly Inventory _inventory;
+        private readonly int _inventoryId;
 
         public AssignInventoryToEmployeeForm(int inventoryId)
         {
             InitializeComponent();
+            _inventoryId = inventoryId;
+
             _inventoryService = Program.ServiceProvider.GetRequiredService<IInventoryService>();
             _employeeService = Program.ServiceProvider.GetRequiredService<IEmployeeService>();
+            _systemLogService = Program.ServiceProvider.GetRequiredService<ISystemLogService>();
 
             // Demirbaşı yükle
             _inventory = _inventoryService.GetById(inventoryId);
@@ -90,56 +95,94 @@ namespace weEnvanter.UI.Forms.InventoryForms
             }
         }
 
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
         private async void btn_Assign_Click(object sender, EventArgs e)
         {
+            if (!ValidateForm()) return;
+
             try
             {
-                if (lookUp_Employee.EditValue == null)
-                {
-                    XtraMessageBox.Show("Lütfen bir çalışan seçin!", "Uyarı", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                var inventory = await _inventoryService.GetByIdAsync(_inventoryId);
+                var employee = await _employeeService.GetByIdAsync(Convert.ToInt32(lookUp_Employee.EditValue));
 
-                // Demirbaşı güncelle
-                _inventory.AssignedEmployeeId = (int)lookUp_Employee.EditValue;
-                _inventory.AssignmentDate = date_AssignDate.DateTime;
-                _inventory.AssignmentNotes = txt_AssignNotes.Text;
-
-                // Zimmet geçmişi için yeni kayıt oluştur
+                // InventoryAssignment kaydı oluştur
                 var assignment = new InventoryAssignment
                 {
-                    InventoryId = _inventory.Id,
-                    EmployeeId = (int)lookUp_Employee.EditValue,
+                    InventoryId = inventory.Id,
+                    EmployeeId = employee.Id,
                     AssignmentDate = date_AssignDate.DateTime,
                     Notes = txt_AssignNotes.Text,
                     IsActive = true,
+                    CreatedBy = Program.CurrentUser?.Id,
                     CreatedDate = DateTime.Now,
-                    AssignedById = Program.CurrentUser.Id
+                    AssignedById = Program.CurrentUser?.Id ?? 0
                 };
 
-                // Önce demirbaşı güncelle
-                await _inventoryService.UpdateAsync(_inventory);
-                
-                // Sonra zimmet kaydını ekle
+                // Yeni zimmet kaydını ekle
                 await _inventoryService.AddAssignmentAsync(assignment);
 
-                XtraMessageBox.Show("Demirbaş başarıyla zimmetlendi!", "Bilgi", 
+                // Envanteri güncelle
+                inventory.AssignedEmployeeId = employee.Id;
+                inventory.AssignmentDate = date_AssignDate.DateTime;
+                inventory.Notes = txt_AssignNotes.Text;
+                await _inventoryService.UpdateAsync(inventory);
+
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+                _systemLogService.LogActivity(
+                    Program.CurrentUser?.Id,
+                    "Envanter Zimmetlendi",
+                    $"{userFullName} {now} tarihinde '{inventory.Name}' isimli envanteri '{employee.FirstName} {employee.LastName}' isimli çalışana zimmetledi.",
+                    "Inventory",
+                    inventory.Id.ToString(),
+                    weEnvanter.Domain.Enums.LogType.Information.ToString()
+                );
+
+                XtraMessageBox.Show("Envanter başarıyla zimmetlendi.", "Bilgi",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 DialogResult = DialogResult.OK;
                 Close();
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Zimmetleme işlemi sırasında hata oluştu: {ex.Message}", 
+                XtraMessageBox.Show("Envanter zimmetlenirken bir hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void btn_Cancel_Click(object sender, EventArgs e)
+        private bool ValidateForm()
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            if (lookUp_Employee.EditValue == null)
+            {
+                XtraMessageBox.Show("Lütfen bir çalışan seçiniz.", "Uyarı", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lookUp_Employee.Focus();
+                return false;
+            }
+
+            if (date_AssignDate.EditValue == null)
+            {
+                XtraMessageBox.Show("Lütfen zimmet tarihini seçiniz.", "Uyarı", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                date_AssignDate.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txt_AssignNotes.Text))
+            {
+                XtraMessageBox.Show("Lütfen zimmet notunu giriniz.", "Uyarı", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txt_AssignNotes.Focus();
+                return false;
+            }
+
+            return true;
         }
     }
 }

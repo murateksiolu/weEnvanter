@@ -17,12 +17,14 @@ namespace weEnvanter.UI.Forms.InventoryCategoryForms
         private readonly IInventoryCategoryService _inventoryCategoryService;
         private readonly IInventoryService _inventoryService;
         private readonly ToastNotificationsManager _toastNotificationsManager;
+        private readonly ISystemLogService _systemLogService;
 
         public InventoryCategoryListForm()
         {
             InitializeComponent();
             _inventoryCategoryService = Program.ServiceProvider.GetRequiredService<IInventoryCategoryService>();
             _inventoryService = Program.ServiceProvider.GetRequiredService<IInventoryService>();
+            _systemLogService = Program.ServiceProvider.GetRequiredService<ISystemLogService>();
 
             // Toast Notification Manager'ı başlat
             _toastNotificationsManager = ToastNotificationHelper.CreateManager(components);
@@ -74,12 +76,48 @@ namespace weEnvanter.UI.Forms.InventoryCategoryForms
 
         private void btn_ExportPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Core.Helpers.ExportHelper.ExportToPdf(gridControl_InventoryCategories, "weEnvanter_Demirbaş_Kategorileri");
+            try
+            {
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+                _systemLogService.LogActivity(
+                    Program.CurrentUser?.Id,
+                    "Envanter Kategorisi Listesi PDF Dışa Aktarıldı",
+                    $"{userFullName} {now} tarihinde envanter kategorisi listesini PDF olarak dışa aktardı.",
+                    "InventoryCategory",
+                    null,
+                    weEnvanter.Domain.Enums.LogType.Information.ToString()
+                );
+                Core.Helpers.ExportHelper.ExportToPdf(gridControl_InventoryCategories, "weEnvanter_EnvanterKategorileri");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("PDF dışa aktarma sırasında bir hata oluştu: " + ex.Message, 
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_ExportXLSX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Core.Helpers.ExportHelper.ExportToExcel(gridControl_InventoryCategories, "weEnvanter_Demirbaş_Kategorileri");
+            try
+            {
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+                _systemLogService.LogActivity(
+                    Program.CurrentUser?.Id,
+                    "Envanter Kategorisi Listesi Excel Dışa Aktarıldı",
+                    $"{userFullName} {now} tarihinde envanter kategorisi listesini Excel olarak dışa aktardı.",
+                    "InventoryCategory",
+                    null,
+                    weEnvanter.Domain.Enums.LogType.Information.ToString()
+                );
+                Core.Helpers.ExportHelper.ExportToExcel(gridControl_InventoryCategories, "weEnvanter_EnvanterKategorileri");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Excel dışa aktarma sırasında bir hata oluştu: " + ex.Message, 
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bar_EditInventoryCategory_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

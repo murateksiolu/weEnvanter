@@ -377,6 +377,9 @@
     <EmbeddedResource Include="UI\Forms\MainForms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\MaintenanceForms\AddOrEditMaintenanceForm.resx">
+      <DependentUpon>AddOrEditMaintenanceForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\MaintenanceForms\MaintenanceListForm.resx">
       <DependentUpon>MaintenanceListForm.cs</DependentUpon>
     </EmbeddedResource>

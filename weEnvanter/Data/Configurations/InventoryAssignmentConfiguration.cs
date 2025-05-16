@@ -18,6 +18,11 @@ namespace weEnvanter.Data.Configurations
                 .WithMany()
                 .HasForeignKey(a => a.EmployeeId)
                 .WillCascadeOnDelete(false);
+
+            HasRequired(a => a.AssignedBy)
+                .WithMany()
+                .HasForeignKey(a => a.AssignedById)
+                .WillCascadeOnDelete(false);
         }
     }
 } 

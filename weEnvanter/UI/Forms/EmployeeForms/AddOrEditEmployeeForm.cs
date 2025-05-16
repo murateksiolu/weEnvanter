@@ -15,14 +15,18 @@ namespace weEnvanter.UI.Forms.EmployeeForms
         private readonly int? _employeeId;
         private readonly IEmployeeService _employeeService;
         private readonly IDepartmentService _departmentService;
+        private readonly ISystemLogService _systemLogService;
+        private Employee _employee;
 
-        public AddOrEditEmployeeForm(IEmployeeService employeeService, OperationType operationType, int? employeeId = null)
+        public AddOrEditEmployeeForm(OperationType operationType, int? employeeId = null)
         {
             InitializeComponent();
-            _employeeService = employeeService;
-            _departmentService = Program.ServiceProvider.GetRequiredService<IDepartmentService>();
             _operationType = operationType;
             _employeeId = employeeId;
+
+            _employeeService = Program.ServiceProvider.GetRequiredService<IEmployeeService>();
+            _departmentService = Program.ServiceProvider.GetRequiredService<IDepartmentService>();
+            _systemLogService = Program.ServiceProvider.GetRequiredService<ISystemLogService>();
 
             InitializeForm();
             SetValidationRules();
@@ -148,54 +152,63 @@ namespace weEnvanter.UI.Forms.EmployeeForms
             btn_Save.Visible = !isReadOnly;
         }
 
+        private bool ValidateForm()
+        {
+            if (!dxValidationProvider1.Validate())
+            {
+                XtraMessageBox.Show("Lütfen zorunlu alanları doldurunuz!",
+                    "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
         private async void btn_Save_Click(object sender, EventArgs e)
         {
+            if (!ValidateForm()) return;
+
             try
             {
-                if (!dxValidationProvider1.Validate())
-                {
-                    XtraMessageBox.Show("Lütfen zorunlu alanları doldurunuz!",
-                        "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                if (_operationType == OperationType.Add)
+                    _employee = new Employee() { IsActive = true };
 
-                if (_operationType == OperationType.Update && _employeeId.HasValue)
-                {
-                    var existingEmployee = await _employeeService.GetByIdAsync(_employeeId.Value);
-                    if (existingEmployee != null)
-                    {
-                        existingEmployee.FirstName = txt_FirstName.Text.Trim();
-                        existingEmployee.LastName = txt_LastName.Text.Trim();
-                        existingEmployee.EmployeeNumber = txt_EmployeeNumber.Text.Trim();
-                        existingEmployee.Email = txt_Email.Text.Trim();
-                        existingEmployee.Phone = txt_Phone.Text.Trim();
-                        existingEmployee.Notes = txt_Notes.Text.Trim();
-                        existingEmployee.DepartmentId = Convert.ToInt32(lookUp_Department.EditValue);
-                        existingEmployee.HireDate = dateEdit_HireDate.DateTime;
-                        existingEmployee.IsActive = toggle_IsActive.IsOn;
+                _employee.FirstName = txt_FirstName.Text;
+                _employee.LastName = txt_LastName.Text;
+                _employee.Email = txt_Email.Text;
+                _employee.Phone = txt_Phone.Text;
+                _employee.DepartmentId = Convert.ToInt32(lookUp_Department.EditValue);
+                _employee.HireDate = dateEdit_HireDate.DateTime;
+                _employee.IsActive = toggle_IsActive.IsOn;
 
-                        await _employeeService.UpdateAsync(existingEmployee);
-                        XtraMessageBox.Show("Çalışan başarıyla güncellendi.", "Bilgi",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+
+                if (_operationType == OperationType.Add)
+                {
+                    await _employeeService.AddAsync(_employee);
+                    _systemLogService.LogActivity(
+                        Program.CurrentUser?.Id,
+                        "Çalışan Eklendi",
+                        $"{userFullName} {now} tarihinde '{_employee.FirstName} {_employee.LastName}' isimli çalışanı ekledi.",
+                        "Employee",
+                        _employee.Id.ToString(),
+                        weEnvanter.Domain.Enums.LogType.Information.ToString()
+                    );
+                    XtraMessageBox.Show("Çalışan başarıyla eklendi.", "Bilgi", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    var newEmployee = new Employee
-                    {
-                        FirstName = txt_FirstName.Text.Trim(),
-                        LastName = txt_LastName.Text.Trim(),
-                        EmployeeNumber = txt_EmployeeNumber.Text.Trim(),
-                        Email = txt_Email.Text.Trim(),
-                        Phone = txt_Phone.Text.Trim(),
-                        Notes = txt_Notes.Text.Trim(),
-                        DepartmentId = Convert.ToInt32(lookUp_Department.EditValue),
-                        HireDate = dateEdit_HireDate.DateTime,
-                        IsActive = toggle_IsActive.IsOn
-                    };
-
-                    await _employeeService.AddAsync(newEmployee);
-                    XtraMessageBox.Show("Çalışan başarıyla eklendi.", "Bilgi",
+                    await _employeeService.UpdateAsync(_employee);
+                    _systemLogService.LogActivity(
+                        Program.CurrentUser?.Id,
+                        "Çalışan Güncellendi",
+                        $"{userFullName} {now} tarihinde '{_employee.FirstName} {_employee.LastName}' isimli çalışanı güncelledi.",
+                        "Employee",
+                        _employee.Id.ToString(),
+                        weEnvanter.Domain.Enums.LogType.Information.ToString()
+                    );
+                    XtraMessageBox.Show("Çalışan başarıyla güncellendi.", "Bilgi", 
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
@@ -204,7 +217,7 @@ namespace weEnvanter.UI.Forms.EmployeeForms
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show($"Kaydetme işlemi sırasında bir hata oluştu: {ex.Message}",
+                XtraMessageBox.Show("Çalışan kaydedilirken bir hata oluştu: " + ex.Message,
                     "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

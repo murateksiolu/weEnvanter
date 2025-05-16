@@ -29,40 +29,40 @@
         private void InitializeComponent()
         {
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_InventoryName = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_InventoryCode = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.txt_BarcodeNumber = new DevExpress.XtraEditors.TextEdit();
-            this.txt_SerialNumber = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.txt_BrandModel = new DevExpress.XtraEditors.TextEdit();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_BarcodeNumber = new DevExpress.XtraEditors.TextEdit();
+            this.txt_SerialNumber = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_InventoryCode = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_InventoryName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.lookUp_Employee = new DevExpress.XtraEditors.LookUpEdit();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
-            this.date_AssignDate = new DevExpress.XtraEditors.DateEdit();
-            this.txt_AssignNotes = new DevExpress.XtraEditors.MemoEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.txt_AssignNotes = new DevExpress.XtraEditors.MemoEdit();
+            this.date_AssignDate = new DevExpress.XtraEditors.DateEdit();
             this.btn_Assign = new DevExpress.XtraEditors.SimpleButton();
             this.btn_Cancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BrandModel.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_BarcodeNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SerialNumber.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_BrandModel.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryCode.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUp_Employee.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_AssignNotes.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_AssignDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_AssignDate.Properties.CalendarTimeProperties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_AssignNotes.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl1
@@ -83,45 +83,29 @@
             this.groupControl1.TabIndex = 0;
             this.groupControl1.Text = "Demirbaş Bilgileri";
             // 
-            // labelControl1
+            // txt_BrandModel
             // 
-            this.labelControl1.Location = new System.Drawing.Point(15, 39);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(62, 13);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "Demirbaş Adı";
+            this.txt_BrandModel.Location = new System.Drawing.Point(396, 91);
+            this.txt_BrandModel.Name = "txt_BrandModel";
+            this.txt_BrandModel.Properties.ReadOnly = true;
+            this.txt_BrandModel.Size = new System.Drawing.Size(131, 22);
+            this.txt_BrandModel.TabIndex = 9;
             // 
-            // txt_InventoryName
+            // labelControl5
             // 
-            this.txt_InventoryName.Location = new System.Drawing.Point(122, 35);
-            this.txt_InventoryName.Name = "txt_InventoryName";
-            this.txt_InventoryName.Properties.ReadOnly = true;
-            this.txt_InventoryName.Size = new System.Drawing.Size(405, 22);
-            this.txt_InventoryName.TabIndex = 1;
+            this.labelControl5.Location = new System.Drawing.Point(275, 95);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(64, 13);
+            this.labelControl5.TabIndex = 8;
+            this.labelControl5.Text = "Marka/Model";
             // 
-            // labelControl2
+            // labelControl4
             // 
-            this.labelControl2.Location = new System.Drawing.Point(15, 67);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(72, 13);
-            this.labelControl2.TabIndex = 2;
-            this.labelControl2.Text = "Demirbaş Kodu";
-            // 
-            // txt_InventoryCode
-            // 
-            this.txt_InventoryCode.Location = new System.Drawing.Point(122, 63);
-            this.txt_InventoryCode.Name = "txt_InventoryCode";
-            this.txt_InventoryCode.Properties.ReadOnly = true;
-            this.txt_InventoryCode.Size = new System.Drawing.Size(131, 22);
-            this.txt_InventoryCode.TabIndex = 3;
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(15, 95);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(65, 13);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "Seri Numarası";
+            this.labelControl4.Location = new System.Drawing.Point(275, 67);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(81, 13);
+            this.labelControl4.TabIndex = 7;
+            this.labelControl4.Text = "Barkod Numarası";
             // 
             // txt_BarcodeNumber
             // 
@@ -139,29 +123,45 @@
             this.txt_SerialNumber.Size = new System.Drawing.Size(131, 22);
             this.txt_SerialNumber.TabIndex = 5;
             // 
-            // labelControl4
+            // labelControl3
             // 
-            this.labelControl4.Location = new System.Drawing.Point(275, 67);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(81, 13);
-            this.labelControl4.TabIndex = 7;
-            this.labelControl4.Text = "Barkod Numarası";
+            this.labelControl3.Location = new System.Drawing.Point(15, 95);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(65, 13);
+            this.labelControl3.TabIndex = 4;
+            this.labelControl3.Text = "Seri Numarası";
             // 
-            // txt_BrandModel
+            // txt_InventoryCode
             // 
-            this.txt_BrandModel.Location = new System.Drawing.Point(396, 91);
-            this.txt_BrandModel.Name = "txt_BrandModel";
-            this.txt_BrandModel.Properties.ReadOnly = true;
-            this.txt_BrandModel.Size = new System.Drawing.Size(131, 22);
-            this.txt_BrandModel.TabIndex = 9;
+            this.txt_InventoryCode.Location = new System.Drawing.Point(122, 63);
+            this.txt_InventoryCode.Name = "txt_InventoryCode";
+            this.txt_InventoryCode.Properties.ReadOnly = true;
+            this.txt_InventoryCode.Size = new System.Drawing.Size(131, 22);
+            this.txt_InventoryCode.TabIndex = 3;
             // 
-            // labelControl5
+            // labelControl2
             // 
-            this.labelControl5.Location = new System.Drawing.Point(275, 95);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(64, 13);
-            this.labelControl5.TabIndex = 8;
-            this.labelControl5.Text = "Marka/Model";
+            this.labelControl2.Location = new System.Drawing.Point(15, 67);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(72, 13);
+            this.labelControl2.TabIndex = 2;
+            this.labelControl2.Text = "Demirbaş Kodu";
+            // 
+            // txt_InventoryName
+            // 
+            this.txt_InventoryName.Location = new System.Drawing.Point(122, 35);
+            this.txt_InventoryName.Name = "txt_InventoryName";
+            this.txt_InventoryName.Properties.ReadOnly = true;
+            this.txt_InventoryName.Size = new System.Drawing.Size(405, 22);
+            this.txt_InventoryName.TabIndex = 1;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(15, 39);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(62, 13);
+            this.labelControl1.TabIndex = 0;
+            this.labelControl1.Text = "Demirbaş Adı";
             // 
             // groupControl2
             // 
@@ -194,6 +194,29 @@
             this.groupControl3.TabIndex = 2;
             this.groupControl3.Text = "Zimmet Detayları";
             // 
+            // labelControl7
+            // 
+            this.labelControl7.Location = new System.Drawing.Point(15, 63);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(67, 13);
+            this.labelControl7.TabIndex = 11;
+            this.labelControl7.Text = "Zimmet Notları";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Location = new System.Drawing.Point(15, 29);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(63, 13);
+            this.labelControl6.TabIndex = 10;
+            this.labelControl6.Text = "Zimmet Tarihi";
+            // 
+            // txt_AssignNotes
+            // 
+            this.txt_AssignNotes.Location = new System.Drawing.Point(122, 58);
+            this.txt_AssignNotes.Name = "txt_AssignNotes";
+            this.txt_AssignNotes.Size = new System.Drawing.Size(405, 72);
+            this.txt_AssignNotes.TabIndex = 1;
+            // 
             // date_AssignDate
             // 
             this.date_AssignDate.EditValue = null;
@@ -205,29 +228,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.date_AssignDate.Size = new System.Drawing.Size(100, 22);
             this.date_AssignDate.TabIndex = 0;
-            // 
-            // txt_AssignNotes
-            // 
-            this.txt_AssignNotes.Location = new System.Drawing.Point(122, 58);
-            this.txt_AssignNotes.Name = "txt_AssignNotes";
-            this.txt_AssignNotes.Size = new System.Drawing.Size(405, 72);
-            this.txt_AssignNotes.TabIndex = 1;
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Location = new System.Drawing.Point(15, 29);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(63, 13);
-            this.labelControl6.TabIndex = 10;
-            this.labelControl6.Text = "Zimmet Tarihi";
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Location = new System.Drawing.Point(15, 63);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(67, 13);
-            this.labelControl7.TabIndex = 11;
-            this.labelControl7.Text = "Zimmet Notları";
             // 
             // btn_Assign
             // 
@@ -267,20 +267,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_BrandModel.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_BarcodeNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_SerialNumber.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_BrandModel.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryCode.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_InventoryName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lookUp_Employee.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_AssignNotes.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_AssignDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.date_AssignDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt_AssignNotes.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -16,6 +16,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
         private readonly IInventoryService _inventoryService;
         private readonly IInventoryAssignmentService _assignmentService;
         private readonly IEmployeeService _employeeService;
+        private readonly ISystemLogService _systemLogService;
         private readonly int _inventoryId;
 
         public InventoryAssignmentHistoryForm(int inventoryId)
@@ -27,6 +28,7 @@ namespace weEnvanter.UI.Forms.InventoryForms
             _inventoryService = Program.ServiceProvider.GetRequiredService<IInventoryService>();
             _assignmentService = Program.ServiceProvider.GetRequiredService<IInventoryAssignmentService>();
             _employeeService = Program.ServiceProvider.GetRequiredService<IEmployeeService>();
+            _systemLogService = Program.ServiceProvider.GetRequiredService<ISystemLogService>();
 
             GridControlHelper.SetGridViewSettings(gridView_AssignmentHistory);
             BarManagerHelper.SetBarManagerSettings(barManager1);
@@ -94,12 +96,48 @@ namespace weEnvanter.UI.Forms.InventoryForms
 
         private void btn_ExportPDF_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Core.Helpers.ExportHelper.ExportToPdf(gridControl_AssignmentHistory, "Zimmet_Gecmisi");
+            try
+            {
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+                _systemLogService.LogActivity(
+                    Program.CurrentUser?.Id,
+                    "Envanter Zimmet Geçmişi PDF Dışa Aktarıldı",
+                    $"{userFullName} {now} tarihinde envanter zimmet geçmişini PDF olarak dışa aktardı.",
+                    "Inventory",
+                    _inventoryId.ToString(),
+                    weEnvanter.Domain.Enums.LogType.Information.ToString()
+                );
+                Core.Helpers.ExportHelper.ExportToPdf(gridControl_AssignmentHistory, "Zimmet_Gecmisi");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("PDF dışa aktarma sırasında bir hata oluştu: " + ex.Message, 
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_ExportXLSX_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Core.Helpers.ExportHelper.ExportToExcel(gridControl_AssignmentHistory, "Zimmet_Gecmisi");
+            try
+            {
+                string userFullName = Program.CurrentUser != null ? $"{Program.CurrentUser.FirstName} {Program.CurrentUser.LastName}" : "Bilinmeyen Kullanıcı";
+                string now = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
+                _systemLogService.LogActivity(
+                    Program.CurrentUser?.Id,
+                    "Envanter Zimmet Geçmişi Excel Dışa Aktarıldı",
+                    $"{userFullName} {now} tarihinde envanter zimmet geçmişini Excel olarak dışa aktardı.",
+                    "Inventory",
+                    _inventoryId.ToString(),
+                    weEnvanter.Domain.Enums.LogType.Information.ToString()
+                );
+                Core.Helpers.ExportHelper.ExportToExcel(gridControl_AssignmentHistory, "Zimmet_Gecmisi");
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Excel dışa aktarma sırasında bir hata oluştu: " + ex.Message, 
+                    "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
